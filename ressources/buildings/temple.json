@@ -1,0 +1,17 @@
+{
+	"Name": "Temple",
+	"CoinCost": "0",
+	"ArgileCost": "1",
+	"PierreCost": "0",
+	"BoisCost": "1",
+	"MineraiCost": "0",
+	"VerreCost": "1",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "VictoryPoints3",
+	"Age": "2",
+	"CategoryName": "Civilian",
+	"ChainDown": "autel",
+	"ChainUps": "pantheon",
+	"NumberPlayerRequired" : "3,6"
+}

@@ -1,0 +1,17 @@
+{
+	"Name": "Laboratoire",
+	"CoinCost": "0",
+	"ArgileCost": "2",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "1",
+	"Effects": "Engrenage",
+	"Age": "2",
+	"CategoryName": "Scientific",
+	"ChainDown": "atelier",
+	"ChainUps": "observatoire,atelier_de_siege",
+	"NumberPlayerRequired" : "3,5"
+}

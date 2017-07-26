@@ -1,0 +1,17 @@
+{
+	"Name": "Scriptorium",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "1",
+	"Effects": "Tablette",
+	"Age": "1",
+	"CategoryName": "Scientific",
+	"ChainDown": "",
+	"ChainUps": "tribunal,bibliotheque",
+	"NumberPlayerRequired" : "3,4"
+}

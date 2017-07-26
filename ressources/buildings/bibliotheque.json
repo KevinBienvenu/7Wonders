@@ -1,0 +1,17 @@
+{
+	"Name": "Bibliothèque",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "2",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "1",
+	"PapyrusCost": "0",
+	"Effects": "Tablette",
+	"Age": "2",
+	"CategoryName": "Scientific",
+	"ChainDown": "scriptorium",
+	"ChainUps": "senat,universite",
+	"NumberPlayerRequired" : "3,6"
+}

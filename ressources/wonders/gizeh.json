@@ -1,0 +1,25 @@
+{
+	"Name": "La grande pyramide de Gizeh",
+	
+	"AEffectType": "ProductionPierreSimple",
+	"AFloor1PierreCost": "2",
+	"AFloor1EffectType0": "VictoryPoints3",
+	"AFloor2BoisCost": "3",
+	"AFloor2EffectType0": "VictoryPoints5",
+	"AFloor3PierreCost": "4",
+	"AFloor3EffectType0": "VictoryPoints7",
+	"AText" : "Ce merveille produit de base de la pierre.",
+	
+	"BEffectType": "ProductionPierreSimple",
+	"BFloor1BoisCost" : "2",
+	"BFloor1EffectType0": "VictoryPoints3",
+	"BFloor2PierreCost": "3",
+	"BFloor2EffectType0": "VictoryPoints5",
+	"BFloor3ArgileCost": "3",
+	"BFloor3EffectType0": "VictoryPoints5",
+	"BFloor4PierreCost": "4",
+	"BFloor4PapyrusCost": "1",
+	"BFloor4EffectType0": "VictoryPoints7",
+	"BText" : "Ce merveille produit de base de la pierre."
+	
+}

@@ -1,0 +1,17 @@
+{
+	"Name": "Guilde des Philosophes",
+	"CoinCost": "0",
+	"ArgileCost": "3",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "1",
+	"PapyrusCost": "1",
+	"Effects": "VictoryPointsForScientificNeighbours",
+	"Age": "3",
+	"CategoryName": "Guilds",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "0"
+}

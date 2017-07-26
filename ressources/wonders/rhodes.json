@@ -1,0 +1,24 @@
+{
+	"Name": "Le Colosse de Rhodes",
+	
+	"AEffectType": "ProductionMineraiSimple",
+	"AFloor1BoisCost": "2",
+	"AFloor1EffectType0": "VictoryPoints3",
+	"AFloor2ArgileCost": "3",
+	"AFloor2EffectType0": "Military2",
+	"AFloor3MineraiCost": "4",
+	"AFloor3EffectType0": "VictoryPoints7",
+	"AText" : "Ce merveille produit de base du minerai.",
+	
+	"BEffectType": "ProductionMineraiSimple",
+	"BFloor1PierreCost" : "3",
+	"BFloor1EffectType0": "VictoryPoints3",
+	"BFloor1EffectType1": "Military1",
+	"BFloor1EffectType2": "Coins3",
+	"BFloor2MineraiCost": "4",
+	"BFloor2EffectType0": "VictoryPoints4",
+	"BFloor2EffectType1": "Military1",
+	"BFloor2EffectType2": "Coins4",
+	"BText" : "Ce merveille produit de base du minerai."
+	
+}

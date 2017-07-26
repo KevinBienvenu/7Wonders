@@ -1,0 +1,17 @@
+{
+	"Name": "Dispensaire",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "2",
+	"VerreCost": "1",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "Compas",
+	"Age": "2",
+	"CategoryName": "Scientific",
+	"ChainDown": "officine",
+	"ChainUps": "arene,loge",
+	"NumberPlayerRequired" : "3,4"
+}

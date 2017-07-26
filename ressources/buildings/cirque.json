@@ -1,0 +1,17 @@
+{
+	"Name": "Cirque",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "3",
+	"BoisCost": "0",
+	"MineraiCost": "1",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "Military3",
+	"Age": "3",
+	"CategoryName": "Military",
+	"ChainDown": "place_d_armes",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "4,5,6"
+}

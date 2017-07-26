@@ -1,0 +1,21 @@
+{
+	"Name": "L’Al-Khazneh de Pétra",
+	
+	"AEffectType": "ProductionArgileSimple",
+	"AFloor1BoisCost": "1",
+	"AFloor1PierreCost": "1",
+	"AFloor1EffectType0": "VictoryPoints3",
+	"AFloor2GoldCost": "7",
+	"AFloor2EffectType0": "VictoryPoints7",
+	"AFloor3PierreCost": "2",
+	"AFloor3BoisCost": "1",
+	"AFloor3PapyrusCost": "1",
+	"AFloor3EffectType0": "VictoryPoints7",
+	"AText" : "Ce merveille produit de base de l'argile.",
+	
+	"BEffectType": "ProductionArgileSimple",
+	"BFloor1GoldCost" : "14",
+	"BFloor1EffectType0": "VictoryPoints14",
+	"BText" : "Ce merveille produit de base de l'argile."
+	
+}

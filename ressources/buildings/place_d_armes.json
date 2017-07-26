@@ -1,0 +1,17 @@
+{
+	"Name": "Place d'armes",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "1",
+	"MineraiCost": "2",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "Military2",
+	"Age": "2",
+	"CategoryName": "Military",
+	"ChainDown": "",
+	"ChainUps": "cirque",
+	"NumberPlayerRequired" : "4,6,7"
+}

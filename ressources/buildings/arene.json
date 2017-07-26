@@ -1,0 +1,17 @@
+{
+	"Name": "Arène",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "2",
+	"BoisCost": "0",
+	"MineraiCost": "1",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "CoinsAndVictoryPointsForWonderFloors",
+	"Age": "3",
+	"CategoryName": "Commercial",
+	"ChainDown": "dispensaire",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,5,7"
+}

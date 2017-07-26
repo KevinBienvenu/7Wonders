@@ -1,0 +1,17 @@
+{
+	"Name": "Guilde des Artisans",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "2",
+	"BoisCost": "0",
+	"MineraiCost": "2",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "VictoryPointsForRareNeighbours",
+	"Age": "3",
+	"CategoryName": "Guilds",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "0"
+}

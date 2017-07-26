@@ -1,0 +1,17 @@
+{
+	"Name": "Taverne",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "Coins5",
+	"Age": "1",
+	"CategoryName": "Commercial",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "4,5,7"
+}

@@ -1,0 +1,27 @@
+{
+	"Name": "Le temple d'Artémis à Ephèse",
+	
+	"AEffectType": "ProductionPapyrus",
+	"AFloor1PierreCost": "2",
+	"AFloor1EffectType0": "VictoryPoints3",
+	"AFloor2BoisCost": "2",
+	"AFloor2EffectType0": "Coins9",
+	"AFloor3PapyrusCost": "2",
+	"AFloor3EffectType0": "VictoryPoints7",
+	"AText" : "Ce merveille produit de base du papyrus.",
+	
+	"BEffectType": "ProductionPapyrus",
+	"BFloor1PierreCost" : "2",
+	"BFloor1EffectType0": "VictoryPoints2",
+	"BFloor1EffectType1": "Coins4",
+	"BFloor2BoisCost" : "2",
+	"BFloor2EffectType0": "VictoryPoints3",
+	"BFloor2EffectType1": "Coins4",
+	"BFloor3PapyrusCost": "1",
+	"BFloor3TissuCost": "1",
+	"BFloor3VerreCost": "1",
+	"BFloor3EffectType0": "VictoryPoints5",
+	"BFloor3EffectType1": "Coins4",
+	"BText" : "Ce merveille produit de base du papyrus."
+	
+}

@@ -1,0 +1,17 @@
+{
+	"Name": "Université",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "2",
+	"MineraiCost": "0",
+	"VerreCost": "1",
+	"TissuCost": "0",
+	"PapyrusCost": "1",
+	"Effects": "Tablette",
+	"Age": "3",
+	"CategoryName": "Scientific",
+	"ChainDown": "bibliotheque",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,4"
+}

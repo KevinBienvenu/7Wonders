@@ -1,0 +1,17 @@
+{
+	"Name": "Phare",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "1",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "1",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "CoinsAndVictoryPointsForCommercial",
+	"Age": "3",
+	"CategoryName": "Commercial",
+	"ChainDown": "caravanserail",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,6"
+}

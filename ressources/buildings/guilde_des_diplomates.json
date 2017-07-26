@@ -1,0 +1,17 @@
+{
+	"Name": "Guilde des Diplomates",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "1",
+	"BoisCost": "1",
+	"MineraiCost": "0",
+	"VerreCost": "1",
+	"TissuCost": "0",
+	"PapyrusCost": "1",
+	"Effects": "VictoryPointsForLeaderNeighbours",
+	"Age": "3",
+	"CategoryName": "Guilds",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "0"
+}

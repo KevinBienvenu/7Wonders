@@ -1,0 +1,17 @@
+{
+	"Name": "Arsenal",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "2",
+	"MineraiCost": "1",
+	"VerreCost": "0",
+	"TissuCost": "1",
+	"PapyrusCost": "0",
+	"Effects": "Military3",
+	"Age": "3",
+	"CategoryName": "Military",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,4,7"
+}

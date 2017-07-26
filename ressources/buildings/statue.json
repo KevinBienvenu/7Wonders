@@ -1,0 +1,17 @@
+{
+	"Name": "Statue",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "1",
+	"MineraiCost": "2",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "VictoryPoints4",
+	"Age": "2",
+	"CategoryName": "Civilian",
+	"ChainDown": "theatre",
+	"ChainUps": "jardins",
+	"NumberPlayerRequired" : "3,7"
+}

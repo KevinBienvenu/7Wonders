@@ -1,0 +1,17 @@
+{
+	"Name": "Muraille",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "3",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "Military2",
+	"Age": "2",
+	"CategoryName": "Military",
+	"ChainDown": "",
+	"ChainUps": "fortifications",
+	"NumberPlayerRequired" : "3,7"
+}

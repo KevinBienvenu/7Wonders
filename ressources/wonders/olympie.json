@@ -1,0 +1,24 @@
+{
+	"Name": "La statue de Zeus à Olympie",
+	
+	"AEffectType": "ProductionBoisSimple",
+	"AFloor1BoisCost": "2",
+	"AFloor1EffectType0": "VictoryPoints3",
+	"AFloor2PierreCost": "2",
+	"AFloor2EffectType0": "SpecialBuildFreeBuilding",
+	"AFloor3MineraiCost": "2",
+	"AFloor3EffectType0": "VictoryPoints7",
+	"AText" : "Ce merveille produit de base du bois.",
+	
+	"BEffectType": "ProductionBoisSimple",
+	"BFloor1BoisCost" : "2",
+	"BFloor1EffectType0": "TradeCommonEastEqual1",
+	"BFloor1EffectType1": "TradeCommonWestEqual1",
+	"BFloor2PierreCost": "2",
+	"BFloor2EffectType0": "VictoryPoints5",
+	"BFloor3MineraiCost": "2",
+	"BFloor3TissuCost": "1",
+	"BFloor3EffectType0": "SpecialCopyGuild",
+	"BText" : "Ce merveille produit de base du bois."
+	
+}

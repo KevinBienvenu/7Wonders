@@ -1,0 +1,17 @@
+{
+	"Name": "Verrerie",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "ProductionVerre",
+	"Age": "2",
+	"CategoryName": "RareRessources",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,5"
+}

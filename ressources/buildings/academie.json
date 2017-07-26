@@ -1,0 +1,17 @@
+{
+	"Name": "Académie",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "3",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "1",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "Compas",
+	"Age": "3",
+	"CategoryName": "Scientific",
+	"ChainDown": "ecole",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,7"
+}

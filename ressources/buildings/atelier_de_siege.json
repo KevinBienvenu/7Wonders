@@ -1,0 +1,17 @@
+{
+	"Name": "Atelier de siège",
+	"CoinCost": "0",
+	"ArgileCost": "3",
+	"PierreCost": "0",
+	"BoisCost": "1",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "Military3",
+	"Age": "3",
+	"CategoryName": "Military",
+	"ChainDown": "laboratoire",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,5"
+}

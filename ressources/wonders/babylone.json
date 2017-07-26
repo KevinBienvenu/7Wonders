@@ -1,0 +1,25 @@
+{
+	"Name": "Les jardins suspendus de Babylone",
+	
+	"AEffectType": "ProductionArgileSimple",
+	"AFloor1ArgileCost": "2",
+	"AFloor1EffectType0": "VictoryPoints3",
+	"AFloor2BoisCost": "3",
+	"AFloor2EffectType0": "ProductionScience",
+	"AFloor3ArgileCost": "4",
+	"AFloor3EffectType0": "VictoryPoints7",
+	"AText" : "Ce merveille produit de base de l'argile.",
+	
+	"BEffectType": "ProductionArgileSimple",
+	"BFloor1ArgileCost" : "1",
+	"BFloor1TissuCost" : "1",
+	"BFloor1EffectType0": "VictoryPoints3",
+	"BFloor2BoisCost": "2",
+	"BFloor2VerreCost": "1",
+	"BFloor2EffectType0": "SpecialPlayLastCard",
+	"BFloor3ArgileCost": "3",
+	"BFloor3PapyrusCost": "1",
+	"BFloor3EffectType0": "ProductionScience",
+	"BText" : "Ce merveille produit de base de l'argile."
+	
+}

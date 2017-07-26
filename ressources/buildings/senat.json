@@ -1,0 +1,17 @@
+{
+	"Name": "Sénat",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "1",
+	"BoisCost": "2",
+	"MineraiCost": "1",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "VictoryPoints6",
+	"Age": "3",
+	"CategoryName": "Civilian",
+	"ChainDown": "bibliotheque",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,5"
+}

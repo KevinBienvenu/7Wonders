@@ -1,0 +1,26 @@
+{
+	"Name": "Le mausolée d'Halicarnasse",
+	
+	"AEffectType": "ProductionTissu",
+	"AFloor1ArgileCost": "2",
+	"AFloor1EffectType0": "VictoryPoints3",
+	"AFloor2MineraiCost": "3",
+	"AFloor2EffectType0": "SpecialBuildFromDiscard",
+	"AFloor3TissuCost": "2",
+	"AFloor3EffectType0": "VictoryPoints7",
+	"AText" : "Ce merveille produit de base du tissu.",
+	
+	"BEffectType": "ProductionTissu",
+	"BFloor1MineraiCost" : "2",
+	"BFloor1EffectType0": "SpecialBuildFromDiscard",
+	"BFloor1EffectType1": "VictoryPoints2",
+	"BFloor2ArgileCost": "3",
+	"BFloor2EffectType0": "SpecialBuildFromDiscard",
+	"BFloor2EffectType1": "VictoryPoints1",
+	"BFloor3VerreCost": "1",
+	"BFloor3TissuCost": "1",
+	"BFloor3PapyrusCost": "1",
+	"BFloor3EffectType0": "SpecialBuildFromDiscard",
+	"BText" : "Ce merveille produit de base du tissu."
+	
+}

@@ -1,0 +1,17 @@
+{
+	"Name": "Champs de tir",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "2",
+	"MineraiCost": "1",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "Military2",
+	"Age": "2",
+	"CategoryName": "Military",
+	"ChainDown": "atelier",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,6"
+}

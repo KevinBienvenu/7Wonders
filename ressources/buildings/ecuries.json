@@ -1,0 +1,17 @@
+{
+	"Name": "Ecuries",
+	"CoinCost": "0",
+	"ArgileCost": "1",
+	"PierreCost": "0",
+	"BoisCost": "1",
+	"MineraiCost": "1",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "Military2",
+	"Age": "2",
+	"CategoryName": "Military",
+	"ChainDown": "officine",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,5"
+}

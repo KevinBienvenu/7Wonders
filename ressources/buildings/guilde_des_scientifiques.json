@@ -1,0 +1,17 @@
+{
+	"Name": "Guilde des Scientifiques",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "2",
+	"MineraiCost": "2",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "1",
+	"Effects": "ProductionScience",
+	"Age": "3",
+	"CategoryName": "Guilds",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "0"
+}

@@ -1,0 +1,17 @@
+{
+	"Name": "Palissade",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "1",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "Military1",
+	"Age": "1",
+	"CategoryName": "Military",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,7"
+}

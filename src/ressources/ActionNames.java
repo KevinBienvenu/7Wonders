@@ -1,0 +1,11 @@
+package ressources;
+
+public enum ActionNames {
+
+	ACTIONBUILDING,
+	ACTIONBUYRESSOURCE, 
+	ACTIONWONDER,
+	ACTIONLEADERCHOICE,
+	ACTIONDISCARD;
+	
+}

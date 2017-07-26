@@ -1,0 +1,17 @@
+{
+	"Name": "Fonderie",
+	"CoinCost": "1",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "ProductionMineraiDouble",
+	"Age": "2",
+	"CategoryName": "CommonRessources",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,4"
+}

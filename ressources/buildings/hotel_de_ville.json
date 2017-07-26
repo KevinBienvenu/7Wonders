@@ -1,0 +1,17 @@
+{
+	"Name": "Hôtel de ville",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "2",
+	"BoisCost": "0",
+	"MineraiCost": "1",
+	"VerreCost": "1",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "VictoryPoints6",
+	"Age": "3",
+	"CategoryName": "Civilian",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,5,6"
+}

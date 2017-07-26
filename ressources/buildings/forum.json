@@ -1,0 +1,17 @@
+{
+	"Name": "Forum",
+	"CoinCost": "0",
+	"ArgileCost": "2",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "ProductionRare",
+	"Age": "2",
+	"CategoryName": "Commercial",
+	"ChainDown": "comptoir_est,comptoir_ouest",
+	"ChainUps": "port",
+	"NumberPlayerRequired" : "3,6,7"
+}

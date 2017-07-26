@@ -1,0 +1,17 @@
+{
+	"Name": "Observatoire",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "2",
+	"VerreCost": "1",
+	"TissuCost": "1",
+	"PapyrusCost": "0",
+	"Effects": "Engrenage",
+	"Age": "3",
+	"CategoryName": "Scientific",
+	"ChainDown": "laboratoire",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,7"
+}

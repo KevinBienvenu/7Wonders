@@ -1,0 +1,17 @@
+{
+	"Name": "Panthéon",
+	"CoinCost": "0",
+	"ArgileCost": "2",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "1",
+	"VerreCost": "1",
+	"TissuCost": "1",
+	"PapyrusCost": "1",
+	"Effects": "VictoryPoints7",
+	"Age": "3",
+	"CategoryName": "Civilian",
+	"ChainDown": "temple",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,6"
+}

@@ -1,0 +1,17 @@
+{
+	"Name": "Aqueduc",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "3",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "VictoryPoints5",
+	"Age": "2",
+	"CategoryName": "Civilian",
+	"ChainDown": "bains",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,7"
+}

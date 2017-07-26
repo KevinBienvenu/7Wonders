@@ -1,0 +1,31 @@
+{
+	"Name": "Le colisée de Rome",
+	
+	"AEffectType": "SpecialLeaderFree",
+	"AFloor1ArgileCost": "1",
+	"AFloor1BoisCost": "1",
+	"AFloor1MineraiCost": "1",
+	"AFloor1EffectType0": "VictoryPoints4",
+	"AFloor2PierreCost": "2",
+	"AFloor2ArgileCost": "1",
+	"AFloor2TissuCost": "1",
+	"AFloor2EffectType0": "VictoryPoints6",
+	"AText" : "Tous vos leaders sont gratuits.",
+	
+	"BEffectType": "SpecialLeaderCheaper",
+	"BFloor1ArgileCost" : "1",
+	"BFloor1BoisCost" : "1",
+	"BFloor1EffectType0": "SpecialDraw4Leaders",
+	"BFloor1EffectType1": "Coins5",
+	"BFloor2ArgileCost" : "1",
+	"BFloor2PierreCost" : "1",
+	"BFloor2TissuCost" : "1",
+	"BFloor2EffectType0": "SpecialPlayLeader",
+	"BFloor2EffectType1": "VictoryPoints3",
+	"BFloor3PierreCost": "2",
+	"BFloor3PapyrusCost": "1",
+	"BFloor3EffectType0": "SpecialPlayLeader",
+	"BFloor3EffectType1": "VictoryPoints3",
+	"BText" : "Vos leaders coûtent -2 or, -1 pour vos voisins."
+	
+}

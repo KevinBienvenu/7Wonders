@@ -1,0 +1,17 @@
+{
+	"Name": "Officine",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "1",
+	"PapyrusCost": "0",
+	"Effects": "Compas",
+	"Age": "1",
+	"CategoryName": "Scientific",
+	"ChainDown": "",
+	"ChainUps": "ecuries,dispensaire",
+	"NumberPlayerRequired" : "3,5"
+}

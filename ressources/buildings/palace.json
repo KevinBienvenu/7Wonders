@@ -1,0 +1,17 @@
+{
+	"Name": "Palace",
+	"CoinCost": "0",
+	"ArgileCost": "1",
+	"PierreCost": "1",
+	"BoisCost": "1",
+	"MineraiCost": "1",
+	"VerreCost": "1",
+	"TissuCost": "1",
+	"PapyrusCost": "1",
+	"Effects": "VictoryPoints8",
+	"Age": "3",
+	"CategoryName": "Civilian",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,7"
+}

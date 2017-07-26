@@ -1,0 +1,17 @@
+{
+	"Name": "Guilde des Stratèges",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "1",
+	"BoisCost": "0",
+	"MineraiCost": "2",
+	"VerreCost": "0",
+	"TissuCost": "1",
+	"PapyrusCost": "0",
+	"Effects": "VictoryPointsForDefeatedNeighbours",
+	"Age": "3",
+	"CategoryName": "Guilds",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "0"
+}

@@ -1,0 +1,17 @@
+{
+	"Name": "Bazar",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "CoinsForAllRareProd",
+	"Age": "2",
+	"CategoryName": "Commercial",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "4,7"
+}

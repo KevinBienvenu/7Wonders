@@ -1,0 +1,17 @@
+{
+	"Name": "Chambre de commerce",
+	"CoinCost": "0",
+	"ArgileCost": "2",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "1",
+	"Effects": "CoinsAndVictoryPointsForRareProd",
+	"Age": "3",
+	"CategoryName": "Commercial",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "4,6"
+}

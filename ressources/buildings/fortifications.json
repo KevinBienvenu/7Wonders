@@ -1,0 +1,17 @@
+{
+	"Name": "Fortifications",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "1",
+	"BoisCost": "0",
+	"MineraiCost": "3",
+	"VerreCost": "0",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "Military3",
+	"Age": "3",
+	"CategoryName": "Military",
+	"ChainDown": "muraille",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "3,7"
+}

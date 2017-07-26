@@ -1,0 +1,17 @@
+{
+	"Name": "Atelier",
+	"CoinCost": "0",
+	"ArgileCost": "0",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "1",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "Engrenage",
+	"Age": "1",
+	"CategoryName": "Scientific",
+	"ChainDown": "",
+	"ChainUps": "champs_de_tir,laboratoire",
+	"NumberPlayerRequired" : "3,7"
+}

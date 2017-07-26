@@ -1,0 +1,13 @@
+package ressources;
+
+public enum PhaseNames {
+
+	DEBUTAGE,
+	LEADERCHOICE,
+	DEBUTTOUR,
+	MAINTOUR,
+	ANIMATIONPHASEI,
+	ENDTOUR,
+	ENDAGE, 
+	MAINSPECIALTOUR;
+}

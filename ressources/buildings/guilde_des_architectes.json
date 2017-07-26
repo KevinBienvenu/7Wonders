@@ -1,0 +1,17 @@
+{
+	"Name": "Guilde des Architectes",
+	"CoinCost": "0",
+	"ArgileCost": "1",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "3",
+	"VerreCost": "0",
+	"TissuCost": "1",
+	"PapyrusCost": "1",
+	"Effects": "VictoryPointsForGuildNeighbours",
+	"Age": "3",
+	"CategoryName": "Guilds",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "0"
+}

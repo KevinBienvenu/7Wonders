@@ -1,0 +1,17 @@
+{
+	"Name": "Guilde des Espions",
+	"CoinCost": "0",
+	"ArgileCost": "3",
+	"PierreCost": "0",
+	"BoisCost": "0",
+	"MineraiCost": "0",
+	"VerreCost": "1",
+	"TissuCost": "0",
+	"PapyrusCost": "0",
+	"Effects": "VictoryPointsForMilitaryNeighbours",
+	"Age": "3",
+	"CategoryName": "Guilds",
+	"ChainDown": "",
+	"ChainUps": "",
+	"NumberPlayerRequired" : "0"
+}
