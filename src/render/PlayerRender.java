@@ -1,20 +1,23 @@
 package render;
 
-import java.awt.Font;
 import java.util.HashMap;
 import java.util.Vector;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 
+import Effects.EffectType;
 import gameSystem.Building;
 import gameSystem.Player;
 import inputActions.StateCardChoice;
 import main.Game;
+import main.Main;
 import ressources.CategoryName;
 import ressources.Data;
 import ressources.Images;
 import ressources.TokenName;
+import ressources.WonderName;
 
 
 public class PlayerRender {
@@ -24,13 +27,26 @@ public class PlayerRender {
 	public static float ratioSizeYName = 3f/16f;
 	
 	public static float ratioStartXBuildings = 0.25f;
-	public static float ratioSizeXBuildings = 0.1f;
 	public static float ratioStartYBuildings = 0.22f;
+	public static float ratioSizeXBuildings = 0.1f;
 	public static float ratioSizeYBuildings = 0.12f;
+	public static float ratioSizeXScience = 0.06f;
+	public static float ratioSizeYScience = 0.18f;
 	
 	
 	public static float ratioSizeX = 2f/5f;
 	public static float ratioSizeY = 0.25f;
+	
+	public static TypeRender typeRender = TypeRender.RenderCards;
+	public static int remainingTime = 0;
+	public static int totalTime = 7 * Main.framerate;
+	public static int nbPeriodCosinus = 8;
+	
+	public enum TypeRender{
+		RenderCards,
+		RenderLeader,
+		RenderScience
+	}
 	
 	
 	public static void render(Graphics g, Player p){
@@ -129,9 +145,37 @@ public class PlayerRender {
 		g.drawLine(x+sizeX*(1-ratioSizeXName), y+ratioSizeYName*sizeY, x+sizeX, y+ratioSizeYName*sizeY);
 		g.drawLine(x+sizeX*(1-ratioSizeXName), y+ratioSizeYName*sizeY, x+sizeX*(1-ratioSizeXName), y+sizeY);
 		
-		// Drawing Bâtiment
-		idPos = 0;
+		switch(typeRender){
+		case RenderCards:
+			renderCards(g, p, dims);
+			break;
+		case RenderLeader:
+			renderLeaders(g, p, dims);
+			break;
+		case RenderScience:
+			renderScience(g, p, dims);
+			break;
+		default:
+			break;
+		}
+		Image im = Images.get(p.wonderName.name()+"_background").getSubImage((int)(ratioSizeXName*sizeX), (int)(ratioSizeYName*sizeY), (int)((1-2*ratioSizeXName)*sizeX)-1, (int)((1-2*ratioSizeYName)*sizeY)-1);
+		float alpha = 0f;
+		if(remainingTime<totalTime/nbPeriodCosinus || remainingTime>(nbPeriodCosinus-1)*totalTime/nbPeriodCosinus){
+			alpha = (float) (0.5f*Math.cos(6*Math.PI*remainingTime/totalTime)+0.5f);
+		}
+		im.setAlpha(alpha);
+		g.drawImage(im,(int)(x+ratioSizeXName*sizeX), (int)(y+ratioSizeYName*sizeY));
+		
+	}
+	
+	// Several render functions
+	
+	// Drawing Bâtiment
+	public static void renderCards(Graphics g, Player p, Vector<Integer> dims){
+		int idPos = 0;
 		int temp_nb = 0;
+		int x = dims.get(0), y = dims.get(1), sizeX = (int) (Game.resX*ratioSizeX), sizeY = (int) (Game.resY*ratioSizeY);
+		float x1, y1;
 		for(CategoryName cn : CategoryName.values()){
 			temp_nb = 0;
 			for(Building b : p.buildings){
@@ -147,7 +191,100 @@ public class PlayerRender {
 				g.setColor(cn.color);
 				g.fillRoundRect(x1+2, y1+2, sizeY*ratioSizeYBuildings*2/3-4, sizeY*ratioSizeYBuildings-8, 3);
 				idPos += 1;
+
 				Data.font_number.drawString(x1+sizeX*ratioSizeXBuildings/2, y1, ""+temp_nb );
+			}
+		}
+	}
+	// Drawing leaders
+	public static void renderLeaders(Graphics g, Player p, Vector<Integer> dims){
+		int temp_nb = 0;
+		int x = dims.get(0), y = dims.get(1), sizeX = (int) (Game.resX*ratioSizeX), sizeY = (int) (Game.resY*ratioSizeY);
+		float x1, y1;
+		Image image;
+		for(Building building : p.buildings){
+			if(building.categoryName == CategoryName.Leader){
+				y1 = y + sizeY*ratioStartYBuildings;
+				image = Images.get(building.idname).getScaledCopy(4f*sizeY*ratioSizeYBuildings/Images.get(building.idname).getHeight());
+				x1 = x + sizeX*ratioStartXBuildings + 1.1f*image.getWidth()*temp_nb;
+				g.drawImage(image, x1, y1);
+				temp_nb += 1;
+			}
+		}
+	}
+	// Drawing Science
+	public static void renderScience(Graphics g, Player p, Vector<Integer> dims){
+		int x = dims.get(0), y = dims.get(1), sizeX = (int) (Game.resX*ratioSizeX), sizeY = (int) (Game.resY*ratioSizeY);
+		float x1, y1;
+		int temp_i = 0, temp_j = 0;
+		Image im;
+		for(String[] t : new String[][]{new String[]{"officine","atelier","scriptorium","","","euclide","guilde_des_scientifiques"},
+			new String[]{"dispensaire","laboratoire","bibliotheque","ecole","","pythagore","merveille"},
+			new String[]{"loge","observatoire","universite","academie","etude","ptolemee",""}}){
+			temp_j = 0;
+			for(String s : t){
+				if(temp_i==1 && temp_j==3){
+					x1 = x + sizeX*ratioSizeYName + (0.65f+temp_j)*sizeX*ratioSizeXScience*1.3f;
+				} else {
+					x1 = x + sizeX*ratioSizeXName + temp_j*sizeX*ratioSizeXScience*1.3f;
+				}
+				y1 = y + sizeY*ratioStartYBuildings + temp_i*sizeY*ratioSizeYScience*1.1f;
+				if(!s.equals("")){
+					g.setColor(Color.white);
+					g.fillRoundRect(x1, y1, sizeX*ratioSizeXScience, sizeY*ratioSizeYScience, 3);
+					im = null;
+					g.setColor(Color.darkGray);
+					if(s.equals("merveille")){
+						if(p.wonderName==WonderName.babylone){
+							for(Integer i : p.wonderFloorBuilt){
+								if(Data.wonders.get(p.wonderName).floors.get(p.wonderFace).get(i).effects.contains(EffectType.ProductionScience)){
+									g.setColor(CategoryName.Wonder.color);
+								}
+							}
+						}
+					} else {
+						for(Building b : p.buildings){
+							if(b.idname.equals(s)){
+								g.setColor(b.categoryName.color);
+								break;
+							}
+						}
+						im = Images.get(Data.getBuildingByName(s).effects.get(0).name()+"panneaubas");
+					} 
+					g.fillRoundRect(x1+2, y1+2, sizeX*ratioSizeXScience-4, sizeY*ratioSizeYScience-4, 3);
+					if(im!=null){
+						g.drawImage(im, x1+sizeX*ratioSizeXScience/2-im.getWidth()/2, y1+sizeY*ratioSizeYScience/2-im.getHeight()/2);
+					}
+				}
+				temp_j += 1;
+			}
+			temp_i += 1;
+		}
+		
+	}
+	
+	public static void initTypeRender(){
+		typeRender = TypeRender.RenderCards;
+		remainingTime = totalTime/nbPeriodCosinus;
+	}
+	
+	public static void updateTypeRender(){
+		remainingTime += 1;
+		if(remainingTime>totalTime){
+			remainingTime = 0;
+			boolean next = false;
+			for(TypeRender tr : TypeRender.values()){
+				if(next){
+					typeRender = tr;
+					next = false;
+					break;
+				}
+				if(tr==typeRender){
+					next = true;
+				}
+			}
+			if(next){
+				typeRender = TypeRender.values()[0];
 			}
 		}
 	}

@@ -12,7 +12,7 @@ import org.newdawn.slick.SlickException;
 public class Main {
 	// A REGLER \\
 	public static int framerate = 60;
-	public static boolean pleinEcran = false;
+	public static boolean pleinEcran = true;
 	
 	public static void main(String[] args) {
 //		Log.setLogSystem(new NullLogSystem()); 
@@ -26,6 +26,8 @@ public class Main {
 		}  else {
 			resolutionX = 960;		
 			resolutionY = 540;
+//			resolutionX = 1920;		
+//			resolutionY = 1080;
 //			resolutionX = 2304;		
 //			resolutionY = 1296;
 		}

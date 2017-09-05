@@ -37,6 +37,7 @@ public class Player {
 	public HashMap<TokenName, Integer> tokens;
 
 	public HashMap<CategoryName, Integer> pointsDisplayed, pointsToDisplay;
+	public Vector<Building> buriedCards;
 
 	public Player(String nickName, WonderName wonder, String face){
 		this.id = Board.idplayer;
@@ -48,6 +49,7 @@ public class Player {
 
 		this.leaderToChoose = new Vector<Card>();
 		this.buildings = new Vector<Building>();
+		this.buriedCards = new Vector<Building>();
 		this.tradeBuildings = new Vector<EffectType>();
 		this.ressources = new Vector<EffectType>();
 		this.specialEffects = new Vector<EffectType>();

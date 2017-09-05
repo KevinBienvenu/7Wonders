@@ -99,7 +99,7 @@ public class Data {
 		h = loadRepertoire("ressources/wonders/", "json");
 		for(String key : h.keySet()){
 			System.out.print("Loading wonder : "+key+" ...");
-			wonders.put(WonderName.valueOf(key), new Wonder(h.get(key), key));
+			wonders.put(WonderName.valueOf(key.replace(" ", "")), new Wonder(h.get(key), key));
 			System.out.println("done !");
 		}
 		// init leaders
@@ -157,5 +157,19 @@ public class Data {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public static Building getBuildingByName(String idname){
+		for(Building b : Data.buildings.values()){
+			if(b.idname.equals(idname)){
+				return b;
+			}
+		}
+		for(Building b : Data.leaders.values()){
+			if(b.idname.equals(idname)){
+				return b;
+			}
+		}
+		return null;
 	}
 }

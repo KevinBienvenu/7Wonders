@@ -28,7 +28,6 @@ public class ActionDiscard  extends ActionCard{
 
 	@Override
 	public void play(GameSystem gs, int idPlayer) {
-		gs.board.players.get(idPlayer).coins+=3;
 		this.idPlayer = idPlayer;
 		x = Game.resX/2;
 		y = Game.resY/2;

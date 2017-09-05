@@ -27,6 +27,7 @@ import inputActions.StateCardChoice;
 import inputActions.StateLeaderChoice;
 import main.LobbySystem.LobbyPlayer;
 import render.AgeRender;
+import render.PlayerRender;
 import render.WarRender;
 import ressources.AgeNames;
 import ressources.Data;
@@ -129,20 +130,29 @@ public class GameSystem extends ClassSystem {
 		Vector<Vector<Card>> deck = new Vector<Vector<Card>>();
 		// import des leaders
 		this.remainingLeaders = new Vector<Card>();
+		// debug : necessary leaders:
+		Vector<String> necessaryLeaders = new Vector<String>();
+		necessaryLeaders.add("bilkis");
 		Card c;
 		for(String l : Data.leaderNames){
 			c = new Card(Data.leaders.get(l));
-			try{
-				this.remainingLeaders.insertElementAt(c,(int)(Math.random()*remainingLeaders.size()));
-			} catch(Exception e){
-				this.remainingLeaders.add(c);
+			if(!necessaryLeaders.contains(l)){
+				try{
+					this.remainingLeaders.insertElementAt(c,(int)(Math.random()*remainingLeaders.size()));
+				} catch(Exception e){
+					this.remainingLeaders.add(c);
+				}
 			}
 		}
 		// ajout des leaders
 		for(int i=0; i<nbPlayer; i++){
 			deck.add(new Vector<Card>());
 			for(int nCard=0; nCard<4; nCard++){
-				deck.lastElement().add(this.remainingLeaders.remove((int)(Math.random()*this.remainingLeaders.size())));
+				if(necessaryLeaders.size()>0){
+					deck.lastElement().add(new Card(Data.leaders.get(necessaryLeaders.remove(0))));
+				} else {
+					deck.lastElement().add(this.remainingLeaders.remove((int)(Math.random()*this.remainingLeaders.size())));
+				}
 				System.out.println(deck.lastElement().lastElement().building.idname);
 			}
 		}
@@ -237,7 +247,10 @@ public class GameSystem extends ClassSystem {
 		if(Communications.isDone()){
 			System.out.println("communication is done!");
 			Communications.receiving = false;
+			PlayerRender.initTypeRender();
 			this.currentPhase = PhaseNames.ANIMATIONPHASEI;
+		} else {
+			PlayerRender.updateTypeRender();
 		}
 	}
 
@@ -294,10 +307,12 @@ public class GameSystem extends ClassSystem {
 	}
 
 	public void mainAgeSpecial(GameContainer gc){
+		PlayerRender.updateTypeRender();
 		if(this.actionToPlay.size()>0 || Communications.receiving){
 			if(Communications.receiving){
 				if(Communications.isDone() || gc.getInput().isKeyPressed(Input.KEY_SPACE)){
 					Communications.receiving = false;
+					PlayerRender.initTypeRender();
 					System.out.println("done!");
 					this.currentPhase = PhaseNames.ANIMATIONPHASEI;
 				}
@@ -385,15 +400,9 @@ public class GameSystem extends ClassSystem {
 	 */
 
 	public void handleEndGame(GameContainer arg0){
-		if(arg0.getInput().isKeyPressed(Input.KEY_SPACE)){
-			PointsHandling.computePoints();
-			//			if(PointsHandling2.update(arg0)){
-			if(true){
-				Game.endGameSystem = new EndGameSystem(this.board.players);
-				Game.system = Game.endGameSystem;
-			}
-
-		}
+		PointsHandling.computePoints();
+		Game.endGameSystem = new EndGameSystem(this.board.players);
+		Game.system = Game.endGameSystem;
 	}
 
 	/**

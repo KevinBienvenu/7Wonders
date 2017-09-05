@@ -4,6 +4,7 @@ import org.newdawn.slick.Color;
 
 public enum WonderName {
 	
+	abousimbel(new Color(0,0,0),new Color(100,100,100)),
 	ephese(new Color(185,142,27),new Color(252,198,51)),
 	alexandrie(new Color(95,95,95),new Color(176,176,176)),
 	olympie(new Color(5,133,156),new Color(69,216,243)),

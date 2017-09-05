@@ -38,6 +38,10 @@ public class PointsHandling {
 				p.pointsToDisplay.put(CategoryName.Wonder, p.pointsToDisplay.get(CategoryName.Wonder)+EffectPoints.points(et, p.id));
 			}
 		}
+		// special case : buried cards
+		for(Building b : p.buriedCards){
+			p.pointsToDisplay.put(CategoryName.Wonder, p.pointsToDisplay.get(CategoryName.Wonder)+b.coinCost*2);
+		}
 		// coins
 		p.pointsToDisplay.put(CategoryName.Coins, (int)(p.coins/3f));
 		// tokens

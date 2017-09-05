@@ -1,0 +1,26 @@
+{
+	"Name": "Le grand temple d'Abou Simbel",
+	
+	"AEffectType": "ProductionPapyrus",
+	"AFloor1PierreCost": "1",
+	"AFloor1ArgileCost": "1",
+	"AFloor1EffectType0": "VictoryPoints3",
+	"AFloor2MineraiCost": "1",
+	"AFloor2BoisCost": "1",
+	"AFloor2EffectType0": "VictoryPoints5",
+	"AFloor3VerreCost": "1",
+	"AFloor3TissuCost": "1",
+	"AFloor3PierreCost": "2",
+	"AFloor3EffectType0": "SpecialBuryLeader",
+	"AText" : "Ce merveille produit de base du papyrus.",
+	
+	"BEffectType": "ProductionPapyrus",
+	"BFloor1ArgileCost" : "0",
+	"BFloor1TissuCost" : "0",
+	"BFloor1EffectType0": "SpecialBuryLeader",
+	"BFloor2BoisCost" : "2",
+	"BFloor2VerreCost" : "1",
+	"BFloor2EffectType0": "SpecialBuryLeader",
+	"BText" : "Ce merveille produit de base du papyrus."
+	
+}

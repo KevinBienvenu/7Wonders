@@ -13,7 +13,7 @@ public enum CategoryName {
 	RareRessources(Color.lightGray, false), 
 	Coins(Color.white, true),
 	Leader(Color.white, true),
-	Wonder(Color.gray, true);
+	Wonder(Color.orange, true);
 	
 	private CategoryName(Color color, boolean score){
 		this.color = color;

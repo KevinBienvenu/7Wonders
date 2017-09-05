@@ -47,8 +47,7 @@ public class LobbySystem extends ClassSystem{
 		Game.app.setMinimumLogicUpdateInterval(1000/Main.framerate);
 		Game.app.setMaximumLogicUpdateInterval(1000/Main.framerate);
 		Game.app.setTargetFrameRate(Main.framerate);
-		necessaryWonders.add(WonderName.petra);
-		necessaryWonders.add(WonderName.rome);
+		necessaryWonders.add(WonderName.abousimbel);
 
 	}
 

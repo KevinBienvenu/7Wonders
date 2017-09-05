@@ -72,12 +72,8 @@ public enum EffectType {
 	CheaperMilitary(true),
 	CheaperCivilian(true),
 	CheaperWonder(true),
+	SpecialBilkis(true),
 	
-	// Wonders
-	SpecialLeaderCheaper(true),
-	SpecialLeaderCheaper1(true),
-	SpecialLeaderCheaper2(true),
-
 	// Victory Points
 	VictoryPoints1(true),
 	VictoryPoints2(true),
@@ -124,6 +120,10 @@ public enum EffectType {
 	SpecialCopyGuild(false),
 	SpecialDraw4Leaders(false),
 	SpecialPlayLeader(false),
+	SpecialBuryLeader(false),
+	SpecialLeaderCheaper(true),
+	SpecialLeaderCheaper1(true),
+	SpecialLeaderCheaper2(true),
 
 	// Science
 	Compas(true, new Color(0,150,0)),

@@ -41,6 +41,7 @@ public class StateCardChoice extends State{
 				}
 				break;
 			case CheaperWonder:
+			case SpecialBilkis:
 				this.specialEffects.add(et);
 				break;
 			default:

@@ -16,6 +16,7 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import Effects.EffectType;
+import gameSystem.Building;
 import gameSystem.Card;
 import main.Game;
 import ressources.Data;
@@ -65,10 +66,19 @@ public class Communications {
 				Communications.actions.put(idJoueur, new Vector<Action>());
 				// Trouver la carte en question
 				Card c = null;
+				Building buriedBuilding = null;
 				boolean fromDiscard = false;
 				switch(temp_hashmap.get("state")){
-				case "StateCardChoice":
+				case "StateBuryLeaderChoice":
+					for(Building b : Game.gameSystem.board.players.get(idJoueur).buildings){
+						if(b.name.equals(temp_hashmap.get("card"))){
+							buriedBuilding = b;
+							break;
+						}
+					}
+					break;
 				case "StateLeaderChoice":
+				case "StateCardChoice":
 					for(Card c1 : Game.gameSystem.board.players.get(idJoueur).leaderToChoose){
 						if(c1.building.name.equals(temp_hashmap.get("card"))){
 							c = c1;
@@ -91,7 +101,8 @@ public class Communications {
 					}
 					break;
 				}
-				if(c==null){
+				if(c==null && buriedBuilding==null){
+					System.out.println();
 					System.out.println("problème d'identification - "+temp_hashmap.get("card"));
 					for(Card c1 : Game.gameSystem.cards.get(idJoueur)){
 						System.out.print(c1.building.name+" - ");
@@ -121,7 +132,10 @@ public class Communications {
 					actions.get(idJoueur).add(new ActionWonder(Integer.parseInt(temp_hashmap.get("wonderFloor")), c));
 					System.out.println("   wondering - "+temp_hashmap.get("wonderFloor")+" - with : "+c.building.name);
 					break;
-					
+				case "bury":	
+					actions.get(idJoueur).add(new ActionBuryLeader(buriedBuilding));
+					System.out.println("   burying : "+buriedBuilding.idname);
+					break;
 				case "leader":
 					actions.get(idJoueur).add(new ActionLeaderChoice(c));
 					System.out.println("   leadering : "+c.building.name);
@@ -144,6 +158,10 @@ public class Communications {
 					if(Game.gameSystem.board.players.get(idJoueur).specialEffects.contains(EffectType.Coins1Commerce)){
 						Game.gameSystem.board.players.get(idJoueur).coins+=1;
 					}
+				}
+				// Checker bilkis
+				if(temp_hashmap.get("bilkis").length()>0){
+					Game.gameSystem.board.players.get(idJoueur).coins-=1;
 				}
 			}
 		}
