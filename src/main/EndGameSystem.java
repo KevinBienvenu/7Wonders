@@ -8,6 +8,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
 import gameSystem.Player;
+import ia.GameLog;
 import ressources.CategoryName;
 import ressources.Data;
 import ressources.Images;
@@ -72,11 +73,7 @@ public class EndGameSystem  extends ClassSystem{
 						Game.resY*5.5f/15f+3f+Game.resY/20f*j+3f, s);
 			}
 			if(j<idJoueur){
-				int p = 0;
-				for(CategoryName cn : players.get(j).pointsDisplayed.keySet()){
-					p+=players.get(j).pointsDisplayed.get(cn);
-				}
-				s = ""+p;
+				s = "" +players.get(j).getScore();
 				Data.font_big.drawString(Game.resX*(nbCol-1.5f)/nbCol-Data.font_big.getWidth(s)/2,
 						Game.resY*5.5f/15f+3f+Game.resY/20f*j+3f, s);
 			}
@@ -95,6 +92,8 @@ public class EndGameSystem  extends ClassSystem{
 				idPoints = 0;
 				idJoueur += 1;
 			}
-		} 
+		} else {
+			GameLog.computeFinalFiles();
+		}
 	}
 }

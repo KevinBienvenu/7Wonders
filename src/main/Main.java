@@ -12,7 +12,7 @@ import org.newdawn.slick.SlickException;
 public class Main {
 	// A REGLER \\
 	public static int framerate = 60;
-	public static boolean pleinEcran = false;
+	public static boolean pleinEcran = true;
 	
 	public static void main(String[] args) {
 //		Log.setLogSystem(new NullLogSystem()); 

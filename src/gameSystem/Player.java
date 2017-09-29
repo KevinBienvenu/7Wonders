@@ -168,4 +168,14 @@ public class Player {
 		this.tokens.put(token, this.tokens.get(token)+nb);
 	}
 
+
+
+	public int getScore() {
+		int p = 0;
+		for(CategoryName cn : pointsDisplayed.keySet()){
+			p+=pointsDisplayed.get(cn);
+		}
+		return p;
+	}
+
 }

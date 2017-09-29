@@ -18,6 +18,7 @@ import com.google.gson.reflect.TypeToken;
 import Effects.EffectType;
 import gameSystem.Building;
 import gameSystem.Card;
+import ia.GameLog;
 import main.Game;
 import ressources.Data;
 
@@ -49,6 +50,7 @@ public class Communications {
 				keys.put(i, (int)(Math.random()*1000000));
 //				keys.put(i, 1);
 				hashmap.get(i).setKey(keys.get(i));
+				GameLog.state.add(hashmap.get(i).toString());
 				System.out.println("  "+sendPost(url, hashmap.get(i).toString()));
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -62,7 +64,9 @@ public class Communications {
 		if(receiving){
 			System.out.println("recieving "+idJoueur);
 			if(temp_hashmap.containsKey("action") && temp_hashmap.containsKey("card") && actions.containsKey(idJoueur) && actions.get(idJoueur)==null){
+				
 				System.out.print("receiving response for player "+idJoueur);
+				GameLog.decisions.add(Data.gson.toJson(temp_hashmap, new TypeToken<HashMap<String, String>>(){}.getType()));
 				Communications.actions.put(idJoueur, new Vector<Action>());
 				// Trouver la carte en question
 				Card c = null;
@@ -103,14 +107,14 @@ public class Communications {
 				}
 				if(c==null && buriedBuilding==null){
 					System.out.println();
-					System.out.println("problème d'identification - "+temp_hashmap.get("card"));
+					System.out.println("problï¿½me d'identification - "+temp_hashmap.get("card"));
 					for(Card c1 : Game.gameSystem.cards.get(idJoueur)){
 						System.out.print(c1.building.name+" - ");
 					}
 					System.out.println();
 					return;
 				}
-				// Différencier les cas possible
+				// Diffï¿½rencier les cas possible
 				switch(temp_hashmap.get("action")){
 				case "build":
 					actions.get(idJoueur).add(new ActionBuilding(c, fromDiscard));
