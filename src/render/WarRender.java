@@ -133,21 +133,17 @@ public class WarRender {
 				s = ""+temp_military;
 				Data.font_big.drawString(Game.resX*7/10-Data.font_big.getWidth(s)-20, Game.resY*2/5+100, s);
 				//shields
-				Image im;
-				im = Images.get("military").getScaledCopy(Math.min(0.5f,  (200f-cooldown)/100f));
+				Image imLeft, imRight, im = Images.get("military");
+				imLeft = im.getScaledCopy(0.5f);
+				imRight = im.getScaledCopy(0.5f);
 				if(current_military<temp_military){
-					g.drawImage(im, Game.resX*3/10+3+(Images.get("military").getWidth()-im.getWidth())/2, 
-							Game.resY*2/5+60+(Images.get("military").getWidth()-im.getWidth())/2);
-					g.drawImage(Images.get("military").getScaledCopy(0.5f), Game.resX*7/10+3, Game.resY*2/5+60);
-				} else if (current_military>temp_military){
-					g.drawImage(im, Game.resX*7/10+3+(Images.get("military").getWidth()-im.getWidth())/2, 
-							Game.resY*2/5+60+(Images.get("military").getWidth()-im.getWidth())/2);
-					g.drawImage(Images.get("military").getScaledCopy(0.5f), Game.resX*3/10+3, Game.resY*2/5+60);
-				} else {
-					g.drawImage(Images.get("military").getScaledCopy(0.5f), Game.resX*3/10+3, Game.resY*2/5+60);
-					g.drawImage(Images.get("military").getScaledCopy(0.5f), Game.resX*7/10+3, Game.resY*2/5+60);
-					
+					imLeft = im.getScaledCopy(Math.min(0.5f,  (200f-cooldown)/100f));
 				}
+				if(current_military>temp_military){
+					imRight = im.getScaledCopy(Math.min(0.5f,  (200f-cooldown)/100f));
+				}
+				g.drawImage(imRight, Game.resX*3.5f/10-imRight.getWidth()/2, Game.resY/2-imRight.getHeight()/2);
+				g.drawImage(imLeft, Game.resX*6.5f/10-imLeft.getWidth()/2, Game.resY/2-imLeft.getHeight()/2);
 			}
 		}
 	}

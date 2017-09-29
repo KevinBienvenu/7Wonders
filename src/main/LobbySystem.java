@@ -47,7 +47,6 @@ public class LobbySystem extends ClassSystem{
 		Game.app.setMinimumLogicUpdateInterval(1000/Main.framerate);
 		Game.app.setMaximumLogicUpdateInterval(1000/Main.framerate);
 		Game.app.setTargetFrameRate(Main.framerate);
-		necessaryWonders.add(WonderName.abousimbel);
 
 	}
 
@@ -94,7 +93,7 @@ public class LobbySystem extends ClassSystem{
 			Data.font_mid.drawString(Game.resX*3f/12f-Data.font_mid.getWidth(player.name)/2, Game.resY*5.5f/15f+3f+Game.resY/20f*i, player.name);
 			Data.font_mid.drawString(Game.resX*6f/12f-Data.font_mid.getWidth(player.wonder.name())/2, Game.resY*5.5f/15f+3f+Game.resY/20f*i, player.wonder.name());
 			if(player.face.length()>0)
-				Data.font_mid.drawString(Game.resX*9f/12f-Data.font_mid.getWidth("PRêT")/2, Game.resY*5.5f/15f+3f+Game.resY/20f*i, "PRêT");
+				Data.font_mid.drawString(Game.resX*9f/12f-Data.font_mid.getWidth("PRï¿½T")/2, Game.resY*5.5f/15f+3f+Game.resY/20f*i, "PRï¿½T");
 			i+=1;
 		}
 	}
@@ -102,19 +101,22 @@ public class LobbySystem extends ClassSystem{
 	@Override
 	public void update(GameContainer gc, int arg1) throws SlickException {
 		time+=1;
+		boolean b = false;
 		if(time>timeToUpdate){
 			time = 0;
-			updatePlayerList();
+			b = updatePlayerList();
 		}
 		Input in = gc.getInput();
-		if(in.isKeyPressed(Input.KEY_SPACE)){
+		if(in.isKeyPressed(Input.KEY_SPACE) || b){
 			launchGame();
 		}
 	}
 
-	public void updatePlayerList(){
+	public boolean updatePlayerList(){
 		String url = "http://gameserver-kevinbienvenu.c9users.io/users/namelist";
 		HashMap<String, String> temp_hashmap;
+		boolean b = false, b2 = true;
+		Vector<String> vs = new Vector<String>();
 		try {
 			boolean flagNewPlayer;
 			String response = Communications.sendGet(url);
@@ -127,6 +129,12 @@ public class LobbySystem extends ClassSystem{
 							flagNewPlayer = false;
 							if(temp_hashmap.containsKey("face")){
 								lp.face = temp_hashmap.get("face");
+							} else {
+								b2 = false;
+							}
+							if(temp_hashmap.get("launch")!=null && temp_hashmap.get("launch").equals("true")) {
+								b = true;
+								vs.add("{"+player+"}");
 							}
 							break;
 						}
@@ -137,6 +145,15 @@ public class LobbySystem extends ClassSystem{
 				}
 			}
 		} catch (Exception e) {e.printStackTrace();}
+		if(!b2 || players.size()<3) {
+			url = "http://gameserver-kevinbienvenu.c9users.io/users/resetstartgame";
+			for(String s : vs) {
+				try {
+					Communications.sendPost(url, s);
+				} catch (Exception e) {}
+			}
+		}
+		return b && b2 && players.size()>2;
 	}
 
 	public void launchGame(){

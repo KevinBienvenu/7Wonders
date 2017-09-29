@@ -132,7 +132,6 @@ public class GameSystem extends ClassSystem {
 		this.remainingLeaders = new Vector<Card>();
 		// debug : necessary leaders:
 		Vector<String> necessaryLeaders = new Vector<String>();
-		necessaryLeaders.add("bilkis");
 		Card c;
 		for(String l : Data.leaderNames){
 			c = new Card(Data.leaders.get(l));
@@ -198,7 +197,7 @@ public class GameSystem extends ClassSystem {
 	}
 
 	public void debutTour(){
-		// connection à la db
+		// connection ï¿½ la db
 		//Sending to all player the state
 		HashMap<Integer, State> hashmap = new HashMap<Integer, State>();
 		if(this.currentAge.idAge>0){
@@ -290,7 +289,7 @@ public class GameSystem extends ClassSystem {
 			}
 		}
 		if(this.nbRoundRestant==2 && this.currentAge.idAge>0){
-			// on défausse les cartes restantes sauf si un joueur possède l'effet play last card
+			// on dï¿½fausse les cartes restantes sauf si un joueur possï¿½de l'effet play last card
 			for(Integer i : cards.keySet()){
 				if(cards.get(i).size()>0){
 					if(board.players.get(i).specialEffects.contains(EffectType.SpecialPlayLastCard)){
