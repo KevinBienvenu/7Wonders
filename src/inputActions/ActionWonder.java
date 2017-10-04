@@ -8,6 +8,7 @@ import gameSystem.Card;
 import gameSystem.Player;
 import main.Game;
 import main.GameSystem;
+import main.Main;
 import render.PlayerRender;
 import ressources.ActionNames;
 import ressources.CategoryName;
@@ -27,8 +28,10 @@ public class ActionWonder extends ActionCard{
 	
 	@Override
 	public void play(GameSystem gs, int idPlayer) {
-		Sounds.get("wonder").play();
-		Sounds.get("quake").play(1f,3f);
+		if(Sounds.isInit())
+			Sounds.get("wonder").play();
+		if(Sounds.isInit())
+			Sounds.get("quake").play(1f,3f);
 		this.idPlayer = idPlayer;
 	}
 
@@ -41,7 +44,7 @@ public class ActionWonder extends ActionCard{
 		p.offsetXWonder = (int)(Math.random()*5-2);
 		p.offsetYWonder = (int)(-(1f-PlayerRender.ratioSizeYName)*sizeY/(nbFloor+1)*time/220+Math.random()*3-1);
 		
-		if(time>240){
+		if(time>240 || Main.quickGame){
 			p.offsetXWonder = 0;
 			p.offsetYWonder = 0;
 			p.wonderFloorBuilt.add(idFloor);

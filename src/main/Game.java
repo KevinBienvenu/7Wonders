@@ -8,6 +8,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
+import ia.IASystem;
+
 
 
 
@@ -26,7 +28,7 @@ public class Game extends BasicGame {
 	public static AppGameContainer app; 
 
 	public static ClassSystem system;
-	
+
 	public static Music music;
 
 
@@ -50,9 +52,7 @@ public class Game extends BasicGame {
 	public void init(GameContainer arg0) throws SlickException {
 		introSystem = new IntroSystem();
 		lobbySystem = new LobbySystem();
-		testSystem = new TestSystem();
 		system = introSystem;
-//		system = testSystem;
 	}
 
 	@Override
@@ -62,6 +62,13 @@ public class Game extends BasicGame {
 		} else {
 			throw new SlickException("Game - System missing error");
 		}
+	}
+
+	@Override
+	public boolean closeRequested()
+	{
+		IASystem.close();
+		return true;
 	}
 
 

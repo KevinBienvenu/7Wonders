@@ -9,6 +9,7 @@ import org.newdawn.slick.SlickException;
 
 import gameSystem.Player;
 import ia.GameLog;
+import inputActions.Communications;
 import ressources.CategoryName;
 import ressources.Data;
 import ressources.Images;
@@ -94,6 +95,11 @@ public class EndGameSystem  extends ClassSystem{
 			}
 		} else {
 			GameLog.computeFinalFiles();
+			if(Main.replay){
+				Game.lobbySystem = new LobbySystem();
+				Communications.init();
+				Game.system = Game.lobbySystem;
+			}
 		}
 	}
 }

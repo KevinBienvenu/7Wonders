@@ -7,6 +7,7 @@ import org.newdawn.slick.Sound;
 
 import Effects.EffectType;
 import main.Game;
+import main.Main;
 import ressources.Data;
 import ressources.Images;
 import ressources.Sounds;
@@ -40,7 +41,7 @@ public class WarRender {
 //				guerre.play();
 //			}
 			cooldown++;
-			if(temp_military!=current_military){
+			if(temp_military!=current_military && Sounds.isInit()){
 				if(cooldown==60){
 					Sounds.get("epee1").play();
 				} else if(cooldown==80){
@@ -51,7 +52,7 @@ public class WarRender {
 					Sounds.get("philippe"+(int)(Math.random()*4)).play();
 				}
 			}
-			if(cooldown>200){
+			if(cooldown>200 || Main.quickGame){
 				isPlaying = false;
 				if(idAge>0){
 					TokenName temp_token;
@@ -106,7 +107,7 @@ public class WarRender {
 			temp_military = Game.gameSystem.board.players.get(idOther).tokens.get(TokenName.Military);
 			cooldown = 0;
 			isPlaying = true;
-			if(temp_military==current_military){
+			if(temp_military==current_military && Sounds.isInit()){
 				Sounds.get("ooh").play();
 			} 
 		}

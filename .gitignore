@@ -1,0 +1,3 @@
+*.class
+bin/**
+logs/ia/raw_data.json

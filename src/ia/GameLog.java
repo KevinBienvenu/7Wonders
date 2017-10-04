@@ -2,6 +2,9 @@ package ia;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
+import java.util.Date;
 import java.util.Vector;
 
 import gameSystem.Player;
@@ -19,6 +22,8 @@ public class GameLog {
 	public static void computeFinalFiles() {
 		if(logwritten)
 			return;
+		Date d = new Date();
+		String fileNameDate = "" +d.getTime();
 		int idBest=-1, maxScore=0;
 		for(Player p : Game.gameSystem.board.players) {
 			if(p.getScore()>maxScore) {
@@ -37,8 +42,8 @@ public class GameLog {
 		}
 		dic = dic.substring(0, dic.length()-1)+"]";
 		try {
-			FileOutputStream fos = new FileOutputStream(new File("logs/testDecision.json"));
-			fos.write(dic.getBytes());
+			OutputStreamWriter fos = new OutputStreamWriter(new FileOutputStream("logs/testDecision_"+fileNameDate+".json"), StandardCharsets.UTF_8);
+			fos.write(dic);
 			fos.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -47,12 +52,12 @@ public class GameLog {
 		
 		// Saving States
 		try {
-			FileOutputStream fos = new FileOutputStream(new File("logs/testState.json"));
-			fos.write("{".getBytes());
+			OutputStreamWriter fos = new OutputStreamWriter(new FileOutputStream("logs/testState_"+fileNameDate+".json"), StandardCharsets.UTF_8);
+			fos.write("[");
 			for(int i=0; i<state.size()-1; i++) {
-				fos.write((state.get(i)+",").getBytes());
+				fos.write(state.get(i)+",");
 			}
-			fos.write((state.lastElement()+"}").getBytes());
+			fos.write(state.lastElement()+"]");
 			fos.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

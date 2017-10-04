@@ -5,7 +5,9 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
 import main.Game;
+import main.Main;
 import ressources.Images;
+import ressources.Musics;
 import ressources.Sounds;
 
 public class AgeRender {
@@ -23,9 +25,11 @@ public class AgeRender {
 	
 	public static boolean update(){
 		if(!hasPlayedTrompette){
-			Game.music.fade(1000, 0, true);
+			if(Musics.isInit())
+				Game.music.fade(1000, 0, true);
 			hasPlayedTrompette = true;
-			Sounds.get("trompette").play(1f,0.6f);
+			if(Sounds.isInit())
+				Sounds.get("trompette").play(1f,0.6f);
 		}
 		cooldown--;
 		if(cooldown>250 && cooldown%2==0){
@@ -34,13 +38,15 @@ public class AgeRender {
 		if(cooldown<30){
 			Images.images.get("age"+idAge).setAlpha(1f*cooldown/30f);
 		}
-		return cooldown<=0;
+		return cooldown<=0 || Main.quickGame;
 	}
 	
 	public static void render(Graphics g){
-		Image im = Images.get("age"+idAge);
-		g.setColor(new Color(0f,0f,0f,0.6f));
-		g.fillRect(0, 0, Game.resX, Game.resY);
-		g.drawImage(im,Game.resX/2-im.getWidth()/2, Game.resY/2-im.getHeight()/2-Math.max(200,cooldown)+200);
+		if(!Main.quickGame){
+			Image im = Images.get("age"+idAge);
+			g.setColor(new Color(0f,0f,0f,0.6f));
+			g.fillRect(0, 0, Game.resX, Game.resY);
+			g.drawImage(im,Game.resX/2-im.getWidth()/2, Game.resY/2-im.getHeight()/2-Math.max(200,cooldown)+200);
+		}
 	}
 }

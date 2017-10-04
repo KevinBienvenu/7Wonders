@@ -28,12 +28,14 @@ public class Board {
 
 	public Board(Vector<LobbyPlayer> players){
 		this.players = new Vector<Player>();
+		idplayer = 0;
 		for(LobbyPlayer lp : players){
 			this.players.add(new Player(lp.name, lp.wonder, lp.face));
 		}
 	}
 
 	public Board(int nbPayers){
+		idplayer = 0;
 		this.players = new Vector<Player>();
 		for(int lp=0; lp<nbPayers; lp++){
 			this.players.add(new Player("player_"+lp, (WonderName) Data.wonders.keySet().toArray()[lp], "A"));

@@ -12,10 +12,11 @@ import org.newdawn.slick.SlickException;
 
 import com.google.gson.reflect.TypeToken;
 
+import ia.GameLog;
+import ia.IASystem;
 import inputActions.Communications;
 import ressources.Data;
 import ressources.Images;
-import ressources.Musics;
 import ressources.WonderName;
 
 public class LobbySystem extends ClassSystem{
@@ -24,7 +25,9 @@ public class LobbySystem extends ClassSystem{
 	public int time = 120;
 	public int timeToUpdate = 120;
 	public HashSet<WonderName> wondersSelected = new HashSet<WonderName>();
-	
+	private String urlConnect = "http://gameserver-kevinbienvenu.c9users.io/users/connect";
+	private String urlWonder = "http://gameserver-kevinbienvenu.c9users.io/users/launchgame";
+		    
 	public boolean loadMusics = false;
 
 	public Vector<WonderName> necessaryWonders = new Vector<WonderName>();
@@ -47,7 +50,13 @@ public class LobbySystem extends ClassSystem{
 		Game.app.setMinimumLogicUpdateInterval(1000/Main.framerate);
 		Game.app.setMaximumLogicUpdateInterval(1000/Main.framerate);
 		Game.app.setTargetFrameRate(Main.framerate);
-
+		IASystem.close();
+		for(int i=0; i<Main.nbIAPlayer; i++){
+			IASystem.startIA(i);
+			try {
+				Communications.sendPost(urlConnect, "{\"name\":\"IA_"+i+"\",\"password\":\""+i+"\"}");
+			} catch (Exception e) {}
+		}
 	}
 
 	public class LobbyPlayer{
@@ -107,7 +116,7 @@ public class LobbySystem extends ClassSystem{
 			b = updatePlayerList();
 		}
 		Input in = gc.getInput();
-		if(in.isKeyPressed(Input.KEY_SPACE) || b){
+		if(in.isKeyPressed(Input.KEY_SPACE) || b ){
 			launchGame();
 		}
 	}
@@ -115,7 +124,7 @@ public class LobbySystem extends ClassSystem{
 	public boolean updatePlayerList(){
 		String url = "http://gameserver-kevinbienvenu.c9users.io/users/namelist";
 		HashMap<String, String> temp_hashmap;
-		boolean b = false, b2 = true;
+		boolean someonePressedStart = false, everyoneIsReady = true;
 		Vector<String> vs = new Vector<String>();
 		try {
 			boolean flagNewPlayer;
@@ -130,10 +139,10 @@ public class LobbySystem extends ClassSystem{
 							if(temp_hashmap.containsKey("face")){
 								lp.face = temp_hashmap.get("face");
 							} else {
-								b2 = false;
+								everyoneIsReady = false;
 							}
 							if(temp_hashmap.get("launch")!=null && temp_hashmap.get("launch").equals("true")) {
-								b = true;
+								someonePressedStart = true;
 								vs.add("{"+player+"}");
 							}
 							break;
@@ -145,7 +154,23 @@ public class LobbySystem extends ClassSystem{
 				}
 			}
 		} catch (Exception e) {e.printStackTrace();}
-		if(!b2 || players.size()<3) {
+		// Tracking IA
+		String resp = "";
+		for(int i=0; i<Main.nbIAPlayer; i++){
+			try {
+				resp = Communications.sendPost(urlConnect, "{\"name\":\"IA_"+i+"\",\"password\":\""+i+"\"}");
+				if(resp.contains("wonder") && !resp.contains("face")){
+					Communications.sendPost(urlWonder, "{\"name\":\"IA_"+i+"\",\"face\":\"A\"}");
+				}
+			} catch (Exception e) {}
+		}
+		for(LobbyPlayer lp : this.players){
+			if(!lp.isReady()){
+				everyoneIsReady = false;
+				break;
+			}
+		}
+		if(!everyoneIsReady || players.size()<3) {
 			url = "http://gameserver-kevinbienvenu.c9users.io/users/resetstartgame";
 			for(String s : vs) {
 				try {
@@ -153,7 +178,7 @@ public class LobbySystem extends ClassSystem{
 				} catch (Exception e) {}
 			}
 		}
-		return b && b2 && players.size()>2;
+		return (someonePressedStart || (Main.launchGame && players.size()==Main.nbIAPlayer)) && everyoneIsReady && players.size()>2;
 	}
 
 	public void launchGame(){
@@ -170,6 +195,9 @@ public class LobbySystem extends ClassSystem{
 			i+=1;
 		}
 		Game.system = Game.gameSystem;
+		GameLog.logwritten = false;
+		GameLog.decisions.clear();
+		GameLog.state.clear();
 	}
 
 	public void removePlayer(int i){

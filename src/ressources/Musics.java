@@ -10,16 +10,22 @@ import org.newdawn.slick.SlickException;
 public class Musics {
 	
 	private static HashMap<String, Music> musics;
+	private static boolean isInit;
 	
 	public static void init(){
 		// loading musics
 		musics = new HashMap<String, Music>();
 		loadRepertoire("ressources/musics/");
+		isInit = true;
+	}
+	
+	public static boolean isInit(){
+		return isInit;
 	}
 
 
 	public static Music get(String name) {
-		if(musics.containsKey(name.toLowerCase())){
+		if(isInit && musics.containsKey(name.toLowerCase())){
 			return musics.get(name.toLowerCase());
 		} else {
 			//System.out.println("Error : trying to load an non-existing sound : "+name);

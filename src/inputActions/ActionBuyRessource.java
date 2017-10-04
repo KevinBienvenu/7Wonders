@@ -7,6 +7,7 @@ import org.newdawn.slick.Image;
 
 import main.Game;
 import main.GameSystem;
+import main.Main;
 import render.PlayerRender;
 import ressources.ActionNames;
 import ressources.Data;
@@ -52,11 +53,14 @@ public class ActionBuyRessource extends Action{
 		x = (15f*x + toX)/16f;
 		y = (15f*y + toY)/16f;
 		if(time==maxTime/2) {
-			Sounds.get("coins").play();
+			if(Sounds.isInit())
+				Sounds.get("coins").play();
 		}
-		if(time==maxTime)
+		if(time>=maxTime || Main.quickGame){
 			Game.gameSystem.board.players.get(idPlayerToPay).coins += this.amount;
-		return time>=maxTime;
+			return true;
+		}
+		return false;
 	}
 	
 	@Override

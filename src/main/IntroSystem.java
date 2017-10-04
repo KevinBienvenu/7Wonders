@@ -45,11 +45,13 @@ public class IntroSystem extends ClassSystem{
 				background = background.getScaledCopy(Game.resX, Game.resY);
 			}
 		} catch (SlickException e) {}
-		Musics.init();
-		Sounds.init();
+		if(!Main.quickGame){
+			Musics.init();
+			Sounds.init();
+		}
 		LoadingList.setDeferredLoading(true);
 		Data.init();
-		Data.pushBuildingList();
+//		Data.pushBuildingList();
 		Images.init();
 		nbLoadedThing = LoadingList.get().getRemainingResources();
 		Communications.init();
@@ -120,7 +122,7 @@ public class IntroSystem extends ClassSystem{
 			
 		
 		} else if(cooldownIntro>cooldownMid){
-			if(Game.music == null){
+			if(Musics.isInit() && Game.music == null){
 				Game.music = Musics.get("intro");
 				Game.music.loop(1f,3f);
 			}

@@ -12,16 +12,21 @@ public class Sounds {
 	// STORE ALL THE SOUNDS
 
 	private static HashMap<String, Sound> sounds;
+	private static boolean isInit;
 
 	public static void init(){
 		// loading sounds
 		sounds = new HashMap<String, Sound>();
 		loadRepertoire("ressources/sounds/");
-
+		isInit = true;
 	}
 
+	public static boolean isInit(){
+		return isInit;
+	}
+	
 	public static Sound get(String name) {
-		if(sounds.containsKey(name.toLowerCase())){
+		if(isInit && sounds.containsKey(name.toLowerCase())){
 			return sounds.get(name.toLowerCase());
 		} else {
 			//System.out.println("Error : trying to load an non-existing sound : "+name);

@@ -8,6 +8,7 @@ import Effects.EffectType;
 import gameSystem.Card;
 import main.Game;
 import main.GameSystem;
+import main.Main;
 import ressources.ActionNames;
 import ressources.Images;
 
@@ -42,13 +43,14 @@ public class ActionDiscard  extends ActionCard{
 			x = (4f*x+toX)/5f;
 			y = (3f*y+2f*toY)/5f;
 		}
-		if(time>200){
+		if(time>200 || Main.quickGame){
 			Game.gameSystem.board.players.get(idPlayer).coins+=3;
 			if(!Game.gameSystem.leader){
 				Game.gameSystem.discardedCards.add(card);
 			}
+			return true;
 		}
-		return time>200;
+		return false;
 	}
 	
 	public void render(Graphics g){

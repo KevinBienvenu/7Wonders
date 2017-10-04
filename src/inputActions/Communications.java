@@ -301,8 +301,15 @@ public class Communications {
 //		wr.writeBytes(urlParameters);
 //		wr.flush();
 //		wr.close();
+		BufferedReader in = new BufferedReader(
+				new InputStreamReader(con.getInputStream(), "UTF-8"));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
 
-		return ""+con.getResponseMessage();
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		return ""+response.toString();
 		//		System.out.println("\nSending 'POST' request to URL : " + url);
 		//		System.out.println("Post parameters : " + urlParameters);
 		//		System.out.println("Response Code : " + responseCode);
@@ -315,8 +322,10 @@ public class Communications {
 		try {
 			System.out.println(sendPost(url, "{\"cmd\":\"init\"}"));
 		} catch (Exception e) {}
-		server = new Server();
-		server.start();
+		if(server == null){
+			server = new Server();
+			server.start();
+		}
 	}
 
 }

@@ -4,8 +4,11 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import Effects.EffectType;
+import gameSystem.Building;
 import gameSystem.Player;
 import main.Game;
+import ressources.CategoryName;
+import ressources.TokenName;
 
 public abstract class State {
 	
@@ -99,7 +102,49 @@ public abstract class State {
 		return dic;
 	}
 	
+	public static String handleCardNumber(Player p){
+		String s = "{";
+		int temp_nb;
+		for(CategoryName cn : CategoryName.values()){
+			temp_nb = 0;
+			for(Building b : p.buildings){
+				if(b.categoryName==cn){
+					temp_nb += 1;
+				}
+			}
+			if(temp_nb>0){
+				s+="\""+cn.name()+"\":"+temp_nb+",";
+			}
+		}
+		if(s.length()>1){
+			s = s.substring(0, s.length()-1);
+		}
+		return s+"}";
+	}
 	
+	public static String handleTokenNumber(Player p){
+		String s = "{";
+		for(TokenName token : TokenName.values()){
+			if(p.tokens.get(token)>=0){
+				s+="\""+token.name()+"\":"+p.tokens.get(token)+",";
+			}
+		}
+		if(s.length()>1){
+			s = s.substring(0, s.length()-1);
+		}
+		return s+"}";
+	}
+	
+	public static String handleAdditionalInfos(Player p){
+		String s = "";
+		s += "\"cardNumber\":"+handleCardNumber(p)+",";
+		s += "\"cardNumberLeft\":"+handleCardNumber(Game.gameSystem.getLeftPlayer(p.id))+",";
+		s += "\"cardNumberRight\":"+handleCardNumber(Game.gameSystem.getRightPlayer(p.id))+",";
+		s += "\"tokenNumber\":"+handleTokenNumber(p)+",";
+		s += "\"tokenNumberLeft\":"+handleTokenNumber(Game.gameSystem.getLeftPlayer(p.id))+",";
+		s += "\"tokenNumberRight\":"+handleTokenNumber(Game.gameSystem.getRightPlayer(p.id))+",";
+		return s;
+	}
 
 	public static String handleRessources(Vector<EffectType> ressources, boolean complete){
 		String s = "";

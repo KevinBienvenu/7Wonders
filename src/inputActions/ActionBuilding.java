@@ -12,6 +12,7 @@ import Effects.EffectType;
 import gameSystem.Card;
 import main.Game;
 import main.GameSystem;
+import main.Main;
 import render.PlayerRender;
 import ressources.ActionNames;
 import ressources.CategoryName;
@@ -72,7 +73,8 @@ public class ActionBuilding extends ActionCard{
 		if(freeBuild){
 			gs.board.players.get(idPlayer).hasFreeBuildingLeft = false;
 		}
-		Sounds.get("hammer"+(int)(Math.random()*3+1)).play();
+		if(Sounds.isInit())
+			Sounds.get("hammer"+(int)(Math.random()*3+1)).play();
 
 	}
 	@Override
@@ -83,14 +85,15 @@ public class ActionBuilding extends ActionCard{
 			x = (4f*x+toX)/5f;
 			y = (3f*y+2f*toY)/5f;
 		}
-		if(time>maxTime){
+		if(time>maxTime || Main.quickGame){
 			Game.gameSystem.board.players.get(idPlayer).buildings.add(card.building);
 			for(EffectType type : card.building.effects){
 				EffectAction.action(type, idPlayer);
 			}
 			Game.gameSystem.board.players.get(idPlayer).majRessources();
+			return true;
 		}
-		return time>maxTime;
+		return false;
 	}
 
 	public void render(Graphics g){

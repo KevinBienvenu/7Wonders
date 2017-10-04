@@ -56,7 +56,9 @@ public class StatePlayFromDiscard extends State{
 		s += "\"ressourcesright\":{"+handleRessources(new Vector<EffectType>(), false)+"},";
 		s += "\"coins\":"+coins+",";
 		s += "\"key\":"+key+",";
+		s += "\"name\":\""+Game.gameSystem.board.players.get(idJoueur).nickName+"\",";
 		s += "\"state\":\""+id+"\",";
+		s += handleAdditionalInfos(Game.gameSystem.board.players.get(idJoueur));
 		s += "\"done\":\"false\"}";
 		System.out.println(s);
 		return s;

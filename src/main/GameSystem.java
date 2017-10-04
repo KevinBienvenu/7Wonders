@@ -422,12 +422,12 @@ public class GameSystem extends ClassSystem {
 		case LEADERCHOICE:
 		case MAINSPECIALTOUR:
 		case MAINTOUR:
-			if(music.length()==0 ||!music.startsWith("ambiance") || !Game.music.playing()){
+			if(Musics.isInit() && (music.length()==0 ||!music.startsWith("ambiance") || !Game.music.playing())){
 				launchMusic();
 			}
 			break;
 		case ENDAGE:
-			if(!music.equals("guerre") && this.currentAge.idAge>0){
+			if(Musics.isInit() && !music.equals("guerre") && this.currentAge.idAge>0){
 				music = "guerre";
 				Game.music.fade(1000, 0, true);
 				Game.music = Musics.get("guerre");
@@ -451,7 +451,8 @@ public class GameSystem extends ClassSystem {
 		music = "ambiance"+i;
 		System.out.println(music+" "+dejavu+" "+previous);
 		Game.music = Musics.get(music);
-		Game.music.play(1f,0.6f);
+		if(Game.music!=null)
+			Game.music.play(1f,0.6f);
 	}
 
 

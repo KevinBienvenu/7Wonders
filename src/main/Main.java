@@ -5,17 +5,21 @@ import java.io.File;
 
 import org.lwjgl.LWJGLUtil;
 import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
+
+import inputActions.Communications;
 
 
 public class Main {
 	// A REGLER \\
 	public static int framerate = 60;
 	public static boolean pleinEcran = true;
+	public static int nbIAPlayer = 7;
+	public static boolean launchGame = true;
+	public static boolean quickGame = true;
+	public static boolean replay = true;
 	
 	public static void main(String[] args) {
-//		Log.setLogSystem(new NullLogSystem()); 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		System.setProperty("org.lwjgl.librarypath", new File(new File(System.getProperty("user.dir"), "native"), LWJGLUtil.getPlatformName()).getAbsolutePath());
 		int resolutionX;
@@ -24,12 +28,12 @@ public class Main {
 			resolutionX = (int)screenSize.getWidth();		
 			resolutionY = (int)screenSize.getHeight();
 		}  else {
-			resolutionX = 960;		
-			resolutionY = 540;
-			resolutionX = 1920;		
-			resolutionY = 1080;
-			resolutionX = 1680;		
-			resolutionY = 1050;
+			resolutionX = (int)screenSize.getWidth()*2/3;		
+			resolutionY = (int)screenSize.getHeight()*2/3;
+//			resolutionX = 1920;		
+//			resolutionY = 1080;
+//			resolutionX = 1680;		
+//			resolutionY = 1050;
 		}
 		try {
 			Game game = new Game(resolutionX,resolutionY);
