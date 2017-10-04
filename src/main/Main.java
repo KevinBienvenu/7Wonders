@@ -14,10 +14,10 @@ public class Main {
 	// A REGLER \\
 	public static int framerate = 60;
 	public static boolean pleinEcran = true;
-	public static int nbIAPlayer = 7;
-	public static boolean launchGame = true;
-	public static boolean quickGame = true;
-	public static boolean replay = true;
+	public static int nbIAPlayer = 0;
+	public static boolean launchGame = false;
+	public static boolean quickGame = false;
+	public static boolean replay = false;
 	
 	public static void main(String[] args) {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

@@ -102,7 +102,7 @@ public class LobbySystem extends ClassSystem{
 			Data.font_mid.drawString(Game.resX*3f/12f-Data.font_mid.getWidth(player.name)/2, Game.resY*5.5f/15f+3f+Game.resY/20f*i, player.name);
 			Data.font_mid.drawString(Game.resX*6f/12f-Data.font_mid.getWidth(player.wonder.name())/2, Game.resY*5.5f/15f+3f+Game.resY/20f*i, player.wonder.name());
 			if(player.face.length()>0)
-				Data.font_mid.drawString(Game.resX*9f/12f-Data.font_mid.getWidth("PRï¿½T")/2, Game.resY*5.5f/15f+3f+Game.resY/20f*i, "PRï¿½T");
+				Data.font_mid.drawString(Game.resX*9f/12f-Data.font_mid.getWidth("PRÊT")/2, Game.resY*5.5f/15f+3f+Game.resY/20f*i, "PRÊT");
 			i+=1;
 		}
 	}
