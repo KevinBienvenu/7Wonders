@@ -8,7 +8,7 @@
 	"AFloor2EffectType0": "ProductionCommon",
 	"AFloor3VerreCost": "2",
 	"AFloor3EffectType0": "VictoryPoints7",
-	"AText" : "Ce merveille produit de base du verre.",
+	"AText" : "Cette merveille produit de base du verre. L'étage 2 vous donne chaque tour une ressource de base au choix.",
 	
 	"BEffectType": "ProductionVerre",
 	"BFloor1ArgileCost" : "2",
@@ -17,6 +17,6 @@
 	"BFloor2EffectType0": "ProductionRare",
 	"BFloor3PierreCost": "3",
 	"BFloor3EffectType0": "VictoryPoints7",
-	"BText" : "Ce merveille produit de base du verre."
+	"BText" : "Cette merveille produit de base du verre. L'étage 1 vous donne chaque tour une ressource de base au choix. L'étage 2 une ressource de luxe."
 	
 }

@@ -22,6 +22,7 @@ public class Building {
 	public String[] chainDown;
 	public String[] chainUps;
 	public Vector<Integer> numberPlayerRequired;
+	public String description;
 
 
 	public Building(HashMap<String, String> hashmap, String key){
@@ -60,6 +61,7 @@ public class Building {
 			case "CategoryName" : this.categoryName = CategoryName.valueOf(s);break;
 			case "ChainDown" : this.chainDown = s.split(","); break;
 			case "ChainUps" : this.chainUps = s.split(","); break;
+			case "Description" : this.description = s;break;
 			}
 		}
 	}
@@ -78,6 +80,7 @@ public class Building {
 		String s = "";
 		s = "{";
 		s += "\"name\":\""+this.name+"\",";
+		s += "\"description\":\""+this.description+"\",";
 		s += "\"coinCost\":"+this.coinCost+",";
 		s += "\"ressourcesCost\":{";
 		for(RessourceName rn : this.ressourcesCost.keySet()){

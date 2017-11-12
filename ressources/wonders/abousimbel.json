@@ -12,7 +12,7 @@
 	"AFloor3TissuCost": "1",
 	"AFloor3PierreCost": "2",
 	"AFloor3EffectType0": "SpecialBuryLeader",
-	"AText" : "Ce merveille produit de base du papyrus.",
+	"AText" : "Cette merveille produit de base du papyrus. L'étage 3 vous permet d'enterrer un leader déjà posé : vous le retirez du jeu et marquez le double de son coût en pièce en point de victoire",
 	
 	"BEffectType": "ProductionPapyrus",
 	"BFloor1ArgileCost" : "0",
@@ -21,6 +21,6 @@
 	"BFloor2BoisCost" : "2",
 	"BFloor2VerreCost" : "1",
 	"BFloor2EffectType0": "SpecialBuryLeader",
-	"BText" : "Ce merveille produit de base du papyrus."
+	"BText" : "Cette merveille produit de base du papyrus. Les deux étages vous permettent d'enterrer chacun un leader"
 	
 }

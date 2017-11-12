@@ -2,5 +2,6 @@
 	"Name": "Tomyris",
 	"CoinCost": "4",
 	"Effects": "SendBackDefeat",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"Vous renvoyez les jetons Défaites Militaires (-1 point)"
 }

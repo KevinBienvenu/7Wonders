@@ -2,5 +2,6 @@
 	"Name": "Xénophon",
 	"CoinCost": "2",
 	"Effects": "Coins2Commercial",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"2 pièces d'or lorsque vous posez une carte jaune"
 }

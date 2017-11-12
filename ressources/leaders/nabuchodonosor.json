@@ -2,5 +2,6 @@
 	"Name": "Nabuchodonosor",
 	"CoinCost": "4",
 	"Effects": "VictoryPointsForCivilian",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"1 point de victoire par carte bleue"
 }

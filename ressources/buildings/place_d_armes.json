@@ -13,5 +13,6 @@
 	"CategoryName": "Military",
 	"ChainDown": "",
 	"ChainUps": "cirque",
-	"NumberPlayerRequired" : "4,6,7"
+	"NumberPlayerRequired" : "4,6,7",
+	"Description":"2 symboles Militaires"
 }

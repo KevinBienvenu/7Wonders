@@ -2,5 +2,6 @@
 	"Name": "Amytis",
 	"CoinCost": "3",
 	"Effects": "PointsAmytis",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"2 points de victoire par étage de merveille construit"
 }

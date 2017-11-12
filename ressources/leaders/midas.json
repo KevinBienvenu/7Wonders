@@ -2,5 +2,6 @@
 	"Name": "Midas",
 	"CoinCost": "3",
 	"Effects": "PointsMidas",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"1 point de victoire supplémentaire toutes les 3 pièces d'or"
 }

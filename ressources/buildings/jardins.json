@@ -13,5 +13,6 @@
 	"CategoryName": "Civilian",
 	"ChainDown": "statue",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "3,4"
+	"NumberPlayerRequired" : "3,4",
+	"Description":"5 points de victoire"
 }

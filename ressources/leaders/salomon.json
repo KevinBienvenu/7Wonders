@@ -2,5 +2,6 @@
 	"Name": "Salomon",
 	"CoinCost": "3",
 	"Effects": "SpecialBuildFromDiscard",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"Vous pouvez poser une carte de la défausse gratuitement"
 }

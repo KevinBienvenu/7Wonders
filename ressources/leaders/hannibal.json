@@ -2,5 +2,6 @@
 	"Name": "Hannibal",
 	"CoinCost": "2",
 	"Effects": "Military1",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"1 symbole Militaire"
 }

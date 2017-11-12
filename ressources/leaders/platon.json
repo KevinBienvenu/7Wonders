@@ -2,5 +2,6 @@
 	"Name": "Platon",
 	"CoinCost": "4",
 	"Effects": "PointsPlaton",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"Chaque série d'une carte marron, grise, jaune, bleue, rouge, verte et violette vous rapportent 7 points"
 }

@@ -13,5 +13,6 @@
 	"CategoryName": "Civilian",
 	"ChainDown": "",
 	"ChainUps": "aqueduc",
-	"NumberPlayerRequired" : "3,7"
+	"NumberPlayerRequired" : "3,7",
+	"Description":"3 points de victoire"
 }

@@ -2,5 +2,6 @@
 	"Name": "Praxitèle",
 	"CoinCost": "3",
 	"Effects": "VictoryPointsForRareRessources",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"2 points de victoire par carte grise"
 }

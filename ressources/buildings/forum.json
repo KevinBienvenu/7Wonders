@@ -13,5 +13,6 @@
 	"CategoryName": "Commercial",
 	"ChainDown": "comptoir_est,comptoir_ouest",
 	"ChainUps": "port",
-	"NumberPlayerRequired" : "3,6,7"
+	"NumberPlayerRequired" : "3,6,7",
+	"Description":"1 ressource de luxe au choix"
 }

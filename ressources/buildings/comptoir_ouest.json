@@ -13,5 +13,6 @@
 	"CategoryName": "Commercial",
 	"ChainDown": "",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "3,7"
+	"NumberPlayerRequired" : "3,7",
+	"Description":"Les ressources de base (cartes marrons) de votre voisin de droite coûtent 1"
 }

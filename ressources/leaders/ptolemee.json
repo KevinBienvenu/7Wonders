@@ -2,5 +2,6 @@
 	"Name": "Ptolémée",
 	"CoinCost": "5",
 	"Effects": "Tablette",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"1 symbole Tablette (science)"
 }

@@ -13,5 +13,6 @@
 	"CategoryName": "Commercial",
 	"ChainDown": "dispensaire",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "3,5,7"
+	"NumberPlayerRequired" : "3,5,7",
+	"Description":"1 point et 3 pièces d'or par étage de merveille construit"
 }

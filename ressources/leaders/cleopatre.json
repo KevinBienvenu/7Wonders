@@ -2,5 +2,6 @@
 	"Name": "Cléopâtre",
 	"CoinCost": "4",
 	"Effects": "VictoryPoints5",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"5 points de victoire"
 }

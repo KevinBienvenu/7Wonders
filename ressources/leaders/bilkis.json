@@ -2,5 +2,6 @@
 	"Name": "Bilkis",
 	"CoinCost": "4",
 	"Effects": "SpecialBilkis",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"Chaque tour vous pouvez acheter à la banque la ressource de votre choix pour 1 pièce d'or"
 }

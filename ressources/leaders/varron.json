@@ -2,5 +2,6 @@
 	"Name": "Varron",
 	"CoinCost": "3",
 	"Effects": "VictoryPointsForCommercial",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"1 point de victoire militaire par carte jaune"
 }

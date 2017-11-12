@@ -13,5 +13,6 @@
 	"CategoryName": "Civilian",
 	"ChainDown": "temple",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "3,6"
+	"NumberPlayerRequired" : "3,6",
+	"Description":"7 points de victoire"
 }

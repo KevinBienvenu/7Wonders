@@ -2,5 +2,6 @@
 	"Name": "Vitruve",
 	"CoinCost": "1",
 	"Effects": "Coins2Chainage",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"2 pièces d'or lorsque vous réalisez un chainage"
 }

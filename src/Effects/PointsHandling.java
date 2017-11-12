@@ -2,6 +2,7 @@ package Effects;
 
 
 import java.util.HashMap;
+import java.util.Vector;
 
 import gameSystem.Building;
 import gameSystem.Player;
@@ -9,16 +10,15 @@ import main.Game;
 import ressources.CategoryName;
 import ressources.Data;
 import ressources.TokenName;
+import ressources.WonderName;
 
 public class PointsHandling {
 
 	public static void computePoints(Player p){
 		// init
-		p.pointsDisplayed = new HashMap<CategoryName, Integer>();
 		p.pointsToDisplay = new HashMap<CategoryName, Integer>();
 		for(CategoryName cn : CategoryName.values()){
 			if(cn.score){
-				p.pointsDisplayed.put(cn, 0);
 				p.pointsToDisplay.put(cn, 0);
 			}
 		}
@@ -173,5 +173,31 @@ public class PointsHandling {
 		for(Player p : Game.gameSystem.board.players){
 			computePoints(p);
 		}
+	}
+	
+	public static void computeRandomPoints(Player p){
+		// init
+		p.pointsToDisplay = new HashMap<CategoryName, Integer>();
+		for(CategoryName cn : CategoryName.values()){
+			if(cn.score){
+				p.pointsToDisplay.put(cn, (int)(Math.random()*25));
+			}
+		}
+	}
+	
+	public static Vector<Player> computeRandomPoints(int nbJoueur){
+		Vector<Player> players = new Vector<Player>();
+		Player p;
+		for(int i=0; i<nbJoueur; i++){
+			p = new Player("Roger "+i, WonderName.abousimbel, "A");
+			p.pointsToDisplay = new HashMap<CategoryName, Integer>();
+			for(CategoryName cn : CategoryName.values()){
+				if(cn.score){
+					p.pointsToDisplay.put(cn, (int)(Math.random()*25));
+				}
+			}
+			players.add(p);
+		}
+		return players;
 	}
 }

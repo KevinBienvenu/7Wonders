@@ -50,9 +50,10 @@ public class LobbySystem extends ClassSystem{
 		Game.app.setMinimumLogicUpdateInterval(1000/Main.framerate);
 		Game.app.setMaximumLogicUpdateInterval(1000/Main.framerate);
 		Game.app.setTargetFrameRate(Main.framerate);
-		IASystem.close();
-		for(int i=0; i<Main.nbIAPlayer; i++){
-			IASystem.startIA(i);
+//		IASystem.close();
+//		IASystem.startIA();
+//		IASystem.startIA(Main.nbIAPlayer, Main.nbRandPlayer);
+		for(int i=0; i<Main.nbIAPlayer + Main.nbRandPlayer; i++){
 			try {
 				Communications.sendPost(urlConnect, "{\"name\":\"IA_"+i+"\",\"password\":\""+i+"\"}");
 			} catch (Exception e) {}

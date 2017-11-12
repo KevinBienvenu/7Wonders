@@ -2,5 +2,6 @@
 	"Name": "Léonidas",
 	"CoinCost": "2",
 	"Effects": "CheaperMilitary",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"Les bâtiments rouges vous coûtent une ressource au choix de moins"
 }

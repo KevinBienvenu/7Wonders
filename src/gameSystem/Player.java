@@ -36,8 +36,10 @@ public class Player {
 	public Vector<Building> buildings;
 	public HashMap<TokenName, Integer> tokens;
 
-	public HashMap<CategoryName, Integer> pointsDisplayed, pointsToDisplay;
+	public HashMap<CategoryName, Integer> pointsToDisplay;
 	public Vector<Building> buriedCards;
+	
+	public Card leaderToShow = null;
 
 	public Player(String nickName, WonderName wonder, String face){
 		this.id = Board.idplayer;
@@ -172,8 +174,8 @@ public class Player {
 
 	public int getScore() {
 		int p = 0;
-		for(CategoryName cn : pointsDisplayed.keySet()){
-			p+=pointsDisplayed.get(cn);
+		for(CategoryName cn : pointsToDisplay.keySet()){
+			p+=pointsToDisplay.get(cn);
 		}
 		return p;
 	}

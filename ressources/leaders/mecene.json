@@ -2,5 +2,6 @@
 	"Name": "Mécène",
 	"CoinCost": "1",
 	"Effects": "SpecialLeaderFree",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"Vous pouvez poser vos leaders gratuitement"
 }

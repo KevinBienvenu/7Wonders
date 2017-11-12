@@ -2,5 +2,6 @@
 	"Name": "Zénobie",
 	"CoinCost": "2",
 	"Effects": "VictoryPoints3",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"3 points de victoire"
 }

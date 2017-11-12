@@ -13,5 +13,6 @@
 	"CategoryName": "Military",
 	"ChainDown": "atelier",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "3,6"
+	"NumberPlayerRequired" : "3,6",
+	"Description":"2 symboles militaires"
 }

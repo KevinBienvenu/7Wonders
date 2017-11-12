@@ -13,5 +13,6 @@
 	"CategoryName": "CommonRessources",
 	"ChainDown": "",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "5"
+	"NumberPlayerRequired" : "5",
+	"Description":"1 ressource de Bois ou de Minerai au choix"
 }

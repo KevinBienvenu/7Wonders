@@ -13,5 +13,6 @@
 	"CategoryName": "Guilds",
 	"ChainDown": "",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "0"
+	"NumberPlayerRequired" : "0",
+	"Description":"1 point de victoire toutes les trois pièces à la fin de la partie"
 }

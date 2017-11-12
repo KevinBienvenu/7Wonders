@@ -63,9 +63,11 @@ public class Board {
 		g.drawImage(im, Game.resX/2-im.getWidth()/2, Game.resY/2-im.getHeight()/2);
 		String s = Game.gameSystem.currentAge.text;
 		Data.font_mid.drawString(Game.resX/2-Data.font_mid.getWidth(s)/2,20, s);
-		s = Game.gameSystem.nbRoundRestant+ " cartes restantes";
+		String bconditionternaire = Game.gameSystem.nbRoundRestant > 1 ? "s" : "";
+		s = Game.gameSystem.nbRoundRestant+ " carte"+bconditionternaire+" restante"+bconditionternaire;
 		Data.font_main.drawString(Game.resX*2/5+15, Game.resY*1.3f/10, s);
-		s = Game.gameSystem.discardedCards.size() + " cartes dans la défausse";
+		bconditionternaire = Game.gameSystem.discardedCards.size() > 1 ? "s" : "";
+		s = Game.gameSystem.discardedCards.size() + " carte"+bconditionternaire+" dans la défausse";
 		Data.font_main.drawString(Game.resX*2/5+15, Game.resY*1.7f/10, s);
 		Vector<Integer> v_temp = new Vector<Integer>();
 		for(int i=0; i<4; i++){

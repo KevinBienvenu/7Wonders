@@ -8,7 +8,7 @@
 	"AFloor2EffectType0": "Military2",
 	"AFloor3MineraiCost": "4",
 	"AFloor3EffectType0": "VictoryPoints7",
-	"AText" : "Ce merveille produit de base du minerai.",
+	"AText" : "Cette merveille produit de base du minerai.",
 	
 	"BEffectType": "ProductionMineraiSimple",
 	"BFloor1PierreCost" : "3",
@@ -19,6 +19,6 @@
 	"BFloor2EffectType0": "VictoryPoints4",
 	"BFloor2EffectType1": "Military1",
 	"BFloor2EffectType2": "Coins4",
-	"BText" : "Ce merveille produit de base du minerai."
+	"BText" : "Cette merveille produit de base du minerai."
 	
 }

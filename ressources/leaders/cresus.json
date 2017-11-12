@@ -2,5 +2,6 @@
 	"Name": "Crésus",
 	"CoinCost": "1",
 	"Effects": "Coins6",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"6 pièces d'or"
 }

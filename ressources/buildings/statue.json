@@ -13,5 +13,6 @@
 	"CategoryName": "Civilian",
 	"ChainDown": "theatre",
 	"ChainUps": "jardins",
-	"NumberPlayerRequired" : "3,7"
+	"NumberPlayerRequired" : "3,7",
+	"Description":"4 points de victoire"
 }

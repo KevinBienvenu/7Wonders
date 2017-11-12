@@ -2,5 +2,6 @@
 	"Name": "Aristote",
 	"CoinCost": "3",
 	"Effects": "PointsAristote",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"Chaque série de 3 symboles scientifiques vous rapportent 10 points au lieu de 7"
 }

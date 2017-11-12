@@ -8,7 +8,7 @@
 	"AFloor2EffectType0": "VictoryPoints5",
 	"AFloor3PierreCost": "4",
 	"AFloor3EffectType0": "VictoryPoints7",
-	"AText" : "Ce merveille produit de base de la pierre.",
+	"AText" : "Cette merveille produit de base de la pierre.",
 	
 	"BEffectType": "ProductionPierreSimple",
 	"BFloor1BoisCost" : "2",
@@ -20,6 +20,6 @@
 	"BFloor4PierreCost": "4",
 	"BFloor4PapyrusCost": "1",
 	"BFloor4EffectType0": "VictoryPoints7",
-	"BText" : "Ce merveille produit de base de la pierre."
+	"BText" : "Cette merveille produit de base de la pierre."
 	
 }

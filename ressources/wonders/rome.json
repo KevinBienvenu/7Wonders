@@ -26,6 +26,6 @@
 	"BFloor3PapyrusCost": "1",
 	"BFloor3EffectType0": "SpecialPlayLeader",
 	"BFloor3EffectType1": "VictoryPoints3",
-	"BText" : "Vos leaders coûtent -2 or, -1 pour vos voisins."
+	"BText" : "Vos leaders coûtent -2 or, -1 pour vos voisins. L'étage 1 vous permet de piocher 4 leaders, les étages 2 et 3 de poser un leader supplémentaire."
 	
 }

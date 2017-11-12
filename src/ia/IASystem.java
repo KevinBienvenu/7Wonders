@@ -1,6 +1,8 @@
 package ia;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,25 +11,38 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Vector;
 
+import inputActions.Action;
+import inputActions.State;
+
 public class IASystem {
 	
 	private static Vector<Process> vp;
 	private static boolean isInit;
+	
 	
 	private static void init(){
 		vp = new Vector<Process>();
 		isInit = true;
 	}
 	
-	public static void startIA(int idJoueur){
+	public static void startIA(int nbJoueurIA, int nbJoueurRand){
 		if(!isInit){
 			init();
 		}
 		Process p;
 		try {
-			p = Runtime.getRuntime().exec("python src/ia/IA.py "+idJoueur);
+			p = Runtime.getRuntime().exec("python src/ia/IA.py "+nbJoueurIA+" "+nbJoueurRand);
 			vp.add(p);
-			(new IAHandler(p, "IA_"+idJoueur)).start();
+			(new IAHandler(p, "IA_")).start();
+		} catch (IOException e) {}
+	}
+	
+	public static void startIA(){
+		Process p;
+		try {
+			p = Runtime.getRuntime().exec("set FLASK_APP=src/ia/IA.py& python -m flask run");
+			vp.add(p);
+			(new IAHandler(p, "IA_")).start();
 		} catch (IOException e) {}
 	}
 	

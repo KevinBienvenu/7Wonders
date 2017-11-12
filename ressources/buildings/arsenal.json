@@ -13,5 +13,6 @@
 	"CategoryName": "Military",
 	"ChainDown": "",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "3,4,7"
+	"NumberPlayerRequired" : "3,4,7",
+	"Description":"3 symboles Militaires"
 }

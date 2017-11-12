@@ -16,6 +16,7 @@ import main.Main;
 import render.PlayerRender;
 import ressources.ActionNames;
 import ressources.CategoryName;
+import ressources.Data;
 import ressources.Images;
 import ressources.Sounds;
 
@@ -65,10 +66,12 @@ public class ActionBuilding extends ActionCard{
 		if(gs.board.players.get(idPlayer).getCardBuildingPossibilites(card.building).equals("chain")
 				&& gs.board.players.get(idPlayer).specialEffects.contains(EffectType.Coins2Chainage)){
 			gs.board.players.get(idPlayer).coins+=2;
+			gs.board.players.get(idPlayer).leaderToShow = new Card(Data.getBuildingByName("vitruve"));
 		}
 		if(this.card.building.categoryName==CategoryName.Commercial
 				&& gs.board.players.get(idPlayer).specialEffects.contains(EffectType.Coins2Commercial)){
 			gs.board.players.get(idPlayer).coins+=2;
+			gs.board.players.get(idPlayer).leaderToShow = new Card(Data.getBuildingByName("xenophon"));
 		}
 		if(freeBuild){
 			gs.board.players.get(idPlayer).hasFreeBuildingLeft = false;

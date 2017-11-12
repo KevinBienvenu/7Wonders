@@ -13,5 +13,6 @@
 	"CategoryName": "Commercial",
 	"ChainDown": "caravanserail",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "3,6"
+	"NumberPlayerRequired" : "3,6",
+	"Description":"1 or et 1 point de victoire par carte jaune"
 }

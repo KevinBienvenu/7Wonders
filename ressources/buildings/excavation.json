@@ -13,5 +13,6 @@
 	"CategoryName": "CommonRessources",
 	"ChainDown": "",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "4"
+	"NumberPlayerRequired" : "4",
+	"Description":"1 ressource de Pierre ou d'Argile au choix"
 }

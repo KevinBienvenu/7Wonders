@@ -2,5 +2,6 @@
 	"Name": "Néron",
 	"CoinCost": "1",
 	"Effects": "Coins2MilitaryVictory",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"Vos prochaines victoires militaires vous rapporteront 2 pièces d'or"
 }

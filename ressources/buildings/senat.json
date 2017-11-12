@@ -13,5 +13,6 @@
 	"CategoryName": "Civilian",
 	"ChainDown": "bibliotheque",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "3,5"
+	"NumberPlayerRequired" : "3,5",
+	"Description":"6 points de victoire"
 }

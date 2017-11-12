@@ -6,6 +6,8 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Sound;
 
 import Effects.EffectType;
+import gameSystem.Building;
+import gameSystem.Card;
 import main.Game;
 import main.Main;
 import ressources.Data;
@@ -21,6 +23,7 @@ public class WarRender {
 	public static boolean isPlaying = false;
 	public static int idPlayer = -1, idOther = 0;;
 	public static int current_military, temp_military;
+	public static int cooldownTotal = 200;
 	public static boolean rendering = false;
 
 	public static void init(int idAge){
@@ -52,7 +55,7 @@ public class WarRender {
 					Sounds.get("philippe"+(int)(Math.random()*4)).play();
 				}
 			}
-			if(cooldown>200 || Main.quickGame){
+			if(cooldown>cooldownTotal || Main.quickGame){
 				isPlaying = false;
 				if(idAge>0){
 					TokenName temp_token;
@@ -135,16 +138,74 @@ public class WarRender {
 				Data.font_big.drawString(Game.resX*7/10-Data.font_big.getWidth(s)-20, Game.resY*2/5+100, s);
 				//shields
 				Image imLeft, imRight, im = Images.get("military");
+				Image tokenLeft, tokenRight, tokenVictory, tokenDefeat;
+				float xLeftStart, xLeftEnd, xLeft;
+				float yLeftStart, yLeftEnd, yLeft;
+				float xRightStart, xRightEnd, xRight;
+				float yRightStart, yRightEnd, yRight;
+				xLeftStart = Game.resX*6.5f/10;
+				yLeftStart = Game.resY*3/5;
+				xRightStart = Game.resX*3.5f/10;
+				yRightStart = Game.resY*3/5;
+				xLeftEnd = PlayerRender.getRenderDimensionForPlayer(idPlayer).get(0)+PlayerRender.getRenderDimensionForPlayer(idPlayer).get(2)/2;
+				yLeftEnd = PlayerRender.getRenderDimensionForPlayer(idPlayer).get(1)+PlayerRender.getRenderDimensionForPlayer(idPlayer).get(3)/2;
+				xRightEnd = PlayerRender.getRenderDimensionForPlayer(idOther).get(0)+PlayerRender.getRenderDimensionForPlayer(idOther).get(2)/2;
+				yRightEnd = PlayerRender.getRenderDimensionForPlayer(idOther).get(1)+PlayerRender.getRenderDimensionForPlayer(idOther).get(3)/2;
+				int cooldownTemp = Math.min(cooldown, cooldownTotal/2);
+				switch(Game.gameSystem.currentAge){
+				case AGEI:
+					tokenVictory = Images.get("victorytoken1").getScaledCopy(1.8f);
+					break;
+				case AGEII:
+					tokenVictory = Images.get("victorytoken3").getScaledCopy(1.8f);
+					break;
+				case AGEIII:
+					tokenVictory = Images.get("victorytoken5").getScaledCopy(1.8f);
+					break;
+				default:
+					tokenVictory = Images.get("victorytoken1").getScaledCopy(1.8f);
+					break;
+				}
+				tokenDefeat = Images.get("defeattoken1").getScaledCopy(1.8f);
 				imLeft = im.getScaledCopy(0.5f);
 				imRight = im.getScaledCopy(0.5f);
+				tokenLeft = null;
+				tokenRight = null;
 				if(current_military<temp_military){
 					imLeft = im.getScaledCopy(Math.min(0.5f,  (200f-cooldown)/100f));
+					tokenLeft = tokenDefeat;
+					tokenRight = tokenVictory;
+					if(Game.gameSystem.board.players.get(idPlayer).specialEffects.contains(EffectType.SendBackDefeat)){
+						xLeftEnd = xRightEnd+50;
+						yLeftEnd = yRightEnd+50;
+						Game.gameSystem.board.players.get(idPlayer).leaderToShow = new Card(Data.getBuildingByName("tomyris"));
+					}
+					if(Game.gameSystem.board.players.get(idOther).specialEffects.contains(EffectType.Coins2MilitaryVictory)){
+						Game.gameSystem.board.players.get(idOther).leaderToShow = new Card(Data.getBuildingByName("neron"));
+					}
 				}
 				if(current_military>temp_military){
 					imRight = im.getScaledCopy(Math.min(0.5f,  (200f-cooldown)/100f));
+					tokenLeft = tokenVictory;
+					tokenRight = tokenDefeat;
+					if(Game.gameSystem.board.players.get(idOther).specialEffects.contains(EffectType.SendBackDefeat)){
+						xRightEnd = xLeftEnd+50;
+						yRightEnd = yLeftEnd+50;
+					}
+					if(Game.gameSystem.board.players.get(idPlayer).specialEffects.contains(EffectType.Coins2MilitaryVictory)){
+						Game.gameSystem.board.players.get(idPlayer).leaderToShow = new Card(Data.getBuildingByName("neron"));
+					}
 				}
-				g.drawImage(imRight, Game.resX*3.5f/10-imRight.getWidth()/2, Game.resY/2-imRight.getHeight()/2);
-				g.drawImage(imLeft, Game.resX*6.5f/10-imLeft.getWidth()/2, Game.resY/2-imLeft.getHeight()/2);
+				xLeft = 2.0f*(xLeftStart*(cooldownTotal/2-cooldownTemp) + xLeftEnd*cooldownTemp)/cooldownTotal;
+				yLeft = 2.0f*(yLeftStart*(cooldownTotal/2-cooldownTemp) + yLeftEnd*cooldownTemp)/cooldownTotal;
+				xRight = 2.0f*(xRightStart*(cooldownTotal/2-cooldownTemp) + xRightEnd*cooldownTemp)/cooldownTotal;
+				yRight = 2.0f*(yRightStart*(cooldownTotal/2-cooldownTemp) + yRightEnd*cooldownTemp)/cooldownTotal;
+				g.drawImage(imLeft, Game.resX*3.5f/10-imLeft.getWidth()/2, Game.resY/2-imLeft.getHeight()/2+50);
+				g.drawImage(imRight, Game.resX*6.5f/10-imRight.getWidth()/2, Game.resY/2-imRight.getHeight()/2+50);
+				if(tokenLeft!=null){
+					g.drawImage(tokenLeft, xLeft-tokenLeft.getWidth()/2, yLeft-tokenLeft.getHeight()/2);
+					g.drawImage(tokenRight, xRight-tokenRight.getWidth()/2, yRight-tokenRight.getHeight()/2);
+				}
 			}
 		}
 	}

@@ -2,5 +2,6 @@
 	"Name": "Périclès",
 	"CoinCost": "6",
 	"Effects": "VictoryPointsForMilitary",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"2 points de victoire par carte rouge"
 }

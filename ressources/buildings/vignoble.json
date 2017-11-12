@@ -13,5 +13,6 @@
 	"CategoryName": "Commercial",
 	"ChainDown": "",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "3,6"
+	"NumberPlayerRequired" : "3,6",
+	"Description":"1 pièce d'or par carte marron chez vous et vos voisins"
 }

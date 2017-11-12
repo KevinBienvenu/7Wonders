@@ -50,6 +50,7 @@ public class StateBuryLeaderChoice extends State{
 		s += "\"name\":\""+Game.gameSystem.board.players.get(idJoueur).nickName+"\",";
 		s += handleAdditionalInfos(Game.gameSystem.board.players.get(idJoueur));
 		s += "\"state\":\""+id+"\",";
+		s += "\"time\":\""+Game.gameSystem.t+"\",";
 		s += "\"done\":\"false\"}";
 		System.out.println(s);
 		return s;

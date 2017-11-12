@@ -2,5 +2,6 @@
 	"Name": "Hatshepsout",
 	"CoinCost": "2",
 	"Effects": "Coins1Commerce",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"Lorsque vous achetez à votre voisin, vous gagnez 1 pièce d'or (max 1 par tour par voisin)" 
 }

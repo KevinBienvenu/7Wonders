@@ -2,5 +2,6 @@
 	"Name": "Hypatie",
 	"CoinCost": "4",
 	"Effects": "VictoryPointsForScientific",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"1 point de victoire par carte verte"
 }

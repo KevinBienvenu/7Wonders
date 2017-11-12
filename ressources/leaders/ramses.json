@@ -2,5 +2,6 @@
 	"Name": "Ramsès",
 	"CoinCost": "5",
 	"Effects": "SpecialGuildsFree",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"Vous pouvez poser vos bâtiments violets (guildes) gratuitement"
 }

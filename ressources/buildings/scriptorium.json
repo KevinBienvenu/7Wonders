@@ -13,5 +13,6 @@
 	"CategoryName": "Scientific",
 	"ChainDown": "",
 	"ChainUps": "tribunal,bibliotheque",
-	"NumberPlayerRequired" : "3,4"
+	"NumberPlayerRequired" : "3,4",
+	"Description":"1 symbole Tablette (science)"
 }

@@ -2,5 +2,6 @@
 	"Name": "César",
 	"CoinCost": "5",
 	"Effects": "Military2",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"2 symboles Militaire"
 }

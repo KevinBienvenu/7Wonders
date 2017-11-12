@@ -1,7 +1,7 @@
 package ia;
 
-import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -60,6 +60,12 @@ public class GameLog {
 			fos.write(state.lastElement()+"]");
 			fos.close();
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Process p = Runtime.getRuntime().exec("python src/ia/IA.py learn "+fileNameDate);
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

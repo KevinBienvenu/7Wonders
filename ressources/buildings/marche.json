@@ -13,5 +13,6 @@
 	"CategoryName": "Commercial",
 	"ChainDown": "",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "3,6"
+	"NumberPlayerRequired" : "3,6",
+	"Description":"Les ressources de luxe (cartes grises) de vos voisins coûtent 1"
 }

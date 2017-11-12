@@ -13,5 +13,6 @@
 	"CategoryName": "Scientific",
 	"ChainDown": "ecole",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "3,7"
+	"NumberPlayerRequired" : "3,7",
+	"Description":"1 symbole Compas (science)"
 }

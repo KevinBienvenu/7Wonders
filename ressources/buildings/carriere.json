@@ -13,5 +13,6 @@
 	"CategoryName": "CommonRessources",
 	"ChainDown": "",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "3,4"
+	"NumberPlayerRequired" : "3,4",
+	"Description":"2 ressources Pierre"
 }

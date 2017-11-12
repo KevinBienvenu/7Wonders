@@ -41,6 +41,8 @@ public class GameSystem extends ClassSystem {
 
 	public int nbPlayer;
 
+	public int t = -1;
+
 	private boolean debugLeader = false;
 	private boolean debugAgeI = false;
 	private boolean debugAgeII = false;
@@ -66,11 +68,13 @@ public class GameSystem extends ClassSystem {
 		this.nbPlayer = players.size();
 		this.board = new Board(players);
 		this.discardedCards = new Vector<Card>();
+		this.t = 0;
 	}
 	public GameSystem(int nbPlayers){
 		this.nbPlayer = nbPlayers;
 		this.board = new Board(nbPlayers);
 		this.discardedCards = new Vector<Card>();
+		this.t = 0;
 	}
 
 	public Player getLeftPlayer(int idJoueur){
@@ -119,6 +123,7 @@ public class GameSystem extends ClassSystem {
 				// also initializing wonder basic effects
 				for(Player p : board.players){
 					EffectAction.action(Data.wonders.get(p.wonderName).effectTypes.get(p.wonderFace), p.id);
+					p.leaderToShow = null;
 				}
 			}
 			this.currentPhase = PhaseNames.DEBUTTOUR;
@@ -132,6 +137,10 @@ public class GameSystem extends ClassSystem {
 		this.remainingLeaders = new Vector<Card>();
 		// debug : necessary leaders:
 		Vector<String> necessaryLeaders = new Vector<String>();
+		necessaryLeaders.add("neron");
+		necessaryLeaders.add("tomyris");
+		necessaryLeaders.add("vitruve");
+		necessaryLeaders.add("xenophon");
 		Card c;
 		for(String l : Data.leaderNames){
 			c = new Card(Data.leaders.get(l));
@@ -199,12 +208,14 @@ public class GameSystem extends ClassSystem {
 	public void debutTour(){
 		// connection � la db
 		//Sending to all player the state
+		this.t += 1;
 		HashMap<Integer, State> hashmap = new HashMap<Integer, State>();
 		if(this.currentAge.idAge>0){
 			StateCardChoice state;
 			for(int i=0; i<this.nbPlayer; i++){
 				state = new StateCardChoice(i, leader);
 				hashmap.put(i, state);
+				board.players.get(i).leaderToShow = null;
 			}
 		} else {
 			StateLeaderChoice state;
@@ -306,7 +317,7 @@ public class GameSystem extends ClassSystem {
 	}
 
 	public void mainAgeSpecial(GameContainer gc){
-		PlayerRender.updateTypeRender();
+//		PlayerRender.updateTypeRender();
 		if(this.actionToPlay.size()>0 || Communications.receiving){
 			if(Communications.receiving){
 				if(Communications.isDone() || gc.getInput().isKeyPressed(Input.KEY_SPACE)){
@@ -328,6 +339,9 @@ public class GameSystem extends ClassSystem {
 	}
 
 	public void endTour(){
+		for(Player p : board.players){
+			p.leaderToShow = null;
+		}
 		if(leader){
 			this.currentPhase = PhaseNames.DEBUTTOUR;
 			leader = false;

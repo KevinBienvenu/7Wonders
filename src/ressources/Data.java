@@ -57,6 +57,7 @@ public class Data {
 											new TypeToken<HashMap<String, String>>(){}.getType()));
 					} catch (JsonIOException | JsonSyntaxException | FileNotFoundException | UnsupportedEncodingException e) {
 						// TODO Auto-generated catch block
+						System.out.println("ERREUR : "+s);
 						e.printStackTrace();
 					}
 					continue;

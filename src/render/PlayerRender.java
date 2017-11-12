@@ -43,9 +43,9 @@ public class PlayerRender {
 	public static int nbPeriodCosinus = 8;
 	
 	public enum TypeRender{
-		RenderCards,
 		RenderLeader,
-		RenderScience
+		RenderScience,
+		RenderCards
 	}
 	
 	
@@ -104,16 +104,30 @@ public class PlayerRender {
 		}
 		// Drawing Token
 		idPos = 0;
-		
-		for(TokenName token : TokenName.values()){
+		for(TokenName token : new TokenName[]{TokenName.VictoryToken1, TokenName.VictoryToken3, TokenName.VictoryToken5, TokenName.DefeatToken1}){
 			if(p.tokens.get(token)>=0){
-				x1 = x+sizeX*ratioSizeXName+idPos*sizeX*(1f-ratioSizeXName*2.5f)/8f;
+				x1 = x+sizeX*ratioSizeXName+1.3f*idPos*sizeX*(1f-ratioSizeXName*2.5f)/8f;
 				y1 = y+sizeY-sizeY*(1f-2f*ratioSizeYName)/4f;
 				g.drawImage(Images.get(token.name().toLowerCase()+"panneaubas"), x1+2, y1+sizeY*(1f-2f*ratioSizeYName)/8f-sizeImage/2f);
 				Data.font_number.drawString(x1+sizeImage+4, y1+sizeY*(1f-2f*ratioSizeYName)/8f-Data.font_number.getHeight(""+p.tokens.get(token))/2f, ""+p.tokens.get(token));
 				idPos+=1;
 			}
 		}
+		// Drawing Science
+		x1 = x+sizeX*(1-1.7f*ratioSizeXName);
+		idPos = 0;
+		Image im;
+		for(TokenName token : new TokenName[]{TokenName.Compas, TokenName.Engrenage, TokenName.Tablette, TokenName.Military}){
+			y1 = y+sizeY*ratioSizeYName+sizeY*(1f-2f*ratioSizeYName)/4f*(idPos);
+			im = Images.get(token.name().toLowerCase()+"panneaubas").getScaledCopy(1.5f);
+			g.drawImage(im, x1, y1);
+			Data.font_number.drawString(x1+im.getWidth()+10, y1, ""+p.tokens.get(token));
+			idPos+=1;
+			if(idPos==3){
+				idPos += 1;
+			}
+		}
+		
 		// Drawing Wonder Construction
 		g.setColor(Color.black);
 		g.fillRect(x+sizeX*(1-ratioSizeXName), y+ratioSizeYName*sizeY, sizeX*ratioSizeXName, (1f-ratioSizeYName)*sizeY);
@@ -147,24 +161,30 @@ public class PlayerRender {
 		
 		switch(typeRender){
 		case RenderCards:
+		default:
 			renderCards(g, p, dims);
 			break;
-		case RenderLeader:
-			renderLeaders(g, p, dims);
-			break;
-		case RenderScience:
-			renderScience(g, p, dims);
-			break;
-		default:
-			break;
+//		case RenderLeader:
+//			renderLeaders(g, p, dims);
+//			break;
+//		case RenderScience:
+//			renderScience(g, p, dims);
+//			break;
 		}
-		Image im = Images.get(p.wonderName.name()+"_background").getSubImage((int)(ratioSizeXName*sizeX), (int)(ratioSizeYName*sizeY), (int)((1-2*ratioSizeXName)*sizeX)-1, (int)((1-2*ratioSizeYName)*sizeY)-1);
-		float alpha = 0f;
-		if(remainingTime<totalTime/nbPeriodCosinus || remainingTime>(nbPeriodCosinus-1)*totalTime/nbPeriodCosinus){
-			alpha = (float) (0.5f*Math.cos(6*Math.PI*remainingTime/totalTime)+0.5f);
+		
+
+		// Rendering utility leader
+		if(p.leaderToShow != null){
+			im = Images.get(p.leaderToShow.building.idname).getScaledCopy(0.7f);
+			g.drawImage(im, x+sizeX*2/3-im.getWidth()/2, y+sizeY/2-im.getHeight()/2);
 		}
-		im.setAlpha(alpha);
-		g.drawImage(im,(int)(x+ratioSizeXName*sizeX), (int)(y+ratioSizeYName*sizeY));
+//		Image im = Images.get(p.wonderName.name()+"_background").getSubImage((int)(ratioSizeXName*sizeX), (int)(ratioSizeYName*sizeY), (int)((1-2*ratioSizeXName)*sizeX)-1, (int)((1-2*ratioSizeYName)*sizeY)-1);
+//		float alpha = 0f;
+//		if(remainingTime<totalTime/nbPeriodCosinus || remainingTime>(nbPeriodCosinus-1)*totalTime/nbPeriodCosinus){
+//			alpha = (float) (0.5f*Math.cos(6*Math.PI*remainingTime/totalTime)+0.5f);
+//		}
+//		im.setAlpha(alpha);
+//		g.drawImage(im,(int)(x+ratioSizeXName*sizeX), (int)(y+ratioSizeYName*sizeY));
 		
 	}
 	

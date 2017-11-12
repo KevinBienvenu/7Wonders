@@ -13,5 +13,6 @@
 	"CategoryName": "Scientific",
 	"ChainDown": "atelier",
 	"ChainUps": "observatoire,atelier_de_siege",
-	"NumberPlayerRequired" : "3,5"
+	"NumberPlayerRequired" : "3,5",
+	"Description":"1 symbole Engrenage (science)"
 }

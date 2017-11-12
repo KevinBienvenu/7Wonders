@@ -13,5 +13,6 @@
 	"CategoryName": "Civilian",
 	"ChainDown": "bains",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "3,7"
+	"NumberPlayerRequired" : "3,7",
+	"Description":"5 points de victoire"
 }

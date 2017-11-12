@@ -11,11 +11,11 @@
 	"AFloor3BoisCost": "1",
 	"AFloor3PapyrusCost": "1",
 	"AFloor3EffectType0": "VictoryPoints7",
-	"AText" : "Ce merveille produit de base de l'argile.",
+	"AText" : "Cette merveille produit de base de l'argile.",
 	
 	"BEffectType": "ProductionArgileSimple",
 	"BFloor1GoldCost" : "14",
 	"BFloor1EffectType0": "VictoryPoints14",
-	"BText" : "Ce merveille produit de base de l'argile."
+	"BText" : "Cette merveille produit de base de l'argile."
 	
 }

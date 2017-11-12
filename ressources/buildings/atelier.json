@@ -13,5 +13,6 @@
 	"CategoryName": "Scientific",
 	"ChainDown": "",
 	"ChainUps": "champs_de_tir,laboratoire",
-	"NumberPlayerRequired" : "3,7"
+	"NumberPlayerRequired" : "3,7",
+	"Description":"1 symbole Engrenage (science)"
 }

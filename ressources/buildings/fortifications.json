@@ -13,5 +13,6 @@
 	"CategoryName": "Military",
 	"ChainDown": "muraille",
 	"ChainUps": "",
-	"NumberPlayerRequired" : "3,7"
+	"NumberPlayerRequired" : "3,7",
+	"Description":"3 symboles Militaire"
 }

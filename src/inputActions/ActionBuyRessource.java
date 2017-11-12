@@ -5,6 +5,8 @@ import java.util.Vector;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
+import Effects.EffectType;
+import gameSystem.Card;
 import main.Game;
 import main.GameSystem;
 import main.Main;
@@ -45,6 +47,9 @@ public class ActionBuyRessource extends Action{
 		toX = v.get(0)+v.get(2)/2;
 		toY = v.get(1)+v.get(3)/2;
 		gs.board.players.get(idPlayer).coins -= this.amount;
+		if(Game.gameSystem.board.players.get(idPlayer).specialEffects.contains(EffectType.Coins1Commerce)){
+			Game.gameSystem.board.players.get(idPlayer).leaderToShow = new Card(Data.getBuildingByName("hatshepsout"));
+		}
 	}
 
 	@Override
@@ -58,6 +63,9 @@ public class ActionBuyRessource extends Action{
 		}
 		if(time>=maxTime || Main.quickGame){
 			Game.gameSystem.board.players.get(idPlayerToPay).coins += this.amount;
+			if(Game.gameSystem.board.players.get(idPlayer).specialEffects.contains(EffectType.Coins1Commerce)){
+				Game.gameSystem.board.players.get(idPlayer).coins+=1;
+			}
 			return true;
 		}
 		return false;

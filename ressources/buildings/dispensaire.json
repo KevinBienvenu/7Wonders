@@ -13,5 +13,6 @@
 	"CategoryName": "Scientific",
 	"ChainDown": "officine",
 	"ChainUps": "arene,loge",
-	"NumberPlayerRequired" : "3,4"
+	"NumberPlayerRequired" : "3,4",
+	"Description":"1 symbole Compas (science)"
 }

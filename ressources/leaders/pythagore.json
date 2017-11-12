@@ -2,5 +2,6 @@
 	"Name": "Pythagore",
 	"CoinCost": "5",
 	"Effects": "Engrenage",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"1 symbole Engrenage (science)"
 }

@@ -2,5 +2,6 @@
 	"Name": "Euclide",
 	"CoinCost": "5",
 	"Effects": "Compas",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"1 symbole Compas (science)"
 }

@@ -2,5 +2,6 @@
 	"Name": "Justinien",
 	"CoinCost": "3",
 	"Effects": "PointsJustinien",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"Chaque série d'une carte verte, une bleue et une rouge vous rapporte 3 points de victoire"
 }

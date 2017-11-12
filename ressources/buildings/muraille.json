@@ -13,5 +13,6 @@
 	"CategoryName": "Military",
 	"ChainDown": "",
 	"ChainUps": "fortifications",
-	"NumberPlayerRequired" : "3,7"
+	"NumberPlayerRequired" : "3,7",
+	"Description":"2 symboles Militaires"
 }

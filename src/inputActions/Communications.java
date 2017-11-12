@@ -4,10 +4,14 @@ package inputActions;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -19,7 +23,9 @@ import Effects.EffectType;
 import gameSystem.Building;
 import gameSystem.Card;
 import ia.GameLog;
+import ia.IASystem.IAHandler;
 import main.Game;
+import main.Main;
 import ressources.Data;
 
 public class Communications {
@@ -32,39 +38,48 @@ public class Communications {
 
 	public static HashMap<Integer, Vector<Action>> actions;
 	public static HashMap<Integer, Integer> keys;
-	public static HashMap<Integer, State> currentHashmap;
 
 	public static void send(HashMap<Integer, State> hashmap){
 		actions = new HashMap<Integer, Vector<Action>>();
 		keys = new HashMap<Integer, Integer>();
+		String url, resp;
 		for(Integer i : hashmap.keySet()){
-			send(hashmap, i);
+			if(hashmap.keySet().contains(i)){
+				try {
+					keys.put(i, (int)(Math.random()*1000000));
+					hashmap.get(i).setKey(keys.get(i));
+					GameLog.state.add(hashmap.get(i).toString());
+					if(Main.nbIAPlayer==0){
+						// Normal user route
+						url = "http://gameserver-kevinbienvenu.c9users.io/users/pushstate";
+						resp = sendPost(url, hashmap.get(i).toString());
+						actions.put(i, null);
+					} else {
+						// IA route
+						receiving = true;
+						url = "http://127.0.0.1:5000/";
+						resp = sendPost(url, hashmap.get(i).toString());
+						System.out.println("response : "+resp);
+						HashMap<String, String> temp_hashmap = Data.gson.fromJson(resp, new TypeToken<HashMap<String, String>>(){}.getType());
+						actions.put(i, null);
+						receive(i, temp_hashmap);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		currentHashmap = hashmap;
+		receiving = true;
 	}
 
 	public static void send(HashMap<Integer, State> hashmap, int i){
-		String url = "http://gameserver-kevinbienvenu.c9users.io/users/pushstate";
-		if(hashmap.keySet().contains(i)){
-			try {
-				keys.put(i, (int)(Math.random()*1000000));
-//				keys.put(i, 1);
-				hashmap.get(i).setKey(keys.get(i));
-				GameLog.state.add(hashmap.get(i).toString());
-				System.out.println("  "+sendPost(url, hashmap.get(i).toString()));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			actions.put(i, null);
-		}
-		receiving = true;
 	}
 
 	public static void receive(int idJoueur, HashMap<String, String> temp_hashmap){
 		if(receiving){
 			System.out.println("recieving "+idJoueur);
 			if(temp_hashmap.containsKey("action") && temp_hashmap.containsKey("card") && actions.containsKey(idJoueur) && actions.get(idJoueur)==null){
-				
+
 				System.out.print("receiving response for player "+idJoueur);
 				GameLog.decisions.add(Data.gson.toJson(temp_hashmap, new TypeToken<HashMap<String, String>>(){}.getType()));
 				Communications.actions.put(idJoueur, new Vector<Action>());
@@ -120,7 +135,7 @@ public class Communications {
 					actions.get(idJoueur).add(new ActionBuilding(c, fromDiscard));
 					System.out.println("   building - "+c.building.name);
 					break;
-					
+
 				case "freebuild":
 					actions.get(idJoueur).add(new ActionBuilding(c, fromDiscard));
 					((ActionBuilding)(actions.get(idJoueur).lastElement())).freeBuild = true;
@@ -131,7 +146,7 @@ public class Communications {
 					actions.get(idJoueur).add(new ActionDiscard(c, fromDiscard));
 					System.out.println("   discarding - "+c.building.name);
 					break;
-					
+
 				case "wonder":
 					actions.get(idJoueur).add(new ActionWonder(Integer.parseInt(temp_hashmap.get("wonderFloor")), c));
 					System.out.println("   wondering - "+temp_hashmap.get("wonderFloor")+" - with : "+c.building.name);
@@ -144,7 +159,7 @@ public class Communications {
 					actions.get(idJoueur).add(new ActionLeaderChoice(c));
 					System.out.println("   leadering : "+c.building.name);
 					break;
-					
+
 				default:
 					break;
 				}
@@ -152,16 +167,11 @@ public class Communications {
 				if(Integer.parseInt(temp_hashmap.get("trade_right"))>0){
 					actions.get(idJoueur).add(new ActionBuyRessource(Integer.parseInt(temp_hashmap.get("trade_right")), 
 							(idJoueur+Game.gameSystem.nbPlayer-1)%Game.gameSystem.nbPlayer));
-					if(Game.gameSystem.board.players.get(idJoueur).specialEffects.contains(EffectType.Coins1Commerce)){
-						Game.gameSystem.board.players.get(idJoueur).coins+=1;
-					}
+					
 				}
 				if(Integer.parseInt(temp_hashmap.get("trade_left"))>0){
 					actions.get(idJoueur).add(new ActionBuyRessource(Integer.parseInt(temp_hashmap.get("trade_left")), 
 							(idJoueur+1)%Game.gameSystem.nbPlayer));
-					if(Game.gameSystem.board.players.get(idJoueur).specialEffects.contains(EffectType.Coins1Commerce)){
-						Game.gameSystem.board.players.get(idJoueur).coins+=1;
-					}
 				}
 				// Checker bilkis
 				if(temp_hashmap.get("bilkis").length()>0){
@@ -211,30 +221,30 @@ public class Communications {
 				try {
 					if(receiving){
 						response = Communications.sendGet(url);
-						temp_hashmap.clear();
-						for(String s : response.substring(2, response.length()-2).split("\\}\\,\\{")){
-							try {
-								temp_hashmap = Data.gson.fromJson("{"+s+"}", new TypeToken<HashMap<String, String>>(){}.getType());
-								int idJoueur = Integer.parseInt(temp_hashmap.get("idJoueur"));
-								if(temp_hashmap.containsKey("key") && temp_hashmap.containsKey("idJoueur")
-										&& temp_hashmap.containsKey("done") && temp_hashmap.get("done").equals("true")
-										&& actions.containsKey(idJoueur) && actions.get(idJoueur)==null
-										&& keys.containsKey(idJoueur) && keys.get(idJoueur) == Integer.parseInt(temp_hashmap.get("key"))){
-									receive(Integer.parseInt(temp_hashmap.get("idJoueur")), temp_hashmap);
+						if(response.length()>2){
+							temp_hashmap.clear();
+							for(String s : response.substring(2, response.length()-2).split("\\}\\,\\{")){
+								try {
+									temp_hashmap = Data.gson.fromJson("{"+s+"}", new TypeToken<HashMap<String, String>>(){}.getType());
+									int idJoueur = Integer.parseInt(temp_hashmap.get("idJoueur"));
+									if(temp_hashmap.containsKey("key") && temp_hashmap.containsKey("idJoueur")
+											&& temp_hashmap.containsKey("done") && temp_hashmap.get("done").equals("true")
+											&& actions.containsKey(idJoueur) && actions.get(idJoueur)==null
+											&& keys.containsKey(idJoueur) && keys.get(idJoueur) == Integer.parseInt(temp_hashmap.get("key"))){
+										receive(Integer.parseInt(temp_hashmap.get("idJoueur")), temp_hashmap);
+									}
+								} catch (JsonIOException | JsonSyntaxException e) {
 								}
-							} catch (JsonIOException | JsonSyntaxException e) {
 							}
 						}
 					}
-					Thread.sleep(1000);
+					Thread.sleep(20);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 
 		}
-
-
 
 	}
 
@@ -246,7 +256,6 @@ public class Communications {
 
 	// HTTP GET request
 	public static String sendGet(String url) throws Exception {
-
 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -289,18 +298,22 @@ public class Communications {
 		con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 		con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
 
-//		 charset=UTF-8
+		//		 charset=UTF-8
 
 		// Send post request
+		System.out.println("POST !");
+		System.out.println(url);
+		System.out.println(urlParameters);
+		System.out.println("");
 		con.setDoOutput(true);
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(con.getOutputStream(), "UTF-8"));
 		bw.write(urlParameters);
 		bw.flush();
 		bw.close();
-//		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-//		wr.writeBytes(urlParameters);
-//		wr.flush();
-//		wr.close();
+		//		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+		//		wr.writeBytes(urlParameters);
+		//		wr.flush();
+		//		wr.close();
 		BufferedReader in = new BufferedReader(
 				new InputStreamReader(con.getInputStream(), "UTF-8"));
 		String inputLine;

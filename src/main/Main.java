@@ -1,12 +1,20 @@
 package main;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 import org.lwjgl.LWJGLUtil;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
+import ia.IASystem.IAHandler;
 import inputActions.Communications;
 
 
@@ -15,11 +23,14 @@ public class Main {
 	public static int framerate = 60;
 	public static boolean pleinEcran = true;
 	public static int nbIAPlayer = 0;
+	public static int nbRandPlayer = 0;
 	public static boolean launchGame = false;
 	public static boolean quickGame = false;
 	public static boolean replay = false;
-	
+
 	public static void main(String[] args) {
+
+
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		System.setProperty("org.lwjgl.librarypath", new File(new File(System.getProperty("user.dir"), "native"), LWJGLUtil.getPlatformName()).getAbsolutePath());
 		int resolutionX;
@@ -30,10 +41,10 @@ public class Main {
 		}  else {
 			resolutionX = (int)screenSize.getWidth()*2/3;		
 			resolutionY = (int)screenSize.getHeight()*2/3;
-//			resolutionX = 1920;		
-//			resolutionY = 1080;
-//			resolutionX = 1680;		
-//			resolutionY = 1050;
+			//			resolutionX = 1920;		
+			//			resolutionY = 1080;
+			//			resolutionX = 1680;		
+			//			resolutionY = 1050;
 		}
 		try {
 			Game game = new Game(resolutionX,resolutionY);
@@ -53,6 +64,6 @@ public class Main {
 		}
 	}
 
-	
+
 
 }

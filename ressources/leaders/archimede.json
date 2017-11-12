@@ -2,5 +2,6 @@
 	"Name": "Archimède",
 	"CoinCost": "4",
 	"Effects": "CheaperScientific",
-	"CategoryName": "Leader"
+	"CategoryName": "Leader",
+	"Description":"Les bâtiments verts vous coûtent 1 ressource au choix de moins"
 }
