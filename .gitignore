@@ -1,3 +1,5 @@
 *.class
 bin/**
 logs/ia/raw_data.json
+logs/testDecision*
+logs/ia/games/**
