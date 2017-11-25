@@ -4,14 +4,10 @@ package inputActions;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -19,13 +15,13 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
-import Effects.EffectType;
 import gameSystem.Building;
 import gameSystem.Card;
+import gameSystem.Player;
 import ia.GameLog;
-import ia.IASystem.IAHandler;
 import main.Game;
 import main.Main;
+import ressources.CategoryName;
 import ressources.Data;
 
 public class Communications {
@@ -38,6 +34,8 @@ public class Communications {
 
 	public static HashMap<Integer, Vector<Action>> actions;
 	public static HashMap<Integer, Integer> keys;
+	
+	public static String baseUrl = Main.hostname + ":3000/";
 
 	public static void send(HashMap<Integer, State> hashmap){
 		actions = new HashMap<Integer, Vector<Action>>();
@@ -51,8 +49,8 @@ public class Communications {
 					GameLog.state.add(hashmap.get(i).toString());
 					if(Main.nbIAPlayer==0){
 						// Normal user route
-						url = "http://gameserver-kevinbienvenu.c9users.io/users/pushstate";
-						resp = sendPost(url, hashmap.get(i).toString());
+						url = "users/pushstate";
+						resp = sendPost(baseUrl+url, hashmap.get(i).toString());
 						actions.put(i, null);
 					} else {
 						// IA route
@@ -70,6 +68,23 @@ public class Communications {
 			}
 		}
 		receiving = true;
+	}
+	
+	public static void sendScores(){
+		String url = "users/pushscores", data;
+		int total = 0;
+		for(Player p : Game.gameSystem.board.players){
+			data = "{\"idJoueur\":"+p.id+",\"name\":\""+p.nickName+"\",\"state\":\"scores\",";
+			total = 0;
+			for(CategoryName category : p.pointsToDisplay.keySet()){
+				data += "\""+category+"\":"+p.pointsToDisplay.get(category)+",";
+				total += p.pointsToDisplay.get(category);
+			}
+			data += "\"total\":"+total+"}";
+			try {
+				sendPost(url, data);
+			} catch (Exception e) {}
+		}
 	}
 
 	public static void send(HashMap<Integer, State> hashmap, int i){
@@ -211,7 +226,7 @@ public class Communications {
 		String response;
 
 		public Server(){
-			url = "http://gameserver-kevinbienvenu.c9users.io/users/userlist";
+			url = baseUrl + "users/userlist";
 		}
 
 		@Override
@@ -331,9 +346,9 @@ public class Communications {
 	}
 
 	public static void init() {
-		String url = "http://gameserver-kevinbienvenu.c9users.io/users/initgame";
+		String url = "users/initgame";
 		try {
-			System.out.println(sendPost(url, "{\"cmd\":\"init\"}"));
+			System.out.println(sendPost(baseUrl + url, "{\"cmd\":\"init\"}"));
 		} catch (Exception e) {}
 		if(server == null){
 			server = new Server();

@@ -128,6 +128,10 @@ public class EndGameSystem  extends ClassSystem{
 			}
 		} else {
 		//	GameLog.computeFinalFiles();
+			if(!Game.gameSystem.board.hasSentScore){
+				Game.gameSystem.board.hasSentScore = true;
+				Communications.sendScores();
+			}
 			if(Main.replay){
 				Game.lobbySystem = new LobbySystem();
 				Communications.init();

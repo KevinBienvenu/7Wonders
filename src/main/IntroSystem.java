@@ -51,7 +51,7 @@ public class IntroSystem extends ClassSystem{
 		}
 		LoadingList.setDeferredLoading(true);
 		Data.init();
-//		Data.pushBuildingList();
+		Data.pushBuildingList();
 		Images.init();
 		nbLoadedThing = LoadingList.get().getRemainingResources();
 		Communications.init();

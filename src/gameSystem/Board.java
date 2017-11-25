@@ -26,6 +26,8 @@ public class Board {
 
 	public HashSet<WonderName> wondersSelected;
 
+	public boolean hasSentScore;
+	
 	public Board(Vector<LobbyPlayer> players){
 		this.players = new Vector<Player>();
 		idplayer = 0;

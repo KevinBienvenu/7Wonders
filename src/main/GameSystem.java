@@ -137,10 +137,6 @@ public class GameSystem extends ClassSystem {
 		this.remainingLeaders = new Vector<Card>();
 		// debug : necessary leaders:
 		Vector<String> necessaryLeaders = new Vector<String>();
-		necessaryLeaders.add("neron");
-		necessaryLeaders.add("tomyris");
-		necessaryLeaders.add("vitruve");
-		necessaryLeaders.add("xenophon");
 		Card c;
 		for(String l : Data.leaderNames){
 			c = new Card(Data.leaders.get(l));

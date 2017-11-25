@@ -25,8 +25,8 @@ public class LobbySystem extends ClassSystem{
 	public int time = 120;
 	public int timeToUpdate = 120;
 	public HashSet<WonderName> wondersSelected = new HashSet<WonderName>();
-	private String urlConnect = "http://gameserver-kevinbienvenu.c9users.io/users/connect";
-	private String urlWonder = "http://gameserver-kevinbienvenu.c9users.io/users/launchgame";
+	private String urlConnect = Communications.baseUrl + "users/connect";
+	private String urlWonder = Communications.baseUrl + "users/launchgame";
 		    
 	public boolean loadMusics = false;
 
@@ -67,7 +67,7 @@ public class LobbySystem extends ClassSystem{
 		public LobbyPlayer(String name){
 			this.name = name;
 			this.wonder = selectNewWonder();
-			String url = "http://gameserver-kevinbienvenu.c9users.io/users/launchgame";
+			String url = Communications.baseUrl+"users/launchgame";
 			String data;
 			data="{\"name\":\""+name+"\",\"wonder\":\""+wonder.name()+"\"}";
 			try {
@@ -123,7 +123,7 @@ public class LobbySystem extends ClassSystem{
 	}
 
 	public boolean updatePlayerList(){
-		String url = "http://gameserver-kevinbienvenu.c9users.io/users/namelist";
+		String url = Communications.baseUrl+"users/namelist";
 		HashMap<String, String> temp_hashmap;
 		boolean someonePressedStart = false, everyoneIsReady = true;
 		Vector<String> vs = new Vector<String>();
@@ -172,10 +172,10 @@ public class LobbySystem extends ClassSystem{
 			}
 		}
 		if(!everyoneIsReady || players.size()<3) {
-			url = "http://gameserver-kevinbienvenu.c9users.io/users/resetstartgame";
+			url = "users/resetstartgame";
 			for(String s : vs) {
 				try {
-					Communications.sendPost(url, s);
+					Communications.sendPost(Communications.baseUrl + url, s);
 				} catch (Exception e) {}
 			}
 		}
@@ -183,7 +183,7 @@ public class LobbySystem extends ClassSystem{
 	}
 
 	public void launchGame(){
-		String url = "http://gameserver-kevinbienvenu.c9users.io/users/launchgame";
+		String url = "users/launchgame";
 		String data;
 		int i=0;
 		Game.gameSystem = new GameSystem(players);
@@ -191,7 +191,7 @@ public class LobbySystem extends ClassSystem{
 			Game.gameSystem.board.players.get(i).nickName = player.name;
 			data="{\"name\":\""+player.name+"\",\"idJoueur\":"+i+"}";
 			try {
-				Communications.sendPost(url, data);
+				Communications.sendPost(Communications.baseUrl + url, data);
 			} catch (Exception e) {e.printStackTrace();}
 			i+=1;
 		}

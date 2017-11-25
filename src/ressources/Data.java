@@ -135,25 +135,25 @@ public class Data {
 	}
 	
 	public static void pushBuildingList(){
-		String url = "http://gameserver-kevinbienvenu.c9users.io/users/updatebuilding";
+		String url = "users/updatebuilding";
 		for(Building b: buildings.values()){
 			try {
-				Communications.sendPost(url, b.getJsonForm());
+				Communications.sendPost(Communications.baseUrl + url, b.getJsonForm());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		for(Building b: leaders.values()){
 			try {
-				Communications.sendPost(url, b.getJsonForm());
+				Communications.sendPost(Communications.baseUrl + url, b.getJsonForm());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		url = "http://gameserver-kevinbienvenu.c9users.io/users/updatewonder";
+		url = "users/updatewonder";
 		for(Wonder w : wonders.values()){
 			try {
-				Communications.sendPost(url, w.getJsonForm());
+				Communications.sendPost(Communications.baseUrl + url, w.getJsonForm());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
