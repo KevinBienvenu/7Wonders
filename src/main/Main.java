@@ -21,7 +21,7 @@ import inputActions.Communications;
 public class Main {
 	// A REGLER \\
 	public static int framerate = 60;
-	public static boolean pleinEcran = false;
+	public static boolean pleinEcran = true;
 	public static String hostname;
 	public static int nbIAPlayer = 0;
 	public static int nbRandPlayer = 0;
@@ -36,7 +36,7 @@ public class Main {
 		System.setProperty("org.lwjgl.librarypath", new File(new File(System.getProperty("user.dir"), "native"), LWJGLUtil.getPlatformName()).getAbsolutePath());
 		int resolutionX;
 		int resolutionY;
-		hostname = "http://7wonders.battlemythe.net";
+//		hostname = "http://7wonders.battlemythe.net";
 		hostname = "http://localhost";
 		if(pleinEcran){
 			resolutionX = (int)screenSize.getWidth();		

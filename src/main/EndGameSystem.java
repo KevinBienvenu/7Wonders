@@ -54,6 +54,10 @@ public class EndGameSystem  extends ClassSystem{
 				}
 			}
 			this.players.add(playersTemp.remove(indPlayer));
+			this.players.lastElement().position = this.players.size();
+		}
+		for(Player p2 : this.players){
+			p2.nbJoueur = this.players.size();
 		}
 		cat = new Vector<CategoryName>();
 		for(CategoryName cn : players.get(0).pointsToDisplay.keySet()){
@@ -121,6 +125,7 @@ public class EndGameSystem  extends ClassSystem{
 				} else {
 					idPoints = 0;
 					idJoueur -= 1;
+					sendScores(this.players.get(idJoueur+1));
 				}
 			} else {
 				time = 0;
@@ -130,13 +135,32 @@ public class EndGameSystem  extends ClassSystem{
 		//	GameLog.computeFinalFiles();
 			if(!Game.gameSystem.board.hasSentScore){
 				Game.gameSystem.board.hasSentScore = true;
-				Communications.sendScores();
 			}
 			if(Main.replay){
 				Game.lobbySystem = new LobbySystem();
 				Communications.init();
 				Game.system = Game.lobbySystem;
 			}
+		}
+	}
+	
+	public void sendScores(Player p){
+		String url = "7wonders/pushscores", data;
+		int total = 0;
+		data = "{\"idJoueur\":"+p.id+",\"name\":\""+p.nickName+"\",\"state\":\"scores\",";
+		total = 0;
+		for(CategoryName category : p.pointsToDisplay.keySet()){
+			data += "\""+category+"\":"+p.pointsToDisplay.get(category)+",";
+			total += p.pointsToDisplay.get(category);
+		}
+		data += "\"position\":"+p.position+",";
+		data += "\"nbJoueur\":"+p.nbJoueur+",";
+		data += "\"total\":"+total+"}";
+		System.out.println(data);
+		try {
+			Communications.sendPost(Communications.baseUrl + url, data);
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 }

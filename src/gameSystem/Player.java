@@ -40,6 +40,9 @@ public class Player {
 	public Vector<Building> buriedCards;
 	
 	public Card leaderToShow = null;
+	
+	public int position;
+	public int nbJoueur;
 
 	public Player(String nickName, WonderName wonder, String face){
 		this.id = Board.idplayer;

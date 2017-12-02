@@ -135,7 +135,7 @@ public class Data {
 	}
 	
 	public static void pushBuildingList(){
-		String url = "users/updatebuilding";
+		String url = "7wonders/updatebuilding";
 		for(Building b: buildings.values()){
 			try {
 				Communications.sendPost(Communications.baseUrl + url, b.getJsonForm());
@@ -150,7 +150,7 @@ public class Data {
 				e.printStackTrace();
 			}
 		}
-		url = "users/updatewonder";
+		url = "7wonders/updatewonder";
 		for(Wonder w : wonders.values()){
 			try {
 				Communications.sendPost(Communications.baseUrl + url, w.getJsonForm());

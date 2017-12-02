@@ -25,8 +25,8 @@ public class LobbySystem extends ClassSystem{
 	public int time = 120;
 	public int timeToUpdate = 120;
 	public HashSet<WonderName> wondersSelected = new HashSet<WonderName>();
-	private String urlConnect = Communications.baseUrl + "users/connect";
-	private String urlWonder = Communications.baseUrl + "users/launchgame";
+	private String urlConnect = Communications.baseUrl + "7wonders/connect";
+	private String urlWonder = Communications.baseUrl + "7wonders/launchgame";
 		    
 	public boolean loadMusics = false;
 
@@ -67,7 +67,7 @@ public class LobbySystem extends ClassSystem{
 		public LobbyPlayer(String name){
 			this.name = name;
 			this.wonder = selectNewWonder();
-			String url = Communications.baseUrl+"users/launchgame";
+			String url = Communications.baseUrl+"7wonders/launchgame";
 			String data;
 			data="{\"name\":\""+name+"\",\"wonder\":\""+wonder.name()+"\"}";
 			try {
@@ -123,7 +123,7 @@ public class LobbySystem extends ClassSystem{
 	}
 
 	public boolean updatePlayerList(){
-		String url = Communications.baseUrl+"users/namelist";
+		String url = Communications.baseUrl+"7wonders/namelist";
 		HashMap<String, String> temp_hashmap;
 		boolean someonePressedStart = false, everyoneIsReady = true;
 		Vector<String> vs = new Vector<String>();
@@ -172,7 +172,7 @@ public class LobbySystem extends ClassSystem{
 			}
 		}
 		if(!everyoneIsReady || players.size()<3) {
-			url = "users/resetstartgame";
+			url = "7wonders/resetstartgame";
 			for(String s : vs) {
 				try {
 					Communications.sendPost(Communications.baseUrl + url, s);
@@ -183,7 +183,7 @@ public class LobbySystem extends ClassSystem{
 	}
 
 	public void launchGame(){
-		String url = "users/launchgame";
+		String url = "7wonders/launchgame";
 		String data;
 		int i=0;
 		Game.gameSystem = new GameSystem(players);

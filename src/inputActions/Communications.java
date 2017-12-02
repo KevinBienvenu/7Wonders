@@ -34,7 +34,7 @@ public class Communications {
 
 	public static HashMap<Integer, Vector<Action>> actions;
 	public static HashMap<Integer, Integer> keys;
-	
+
 	public static String baseUrl = Main.hostname + ":3000/";
 
 	public static void send(HashMap<Integer, State> hashmap){
@@ -49,7 +49,7 @@ public class Communications {
 					GameLog.state.add(hashmap.get(i).toString());
 					if(Main.nbIAPlayer==0){
 						// Normal user route
-						url = "users/pushstate";
+						url = "7wonders/pushstate";
 						resp = sendPost(baseUrl+url, hashmap.get(i).toString());
 						actions.put(i, null);
 					} else {
@@ -68,23 +68,6 @@ public class Communications {
 			}
 		}
 		receiving = true;
-	}
-	
-	public static void sendScores(){
-		String url = "users/pushscores", data;
-		int total = 0;
-		for(Player p : Game.gameSystem.board.players){
-			data = "{\"idJoueur\":"+p.id+",\"name\":\""+p.nickName+"\",\"state\":\"scores\",";
-			total = 0;
-			for(CategoryName category : p.pointsToDisplay.keySet()){
-				data += "\""+category+"\":"+p.pointsToDisplay.get(category)+",";
-				total += p.pointsToDisplay.get(category);
-			}
-			data += "\"total\":"+total+"}";
-			try {
-				sendPost(url, data);
-			} catch (Exception e) {}
-		}
 	}
 
 	public static void send(HashMap<Integer, State> hashmap, int i){
@@ -182,7 +165,7 @@ public class Communications {
 				if(Integer.parseInt(temp_hashmap.get("trade_right"))>0){
 					actions.get(idJoueur).add(new ActionBuyRessource(Integer.parseInt(temp_hashmap.get("trade_right")), 
 							(idJoueur+Game.gameSystem.nbPlayer-1)%Game.gameSystem.nbPlayer));
-					
+
 				}
 				if(Integer.parseInt(temp_hashmap.get("trade_left"))>0){
 					actions.get(idJoueur).add(new ActionBuyRessource(Integer.parseInt(temp_hashmap.get("trade_left")), 
@@ -226,7 +209,7 @@ public class Communications {
 		String response;
 
 		public Server(){
-			url = baseUrl + "users/userlist";
+			url = baseUrl + "7wonders/userlist";
 		}
 
 		@Override
@@ -346,7 +329,7 @@ public class Communications {
 	}
 
 	public static void init() {
-		String url = "users/initgame";
+		String url = "7wonders/initgame";
 		try {
 			System.out.println(sendPost(baseUrl + url, "{\"cmd\":\"init\"}"));
 		} catch (Exception e) {}
