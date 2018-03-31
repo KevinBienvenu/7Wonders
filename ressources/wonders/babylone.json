@@ -1,5 +1,5 @@
 {
-	"Name": "Les jardins suspendus de Babylone",
+	"Name": "The Hanging Gardens of Babylon",
 	
 	"AEffectType": "ProductionArgileSimple",
 	"AFloor1ArgileCost": "2",
@@ -8,7 +8,7 @@
 	"AFloor2EffectType0": "ProductionScience",
 	"AFloor3ArgileCost": "4",
 	"AFloor3EffectType0": "VictoryPoints7",
-	"AText" : "Ce merveille produit de base de l'argile. L'étage 2 vous donnera à la fin de la partie un symbole de science au choix.",
+	"AText" : "This wonder comes with one stack of clay. Second floor gives you a scientific symbol of your choice at the end of the game.",
 	
 	"BEffectType": "ProductionArgileSimple",
 	"BFloor1ArgileCost" : "1",
@@ -20,6 +20,6 @@
 	"BFloor3ArgileCost": "3",
 	"BFloor3PapyrusCost": "1",
 	"BFloor3EffectType0": "ProductionScience",
-	"BText" : "Ce merveille produit de base de l'argile. L'étage 2 vous permet de jouer les deux cartes au dernier tour de chaque âge."
+	"BText" : "This wonder comes with one stack of clay. Second floor allows you to play both of the two remaining cards at the end of each age."
 	
 }

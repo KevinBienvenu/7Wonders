@@ -11,8 +11,8 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Vector;
 
-import inputActions.Action;
-import inputActions.State;
+import actions.Action;
+import states.State;
 
 public class IASystem {
 	

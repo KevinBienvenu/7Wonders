@@ -1,5 +1,5 @@
 {
-	"Name": "Le mausolée d'Halicarnasse",
+	"Name": "The Mausoleum at Halicarnassus",
 	
 	"AEffectType": "ProductionTissu",
 	"AFloor1ArgileCost": "2",
@@ -8,7 +8,7 @@
 	"AFloor2EffectType0": "SpecialBuildFromDiscard",
 	"AFloor3TissuCost": "2",
 	"AFloor3EffectType0": "VictoryPoints7",
-	"AText" : "Cette merveille produit de base du tissu. L'étage 2 vous permet de poser une carte gratuitement depuis la défausse.",
+	"AText" : "This wonder comes with one stack of fabric. Second floor allows you to play for free one card from the discard.",
 	
 	"BEffectType": "ProductionTissu",
 	"BFloor1MineraiCost" : "2",
@@ -21,6 +21,6 @@
 	"BFloor3TissuCost": "1",
 	"BFloor3PapyrusCost": "1",
 	"BFloor3EffectType0": "SpecialBuildFromDiscard",
-	"BText" : "Cette merveille produit de base du tissu. Tous les étages vous permettent de poser une carte gratuitement de la défausse."
+	"BText" : "This wonder comes with one stack of fabric. All your floors allow you to play for free one card from the discard."
 	
 }

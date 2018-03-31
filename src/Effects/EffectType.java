@@ -1,11 +1,11 @@
-package Effects;
+package effects;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
-import gameSystem.Building;
+import enums.CategoryName;
 import main.Game;
-import ressources.CategoryName;
+import model.Building;
 import ressources.Images;
 
 public enum EffectType {

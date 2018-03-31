@@ -1,5 +1,5 @@
 {
-	"Name": "Le phare d'Alexandrie",
+	"Name": "The Lighthouse of Alexandria",
 	
 	"AEffectType": "ProductionVerre",
 	"AFloor1PierreCost": "2",
@@ -8,7 +8,7 @@
 	"AFloor2EffectType0": "ProductionCommon",
 	"AFloor3VerreCost": "2",
 	"AFloor3EffectType0": "VictoryPoints7",
-	"AText" : "Cette merveille produit de base du verre. L'étage 2 vous donne chaque tour une ressource de base au choix.",
+	"AText" : "This wonder comes with one stack of glass. Second floor gives you one stack of the common resource of your choice each turn.",
 	
 	"BEffectType": "ProductionVerre",
 	"BFloor1ArgileCost" : "2",
@@ -17,6 +17,6 @@
 	"BFloor2EffectType0": "ProductionRare",
 	"BFloor3PierreCost": "3",
 	"BFloor3EffectType0": "VictoryPoints7",
-	"BText" : "Cette merveille produit de base du verre. L'étage 1 vous donne chaque tour une ressource de base au choix. L'étage 2 une ressource de luxe."
+	"BText" : "This wonder comes with one stack of glass. Second floor gives you one stack of the rare resource of your choice each turn."
 	
 }

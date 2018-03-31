@@ -488,6 +488,8 @@ if __name__=="__main__":
                 threading.Thread(target=pipeline, args=(i, True)).start()
             for i in range(nbJoueurAI, nbJoueurAI+nbJoueurRand):
                 threading.Thread(target=pipeline, args=(i)).start()
+    else:
+        app.run()
         
     
 

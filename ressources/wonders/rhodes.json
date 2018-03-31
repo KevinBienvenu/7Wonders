@@ -1,5 +1,5 @@
 {
-	"Name": "Le Colosse de Rhodes",
+	"Name": "The Colossus of Rhodes",
 	
 	"AEffectType": "ProductionMineraiSimple",
 	"AFloor1BoisCost": "2",
@@ -8,7 +8,7 @@
 	"AFloor2EffectType0": "Military2",
 	"AFloor3MineraiCost": "4",
 	"AFloor3EffectType0": "VictoryPoints7",
-	"AText" : "Cette merveille produit de base du minerai.",
+	"AText" : "This wonder comes with one stack of ore.",
 	
 	"BEffectType": "ProductionMineraiSimple",
 	"BFloor1PierreCost" : "3",
@@ -19,6 +19,6 @@
 	"BFloor2EffectType0": "VictoryPoints4",
 	"BFloor2EffectType1": "Military1",
 	"BFloor2EffectType2": "Coins4",
-	"BText" : "Cette merveille produit de base du minerai."
+	"BText" : "This wonder comes with one stack of ore."
 	
 }

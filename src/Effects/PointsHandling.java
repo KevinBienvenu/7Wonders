@@ -1,16 +1,16 @@
-package Effects;
+package effects;
 
 
 import java.util.HashMap;
 import java.util.Vector;
 
-import gameSystem.Building;
-import gameSystem.Player;
+import enums.CategoryName;
+import enums.TokenName;
+import enums.WonderName;
 import main.Game;
-import ressources.CategoryName;
+import model.Building;
+import model.Player;
 import ressources.Data;
-import ressources.TokenName;
-import ressources.WonderName;
 
 public class PointsHandling {
 
@@ -26,7 +26,7 @@ public class PointsHandling {
 		int temp;
 		for(Building b: p.buildings){
 			for(EffectType et : b.effects){
-				temp = EffectPoints.points(et, p.id);
+				temp = EffectPoints.points(et, p);
 				if(temp>0){
 					p.pointsToDisplay.put(b.categoryName, p.pointsToDisplay.get(b.categoryName)+temp);
 				}
@@ -35,7 +35,7 @@ public class PointsHandling {
 		// wonder floors
 		for(Integer i : p.wonderFloorBuilt){
 			for(EffectType et : Data.wonders.get(p.wonderName).floors.get(p.wonderFace).get(i).effects){
-				p.pointsToDisplay.put(CategoryName.Wonder, p.pointsToDisplay.get(CategoryName.Wonder)+EffectPoints.points(et, p.id));
+				p.pointsToDisplay.put(CategoryName.Wonder, p.pointsToDisplay.get(CategoryName.Wonder)+EffectPoints.points(et, p));
 			}
 		}
 		// special case : buried cards
@@ -185,19 +185,5 @@ public class PointsHandling {
 		}
 	}
 	
-	public static Vector<Player> computeRandomPoints(int nbJoueur){
-		Vector<Player> players = new Vector<Player>();
-		Player p;
-		for(int i=0; i<nbJoueur; i++){
-			p = new Player("Roger "+i, WonderName.abousimbel, "A");
-			p.pointsToDisplay = new HashMap<CategoryName, Integer>();
-			for(CategoryName cn : CategoryName.values()){
-				if(cn.score){
-					p.pointsToDisplay.put(cn, (int)(Math.random()*25));
-				}
-			}
-			players.add(p);
-		}
-		return players;
-	}
+	
 }

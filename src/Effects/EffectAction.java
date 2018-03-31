@@ -1,147 +1,129 @@
-package Effects;
+package effects;
 
 import java.util.HashMap;
-import java.util.Vector;
 
-import gameSystem.Building;
-import gameSystem.Card;
-import inputActions.State;
-import inputActions.StateBuryLeaderChoice;
-import inputActions.StateCardChoice;
-import inputActions.StateLeaderChoice;
-import inputActions.StatePlayFromDiscard;
+import enums.CategoryName;
+import enums.TokenName;
 import main.Game;
-import ressources.CategoryName;
-import ressources.TokenName;
+import model.Building;
+import model.Card;
+import model.Player;
+import states.State;
+import states.StateBuryLeaderChoice;
+import states.StateCardChoice;
+import states.StatePlayFromDiscard;
 
 public class EffectAction {
 	
 	/// UTILITY FONCTIONS
-	public static int getNumberOfCardFromCategoryForPlayer(int idJoueur, CategoryName cat){
-		int temp_nb = 0;
-		for(Building b : Game.gameSystem.board.players.get(idJoueur).buildings){
-			if(b.categoryName==cat){
-				temp_nb+=1;
-			}
-		}
-		return temp_nb;
-	}
+	
 
-	public static void action(EffectType type, int idJoueur){
+	public static void action(EffectType type, Player player){
 		int temp_nb = 0;
 		int temp_travail = 0;
 		HashMap<Integer, State> hashmap = new HashMap<Integer, State>();
 		switch(type){
 		case Coins3:
-			Game.gameSystem.board.players.get(idJoueur).coins+=3;
+			player.coins+=3;
 			break;
 		case Coins4:
-			Game.gameSystem.board.players.get(idJoueur).coins+=4;
+			player.coins+=4;
 			break;
 		case Coins5:
-			Game.gameSystem.board.players.get(idJoueur).coins+=5;
+			player.coins+=5;
 			break;
 		case Coins6:
-			Game.gameSystem.board.players.get(idJoueur).coins+=6;
+			player.coins+=6;
 			break;
 		case Coins9:
-			Game.gameSystem.board.players.get(idJoueur).coins+=9;
+			player.coins+=9;
 			break;
 		case CoinsForAllCommonProd:
-			temp_travail = Game.gameSystem.nbPlayer;
-			for(Integer i : new Integer[]{idJoueur, (idJoueur+1)%temp_travail, (idJoueur-1+temp_travail)%temp_travail}){
-				temp_nb+=getNumberOfCardFromCategoryForPlayer(i, CategoryName.CommonRessources);
-			}
-			Game.gameSystem.board.players.get(idJoueur).coins+=temp_nb;
+			player.coins+=player.getNumberOfCardFromCategoryForPlayer(CategoryName.CommonRessources);
+			player.coins+=player.getLeftNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.CommonRessources);
+			player.coins+=player.getRightNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.CommonRessources);
 			break;
 		case CoinsForAllRareProd:
-			temp_travail = Game.gameSystem.nbPlayer;
-			for(Integer i : new Integer[]{idJoueur, (idJoueur+1)%temp_travail, (idJoueur-1+temp_travail)%temp_travail}){
-				temp_nb+=2*getNumberOfCardFromCategoryForPlayer(i, CategoryName.RareRessources);
-			}
-			Game.gameSystem.board.players.get(idJoueur).coins+=temp_nb;
+			player.coins+=2*player.getNumberOfCardFromCategoryForPlayer(CategoryName.RareRessources);
+			player.coins+=2*player.getLeftNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.RareRessources);
+			player.coins+=2*player.getRightNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.RareRessources);
 			break;
 		case CoinsAndVictoryPointsForCommercial:
-			Game.gameSystem.board.players.get(idJoueur).coins+=1*getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.Commercial);
+			player.coins+=player.getNumberOfCardFromCategoryForPlayer(CategoryName.Commercial);
 			break;
 		case CoinsAndVictoryPointsForCommonProd:
-			Game.gameSystem.board.players.get(idJoueur).coins+=1*getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.CommonRessources);
+			player.coins+=player.getNumberOfCardFromCategoryForPlayer(CategoryName.CommonRessources);
 			break;
 		case CoinsAndVictoryPointsForRareProd:
-			Game.gameSystem.board.players.get(idJoueur).coins+=2*getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.RareRessources);
+			player.coins+=2*player.getNumberOfCardFromCategoryForPlayer(CategoryName.RareRessources);
 			break;
 		case CoinsAndVictoryPointsForWonderFloors:
-			Game.gameSystem.board.players.get(idJoueur).coins+=Game.gameSystem.board.players.get(idJoueur).wonderFloorBuilt.size()*3;
+			player.coins+=player.wonderFloorBuilt.size()*3;
 			break;
 		case Compas:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Compas,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Compas)+1);
+			player.tokens.put(TokenName.Compas,
+					player.tokens.get(TokenName.Compas)+1);
 			break;
 		case Engrenage:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Engrenage,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Engrenage)+1);
+			player.tokens.put(TokenName.Engrenage,
+					player.tokens.get(TokenName.Engrenage)+1);
 			break;
 		case Tablette:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Tablette,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Tablette)+1);
+			player.tokens.put(TokenName.Tablette,
+					player.tokens.get(TokenName.Tablette)+1);
 			break;
 		case Military1:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Military,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Military)+1);
+			player.tokens.put(TokenName.Military,
+					player.tokens.get(TokenName.Military)+1);
 			break;
 		case Military2:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Military,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Military)+2);
+			player.tokens.put(TokenName.Military,
+					player.tokens.get(TokenName.Military)+2);
 			break;
 		case Military3:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Military,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Military)+3);
+			player.tokens.put(TokenName.Military,
+					player.tokens.get(TokenName.Military)+3);
 			break;
 		case Military5:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Military,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Military)+5);
+			player.tokens.put(TokenName.Military,
+					player.tokens.get(TokenName.Military)+5);
 			break;
 		case Military7:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Military,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Military)+7);
+			player.tokens.put(TokenName.Military,
+					player.tokens.get(TokenName.Military)+7);
 			break;
 		case SpecialBuildFreeBuilding:
-			Game.gameSystem.board.players.get(idJoueur).specialEffects.add(EffectType.SpecialBuildFreeBuilding);
-			Game.gameSystem.board.players.get(idJoueur).hasFreeBuildingLeft = true;
+			player.specialEffects.add(EffectType.SpecialBuildFreeBuilding);
+			player.hasFreeBuildingLeft = true;
 			break;
 		case SpecialBuildFromDiscard:
-			if(Game.gameSystem.discardedCards.size()>0){
-				hashmap.put(idJoueur, new StatePlayFromDiscard(idJoueur));
-				Game.gameSystem.actionToPlay.add(hashmap);
-			}
+			player.hasToPlayFromDiscard = true;
 			break;
 		case SpecialBuryLeader:
 			boolean todo = false;
-			for(Building b : Game.gameSystem.board.players.get(idJoueur).buildings){
+			for(Building b : player.buildings){
 				if(b.categoryName == CategoryName.Leader){
 					todo = true;
 					break;
 				}
 			}
 			if(todo){
-				hashmap.put(idJoueur, new StateBuryLeaderChoice(idJoueur));
-				Game.gameSystem.actionToPlay.add(hashmap);
+				player.specialState.add(new StateBuryLeaderChoice(player));
 			}
 			break;
 		case SpecialPlayLeader:
-			hashmap.put(idJoueur, new StateCardChoice(idJoueur, true));
-			Game.gameSystem.actionToPlay.add(hashmap);
+			player.specialState.add(new StateCardChoice(player, true));
 			break;
 		case SpecialPlayLastCard:
-			Game.gameSystem.board.players.get(idJoueur).specialEffects.add(EffectType.SpecialPlayLastCard);
+			player.specialEffects.add(EffectType.SpecialPlayLastCard);
 			break;
 		case SpecialDraw4Leaders:
 			for(int i = 0; i<4; i++){
 				if(Game.gameSystem.remainingLeaders.size()>0){
-					Game.gameSystem.board.players.get(idJoueur).leaderToChoose.add(Game.gameSystem.remainingLeaders.get(0));
+					player.leaderToChoose.add(Game.gameSystem.remainingLeaders.get(0));
 					Game.gameSystem.remainingLeaders.remove(0);
 				} else {
-					System.out.println("No leader remaining => bug !!!");
+					System.err.println("No leader remaining => bug !!!");
 				}
 			}
 			break;
@@ -158,13 +140,12 @@ public class EffectAction {
 		case CheaperWonder:
 		case ProductionScience:
 		case SpecialGuildsFree:
-			Game.gameSystem.board.players.get(idJoueur).specialEffects.add(type);
+			player.specialEffects.add(type);
 			break;
 		case SpecialLeaderCheaper:
-			Game.gameSystem.board.players.get(idJoueur).specialEffects.add(EffectType.SpecialLeaderCheaper2);
-			temp_travail = Game.gameSystem.nbPlayer;
-			Game.gameSystem.board.players.get((idJoueur+1)%temp_travail).specialEffects.add(EffectType.SpecialLeaderCheaper1);
-			Game.gameSystem.board.players.get((idJoueur-1+temp_travail)%temp_travail).specialEffects.add(EffectType.SpecialLeaderCheaper1);
+			player.specialEffects.add(EffectType.SpecialLeaderCheaper2);
+			player.getLeftNeighbour().specialEffects.add(EffectType.SpecialLeaderCheaper1);
+			player.getRightNeighbour().specialEffects.add(EffectType.SpecialLeaderCheaper1);
 			break;
 		case None:
 			break;
@@ -173,46 +154,46 @@ public class EffectAction {
 		}
 	}
 	
-	public static void undoaction(EffectType type, int idJoueur){
+	public static void undoaction(EffectType type, Player player){
 		switch(type){
 		case Compas:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Compas,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Compas)-1);
+			player.tokens.put(TokenName.Compas,
+					player.tokens.get(TokenName.Compas)-1);
 			break;
 		case Engrenage:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Engrenage,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Engrenage)-1);
+			player.tokens.put(TokenName.Engrenage,
+					player.tokens.get(TokenName.Engrenage)-1);
 			break;
 		case Tablette:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Tablette,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Tablette)-1);
+			player.tokens.put(TokenName.Tablette,
+					player.tokens.get(TokenName.Tablette)-1);
 			break;
 		case Military1:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Military,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Military)-1);
+			player.tokens.put(TokenName.Military,
+					player.tokens.get(TokenName.Military)-1);
 			break;
 		case Military2:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Military,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Military)-2);
+			player.tokens.put(TokenName.Military,
+					player.tokens.get(TokenName.Military)-2);
 			break;
 		case Military3:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Military,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Military)-3);
+			player.tokens.put(TokenName.Military,
+					player.tokens.get(TokenName.Military)-3);
 			break;
 		case Military5:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Military,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Military)-5);
+			player.tokens.put(TokenName.Military,
+					player.tokens.get(TokenName.Military)-5);
 			break;
 		case Military7:
-			Game.gameSystem.board.players.get(idJoueur).tokens.put(TokenName.Military,
-					Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.Military)-7);
+			player.tokens.put(TokenName.Military,
+					player.tokens.get(TokenName.Military)-7);
 			break;
 		case SpecialBuildFreeBuilding:
-			Game.gameSystem.board.players.get(idJoueur).specialEffects.remove(EffectType.SpecialBuildFreeBuilding);
-			Game.gameSystem.board.players.get(idJoueur).hasFreeBuildingLeft = false;
+			player.specialEffects.remove(EffectType.SpecialBuildFreeBuilding);
+			player.hasFreeBuildingLeft = false;
 			break;
 		case SpecialPlayLastCard:
-			Game.gameSystem.board.players.get(idJoueur).specialEffects.remove(EffectType.SpecialPlayLastCard);
+			player.specialEffects.remove(EffectType.SpecialPlayLastCard);
 			break;
 		case Coins2Chainage:
 		case Coins2MilitaryVictory:
@@ -227,7 +208,7 @@ public class EffectAction {
 		case CheaperWonder:
 		case ProductionScience:
 		case SpecialGuildsFree:
-			Game.gameSystem.board.players.get(idJoueur).specialEffects.remove(type);
+			player.specialEffects.remove(type);
 			break;
 		case None:
 			break;

@@ -1,23 +1,26 @@
 package render;
 
-import java.util.HashMap;
 import java.util.Vector;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
-import Effects.EffectType;
-import gameSystem.Building;
-import gameSystem.Player;
-import inputActions.StateCardChoice;
+import com.google.gson.JsonObject;
+
+import effects.EffectType;
+import enums.CategoryName;
+import enums.TokenName;
+import enums.WonderName;
 import main.Game;
 import main.Main;
-import ressources.CategoryName;
+import model.Building;
+import model.Player;
 import ressources.Data;
+import ressources.Fonts;
 import ressources.Images;
-import ressources.TokenName;
-import ressources.WonderName;
+import states.State;
+import states.StateCardChoice;
 
 
 public class PlayerRender {
@@ -26,7 +29,7 @@ public class PlayerRender {
 	public static float ratioSizeXRessource = 0.08f;
 	public static float ratioSizeYName = 3f/16f;
 	
-	public static float ratioStartXBuildings = 0.25f;
+	public static float ratioStartXBuildings = 0.35f;
 	public static float ratioStartYBuildings = 0.22f;
 	public static float ratioSizeXBuildings = 0.1f;
 	public static float ratioSizeYBuildings = 0.12f;
@@ -59,14 +62,14 @@ public class PlayerRender {
 		// Drawing Name
 		g.drawImage(Images.get(p.wonderName.name()+"_foreground"),x,y);
 		
-		Data.font_main.drawString(x+ratioSizeXName*sizeX/2-Data.font_main.getWidth(p.nickName.toUpperCase())/2,
-				y+ratioSizeYName*sizeY/2-Data.font_main.getHeight(p.nickName.toUpperCase())/2, p.nickName.toUpperCase());
+		Fonts.font_main.drawString(x+ratioSizeXName*sizeX/2-Fonts.font_main.getWidth(p.nickName.toUpperCase())/2,
+				y+ratioSizeYName*sizeY/2-Fonts.font_main.getHeight(p.nickName.toUpperCase())/2, p.nickName.toUpperCase());
 		g.setColor(Color.white);
 		g.drawLine(x, y+ratioSizeYName*sizeY, x+ratioSizeXName*sizeX, y+ratioSizeYName*sizeY);
 		g.drawLine(x+ratioSizeXName*sizeX, y, x+ratioSizeXName*sizeX, y+ratioSizeYName*sizeY);
 		// Drawing Wonder Name
-		String s = Data.wonders.get(p.wonderName).name.toUpperCase();
-		Data.font_main.drawString(x+sizeX-2-Data.font_main.getWidth(s), y+2,s);
+		String s = Data.wonders.get(p.wonderName).name.toUpperCase()+ " ("+p.wonderFace+")";
+		Fonts.font_main.drawString(x+sizeX-2-Fonts.font_main.getWidth(s), y+2,s);
 //		for(int i=0; i<this.buildings.size(); i++){
 //			this.buildings.get(i).renderOnBoard(g, x+7, y+sizeY/7*(i+1), sizeX/4, sizeY/7);
 //		}
@@ -78,27 +81,53 @@ public class PlayerRender {
 		g.drawImage(Images.get("piececornerbasgauche"),
 				x+sizeX*ratioSizeXName/2-(int)(ratioSizeYName*sizeY*0.8f)-4,
 				y+sizeY-ratioSizeYName*sizeY/2-ratioSizeYName*sizeY*0.4f);
-		Data.font_number.drawString(x+sizeX*ratioSizeXName/2+4, y+sizeY-ratioSizeYName*sizeY/2-Data.font_number.getHeight(""+p.coins)/2, ""+p.coins);
+		Fonts.font_number.drawString(x+sizeX*ratioSizeXName/2+4, y+sizeY-ratioSizeYName*sizeY/2-Fonts.font_number.getHeight(""+p.coins)/2, ""+p.coins);
 		// Drawing Ressources
-		HashMap<String, Integer> dic = StateCardChoice.getDicRessources(p.ressources, false);
+		JsonObject dic = State.handleRessources(p.ressources, false);
 		int idPos = 0;
 		float x1, y1, dec;
 		float sizeImage = Math.min(sizeX*ratioSizeXRessource/2, sizeY*(1f-2f*ratioSizeYName)/4f);
-		for(String s1 : new String[]{"bois","pierre","argile","minerai",
-				"verre","papyrus","tissu",
-				"bois-argile","pierre-argile","argile-minerai","pierre-bois","bois-minerai","minerai-pierre"}){
-			if(dic.containsKey(s1)){
-				x1 = 10+x+(idPos/4)*sizeX*ratioSizeXRessource;
+		String numberRessource;
+		for(String s1 : new String[]{"bois","pierre","argile","minerai"}){
+			x1 = 10+x;
+			y1 = y+sizeY*ratioSizeYName+sizeY*(1f-2f*ratioSizeYName)/4f*(idPos%4);
+			
+			dec = 0f;
+			for(String temp_string : s1.split("-")){
+				g.drawImage(Images.get(temp_string+"panneaugauche"), 
+						x1+dec, y1+sizeY*(1f-2f*ratioSizeYName)/8f-sizeImage/2);
+				dec += 10f;
+			}
+			numberRessource = dic.get(s1)!=null ? dic.get(s1).getAsString() : "0";
+			Fonts.font_number.drawString(x1+dec+sizeImage+2, y1+sizeY*(1f-2f*ratioSizeYName)/8f-Fonts.font_number.getHeight(numberRessource)/2, numberRessource);
+			idPos += 1;
+		}
+		idPos = 0;
+		for(String s1 : new String[]{"verre","papyrus","tissu"}){
+			x1 = 10+x+sizeX*ratioSizeXRessource;
+			y1 = y+sizeY*ratioSizeYName+sizeY*(1f-2f*ratioSizeYName)/4f*(idPos%4);
+			
+			dec = 0f;
+			for(String temp_string : s1.split("-")){
+				g.drawImage(Images.get(temp_string+"panneaugauche"), 
+						x1+dec, y1+sizeY*(1f-2f*ratioSizeYName)/8f-sizeImage/2);
+				dec += 10f;
+			}
+			numberRessource = dic.get(s1)!=null ? dic.get(s1).getAsString() : "0";
+			Fonts.font_number.drawString(x1+dec+sizeImage+2, y1+sizeY*(1f-2f*ratioSizeYName)/8f-Fonts.font_number.getHeight(numberRessource)/2, numberRessource);
+			idPos += 1;
+		}
+		idPos = 0;
+		for(String s1 : new String[]{"bois-argile","pierre-argile","argile-minerai","pierre-bois","bois-minerai","minerai-pierre"}){
+			if( dic.get(s1)!=null && dic.get(s1).getAsInt()>0){
+				x1 = 10+x+2*sizeX*ratioSizeXRessource;
 				y1 = y+sizeY*ratioSizeYName+sizeY*(1f-2f*ratioSizeYName)/4f*(idPos%4);
-				
 				dec = 0f;
 				for(String temp_string : s1.split("-")){
 					g.drawImage(Images.get(temp_string+"panneaugauche"), 
 							x1+dec, y1+sizeY*(1f-2f*ratioSizeYName)/8f-sizeImage/2);
 					dec += 10f;
 				}
-				Data.font_number.drawString(x1+dec+sizeImage+2, y1+sizeY*(1f-2f*ratioSizeYName)/8f-Data.font_number.getHeight(""+dic.get(s1))/2, ""+dic.get(s1));
-				
 				idPos += 1;
 			}
 		}
@@ -109,7 +138,7 @@ public class PlayerRender {
 				x1 = x+sizeX*ratioSizeXName+1.3f*idPos*sizeX*(1f-ratioSizeXName*2.5f)/8f;
 				y1 = y+sizeY-sizeY*(1f-2f*ratioSizeYName)/4f;
 				g.drawImage(Images.get(token.name().toLowerCase()+"panneaubas"), x1+2, y1+sizeY*(1f-2f*ratioSizeYName)/8f-sizeImage/2f);
-				Data.font_number.drawString(x1+sizeImage+4, y1+sizeY*(1f-2f*ratioSizeYName)/8f-Data.font_number.getHeight(""+p.tokens.get(token))/2f, ""+p.tokens.get(token));
+				Fonts.font_number.drawString(x1+sizeImage+4, y1+sizeY*(1f-2f*ratioSizeYName)/8f-Fonts.font_number.getHeight(""+p.tokens.get(token))/2f, ""+p.tokens.get(token));
 				idPos+=1;
 			}
 		}
@@ -121,7 +150,7 @@ public class PlayerRender {
 			y1 = y+sizeY*ratioSizeYName+sizeY*(1f-2f*ratioSizeYName)/4f*(idPos);
 			im = Images.get(token.name().toLowerCase()+"panneaubas").getScaledCopy(1.5f);
 			g.drawImage(im, x1, y1);
-			Data.font_number.drawString(x1+im.getWidth()+10, y1, ""+p.tokens.get(token));
+			Fonts.font_number.drawString(x1+im.getWidth()+10, y1, ""+p.tokens.get(token));
 			idPos+=1;
 			if(idPos==3){
 				idPos += 1;
@@ -175,7 +204,7 @@ public class PlayerRender {
 
 		// Rendering utility leader
 		if(p.leaderToShow != null){
-			im = Images.get(p.leaderToShow.building.idname).getScaledCopy(0.7f);
+			im = Images.get(p.leaderToShow.idname).getScaledCopy(0.7f);
 			g.drawImage(im, x+sizeX*2/3-im.getWidth()/2, y+sizeY/2-im.getHeight()/2);
 		}
 //		Image im = Images.get(p.wonderName.name()+"_background").getSubImage((int)(ratioSizeXName*sizeX), (int)(ratioSizeYName*sizeY), (int)((1-2*ratioSizeXName)*sizeX)-1, (int)((1-2*ratioSizeYName)*sizeY)-1);
@@ -212,7 +241,7 @@ public class PlayerRender {
 				g.fillRoundRect(x1+2, y1+2, sizeY*ratioSizeYBuildings*2/3-4, sizeY*ratioSizeYBuildings-8, 3);
 				idPos += 1;
 
-				Data.font_number.drawString(x1+sizeX*ratioSizeXBuildings/2, y1, ""+temp_nb );
+				Fonts.font_number.drawString(x1+sizeX*ratioSizeXBuildings/2, y1, ""+temp_nb );
 			}
 		}
 	}

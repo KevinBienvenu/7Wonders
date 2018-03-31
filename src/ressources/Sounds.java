@@ -7,6 +7,8 @@ import java.util.Vector;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 
+import main.Main;
+
 
 public class Sounds {
 	// STORE ALL THE SOUNDS
@@ -17,8 +19,10 @@ public class Sounds {
 	public static void init(){
 		// loading sounds
 		sounds = new HashMap<String, Sound>();
-		loadRepertoire("ressources/sounds/");
-		isInit = true;
+		if(!Main.quickGame){
+			loadRepertoire("ressources/sounds/");
+			isInit = true;
+		}
 	}
 
 	public static boolean isInit(){

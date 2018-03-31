@@ -1,5 +1,5 @@
 {
-	"Name": "Le temple d'Artémis à Ephèse",
+	"Name": "The Temple of Artemis in Ephesus",
 	
 	"AEffectType": "ProductionPapyrus",
 	"AFloor1PierreCost": "2",
@@ -8,7 +8,7 @@
 	"AFloor2EffectType0": "Coins9",
 	"AFloor3PapyrusCost": "2",
 	"AFloor3EffectType0": "VictoryPoints7",
-	"AText" : "Cette merveille produit de base du papyrus.",
+	"AText" : "This wonder comes with one stack of papyrus.",
 	
 	"BEffectType": "ProductionPapyrus",
 	"BFloor1PierreCost" : "2",
@@ -22,6 +22,6 @@
 	"BFloor3VerreCost": "1",
 	"BFloor3EffectType0": "VictoryPoints5",
 	"BFloor3EffectType1": "Coins4",
-	"BText" : "Cette merveille produit de base du papyrus."
+	"BText" : "This wonder comes with one stack of papyrus."
 	
 }

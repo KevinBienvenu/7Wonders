@@ -1,5 +1,5 @@
 {
-	"Name": "Le colisée de Rome",
+	"Name": "The Colosseum or Coliseum",
 	
 	"AEffectType": "SpecialLeaderFree",
 	"AFloor1ArgileCost": "1",
@@ -10,7 +10,7 @@
 	"AFloor2ArgileCost": "1",
 	"AFloor2TissuCost": "1",
 	"AFloor2EffectType0": "VictoryPoints6",
-	"AText" : "Tous vos leaders sont gratuits.",
+	"AText" : "You can play all your leaders for free.",
 	
 	"BEffectType": "SpecialLeaderCheaper",
 	"BFloor1ArgileCost" : "1",
@@ -26,6 +26,6 @@
 	"BFloor3PapyrusCost": "1",
 	"BFloor3EffectType0": "SpecialPlayLeader",
 	"BFloor3EffectType1": "VictoryPoints3",
-	"BText" : "Vos leaders coûtent -2 or, -1 pour vos voisins. L'étage 1 vous permet de piocher 4 leaders, les étages 2 et 3 de poser un leader supplémentaire."
+	"BText" : "You can play your leaders for 2 less gold, your neighbors can do it for 1 less. First floor allows you to draw 4 additional leaders, and second and third floors to play one additional leader each."
 	
 }

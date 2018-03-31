@@ -9,6 +9,12 @@ import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 import ia.IASystem;
+import systems.ClassSystem;
+import systems.EndGameSystem;
+import systems.GameSystem;
+import systems.IntroSystem;
+import systems.LobbySystem;
+import systems.TestSystem;
 
 
 
@@ -51,8 +57,12 @@ public class Game extends BasicGame {
 
 	@Override
 	public void init(GameContainer arg0) throws SlickException {
+		System.out.println("intro");
 		introSystem = new IntroSystem();
+		System.out.println("lobby");
 		lobbySystem = new LobbySystem();
+		System.out.println("done");
+		gameSystem = new GameSystem();
 		system = introSystem;
 	}
 

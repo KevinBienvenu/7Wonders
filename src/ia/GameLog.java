@@ -7,8 +7,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Vector;
 
-import gameSystem.Player;
 import main.Game;
+import model.Player;
 
 public class GameLog {
 	
@@ -25,12 +25,15 @@ public class GameLog {
 		Date d = new Date();
 		String fileNameDate = "" +d.getTime();
 		int idBest=-1, maxScore=0;
+		System.out.println("end of game");
 		for(Player p : Game.gameSystem.board.players) {
+			System.out.print(p.getScore()+" ");
 			if(p.getScore()>maxScore) {
 				idBest = p.id;
 				maxScore = p.getScore();
 			}
 		}
+		System.out.println("\n => "+maxScore);
 		// Saving decisions
 		boolean haswon;
 		String dic = "[";

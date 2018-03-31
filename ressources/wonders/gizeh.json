@@ -1,5 +1,5 @@
 {
-	"Name": "La grande pyramide de Gizeh",
+	"Name": "The Great Pyramid of Giza",
 	
 	"AEffectType": "ProductionPierreSimple",
 	"AFloor1PierreCost": "2",
@@ -8,7 +8,7 @@
 	"AFloor2EffectType0": "VictoryPoints5",
 	"AFloor3PierreCost": "4",
 	"AFloor3EffectType0": "VictoryPoints7",
-	"AText" : "Cette merveille produit de base de la pierre.",
+	"AText" : "This wonder comes with one stack of stone.",
 	
 	"BEffectType": "ProductionPierreSimple",
 	"BFloor1BoisCost" : "2",
@@ -20,6 +20,6 @@
 	"BFloor4PierreCost": "4",
 	"BFloor4PapyrusCost": "1",
 	"BFloor4EffectType0": "VictoryPoints7",
-	"BText" : "Cette merveille produit de base de la pierre."
+	"BText" : "This wonder comes with one stack of stone."
 	
 }

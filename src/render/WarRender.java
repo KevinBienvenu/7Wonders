@@ -5,15 +5,16 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Sound;
 
-import Effects.EffectType;
-import gameSystem.Building;
-import gameSystem.Card;
+import effects.EffectType;
+import enums.TokenName;
 import main.Game;
 import main.Main;
+import model.Building;
+import model.Card;
 import ressources.Data;
+import ressources.Fonts;
 import ressources.Images;
 import ressources.Sounds;
-import ressources.TokenName;
 
 public class WarRender {
 
@@ -126,16 +127,16 @@ public class WarRender {
 				g.setColor(Color.black);
 				g.fillRect(Game.resX/5, Game.resY*2/5, Game.resX/5, Game.resY/5);
 				String s = Game.gameSystem.board.players.get(idPlayer).nickName;
-				Data.font_big.drawString(Game.resX*3/10-Data.font_big.getWidth(s)/2, Game.resY*2/5+15, s);
+				Fonts.font_big.drawString(Game.resX*3/10-Fonts.font_big.getWidth(s)/2, Game.resY*2/5+15, s);
 				s = ""+current_military;
-				Data.font_big.drawString(Game.resX*3/10-Data.font_big.getWidth(s), Game.resY*2/5+100, s);
+				Fonts.font_big.drawString(Game.resX*3/10-Fonts.font_big.getWidth(s), Game.resY*2/5+100, s);
 				// idother
 				g.setColor(Color.black);
 				g.fillRect(3*Game.resX/5, Game.resY*2/5, Game.resX/5, Game.resY/5);
 				s = Game.gameSystem.board.players.get(idOther).nickName;
-				Data.font_big.drawString(Game.resX*7/10-Data.font_big.getWidth(s)/2, Game.resY*2/5+15, s);
+				Fonts.font_big.drawString(Game.resX*7/10-Fonts.font_big.getWidth(s)/2, Game.resY*2/5+15, s);
 				s = ""+temp_military;
-				Data.font_big.drawString(Game.resX*7/10-Data.font_big.getWidth(s)-20, Game.resY*2/5+100, s);
+				Fonts.font_big.drawString(Game.resX*7/10-Fonts.font_big.getWidth(s)-20, Game.resY*2/5+100, s);
 				//shields
 				Image imLeft, imRight, im = Images.get("military");
 				Image tokenLeft, tokenRight, tokenVictory, tokenDefeat;
@@ -178,10 +179,10 @@ public class WarRender {
 					if(Game.gameSystem.board.players.get(idPlayer).specialEffects.contains(EffectType.SendBackDefeat)){
 						xLeftEnd = xRightEnd+50;
 						yLeftEnd = yRightEnd+50;
-						Game.gameSystem.board.players.get(idPlayer).leaderToShow = new Card(Data.getBuildingByName("tomyris"));
+						Game.gameSystem.board.players.get(idPlayer).leaderToShow = Data.getBuildingByName("tomyris");
 					}
 					if(Game.gameSystem.board.players.get(idOther).specialEffects.contains(EffectType.Coins2MilitaryVictory)){
-						Game.gameSystem.board.players.get(idOther).leaderToShow = new Card(Data.getBuildingByName("neron"));
+						Game.gameSystem.board.players.get(idOther).leaderToShow = Data.getBuildingByName("neron");
 					}
 				}
 				if(current_military>temp_military){
@@ -193,7 +194,7 @@ public class WarRender {
 						yRightEnd = yLeftEnd+50;
 					}
 					if(Game.gameSystem.board.players.get(idPlayer).specialEffects.contains(EffectType.Coins2MilitaryVictory)){
-						Game.gameSystem.board.players.get(idPlayer).leaderToShow = new Card(Data.getBuildingByName("neron"));
+						Game.gameSystem.board.players.get(idPlayer).leaderToShow = Data.getBuildingByName("neron");
 					}
 				}
 				xLeft = 2.0f*(xLeftStart*(cooldownTotal/2-cooldownTemp) + xLeftEnd*cooldownTemp)/cooldownTotal;

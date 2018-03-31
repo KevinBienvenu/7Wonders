@@ -22,7 +22,6 @@ public class Images {
 				Game.resY*PlayerRender.ratioSizeY*(1f-2f*PlayerRender.ratioSizeYName)/4f);
 		HashMap<String, Image> toAdd = new HashMap<String, Image>();
 		if(Game.resX!=1920 || Game.resY!=1080){
-			System.out.println("Resizing Images");
 			for(String imageName : images.keySet()){
 				images.put(imageName, images.get(imageName).getScaledCopy(Game.resX/1920f));
 			}
@@ -45,7 +44,6 @@ public class Images {
 				if(s.contains(".png")){
 					// on load l'image
 					s = s.substring(0, s.length()-4);
-					System.out.println(name+s+".png");
 					im = new Image(name+s+".png");
 					images.put(s.toLowerCase(),im);
 					//					f = Images.class.getField(s);

@@ -1,5 +1,5 @@
 {
-	"Name": "La statue de Zeus à Olympie",
+	"Name": "The Statue of Zeus at Olympia",
 	
 	"AEffectType": "ProductionBoisSimple",
 	"AFloor1BoisCost": "2",
@@ -8,7 +8,7 @@
 	"AFloor2EffectType0": "SpecialBuildFreeBuilding",
 	"AFloor3MineraiCost": "2",
 	"AFloor3EffectType0": "VictoryPoints7",
-	"AText" : "Cette merveille produit de base du bois.",
+	"AText" : "This wonder comes with one stack of wood.",
 	
 	"BEffectType": "ProductionBoisSimple",
 	"BFloor1BoisCost" : "2",
@@ -19,6 +19,6 @@
 	"BFloor3MineraiCost": "2",
 	"BFloor3TissuCost": "1",
 	"BFloor3EffectType0": "SpecialCopyGuild",
-	"BText" : "Cette merveille produit de base du bois."
+	"BText" : "This wonder comes with one stack of wood."
 	
 }

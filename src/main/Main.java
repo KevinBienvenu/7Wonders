@@ -15,19 +15,21 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
 import ia.IASystem.IAHandler;
-import inputActions.Communications;
+import network.Communications;
 
 
 public class Main {
 	// A REGLER \\
-	public static int framerate = 60;
-	public static boolean pleinEcran = true;
+	public static boolean pleinEcran = false;
 	public static String hostname;
+	public static int maxPlayers = 7;
 	public static int nbIAPlayer = 0;
+	public static int framerate = nbIAPlayer>0 ? 500 : 60;
 	public static int nbRandPlayer = 0;
 	public static boolean launchGame = false;
 	public static boolean quickGame = false;
 	public static boolean replay = false;
+	public static long time;
 
 	public static void main(String[] args) {
 
@@ -36,8 +38,8 @@ public class Main {
 		System.setProperty("org.lwjgl.librarypath", new File(new File(System.getProperty("user.dir"), "native"), LWJGLUtil.getPlatformName()).getAbsolutePath());
 		int resolutionX;
 		int resolutionY;
-//		hostname = "http://7wonders.battlemythe.net";
-		hostname = "http://localhost";
+		hostname = "http://games.battlemythe.net";
+		//hostname = "http://localhost";
 		if(pleinEcran){
 			resolutionX = (int)screenSize.getWidth();		
 			resolutionY = (int)screenSize.getHeight();

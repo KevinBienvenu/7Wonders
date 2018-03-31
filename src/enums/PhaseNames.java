@@ -1,0 +1,12 @@
+package enums;
+
+public enum PhaseNames {
+
+	DEBUTAGE,
+	LEADERCHOICE,
+	DEBUTTOUR,
+	MAINTOUR,
+	ANIMATIONPHASEI,
+	ENDTOUR,
+	ENDAGE;
+}

@@ -1,29 +1,30 @@
-package Effects;
+package effects;
 
 import java.util.Vector;
 
-import gameSystem.Building;
+import enums.CategoryName;
+import enums.TokenName;
 import main.Game;
-import ressources.CategoryName;
-import ressources.TokenName;
+import model.Building;
+import model.Player;
 
 public class EffectPoints {
 
-	public static int points(EffectType type, int idJoueur){
+	public static int points(EffectType type, Player player){
 		int nbpoints = 0;
 		int temp;
 		switch(type){
 		case CoinsAndVictoryPointsForCommercial:
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.Commercial);
+			nbpoints += player.getNumberOfCardFromCategoryForPlayer(CategoryName.Commercial);
 			break;
 		case CoinsAndVictoryPointsForCommonProd:
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.CommonRessources);
+			nbpoints += player.getNumberOfCardFromCategoryForPlayer( CategoryName.CommonRessources);
 			break;
 		case CoinsAndVictoryPointsForRareProd:
-			nbpoints += 2*EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.RareRessources);
+			nbpoints += 2*player.getNumberOfCardFromCategoryForPlayer( CategoryName.RareRessources);
 			break;
 		case CoinsAndVictoryPointsForWonderFloors:
-			nbpoints += Game.gameSystem.board.players.get(idJoueur).wonderFloorBuilt.size()*1;
+			nbpoints += player.wonderFloorBuilt.size()*1;
 			break;
 		case VictoryPoints1:
 		case VictoryPoints10:
@@ -39,108 +40,108 @@ public class EffectPoints {
 			nbpoints += Integer.parseInt(type.name().substring(13));
 			break;
 		case VictoryPointsForCivilianNeighbours:
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getLeftPlayer(idJoueur).id,CategoryName.Civilian);
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getRightPlayer(idJoueur).id,CategoryName.Civilian);
+			nbpoints += player.getRightNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.Civilian);
+			nbpoints += player.getLeftNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.Civilian);
 			break;
 		case VictoryPointsForCommercialNeighbours:
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getLeftPlayer(idJoueur).id,CategoryName.Commercial);
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getRightPlayer(idJoueur).id,CategoryName.Commercial);
+			nbpoints += player.getRightNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.Commercial);
+			nbpoints += player.getLeftNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.Commercial);
 			break;
 		case VictoryPointsForCommonNeighbours:
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getLeftPlayer(idJoueur).id,CategoryName.CommonRessources);
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getRightPlayer(idJoueur).id,CategoryName.CommonRessources);
+			nbpoints += player.getRightNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.CommonRessources);
+			nbpoints += player.getLeftNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.CommonRessources);
 			break;
 		case VictoryPointsForDefeatedNeighbours:
-			nbpoints += Game.gameSystem.getRightPlayer(idJoueur).tokens.get(TokenName.DefeatToken1);
-			nbpoints += Game.gameSystem.getLeftPlayer(idJoueur).tokens.get(TokenName.DefeatToken1);
+			nbpoints += player.getRightNeighbour().tokens.get(TokenName.DefeatToken1);
+			nbpoints += player.getLeftNeighbour().tokens.get(TokenName.DefeatToken1);
 			break;
 		case VictoryPointsForMilitaryNeighbours:
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getLeftPlayer(idJoueur).id,CategoryName.Military);
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getRightPlayer(idJoueur).id,CategoryName.Military);
+			nbpoints += player.getRightNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.Military);
+			nbpoints += player.getLeftNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.Military);
 			break;
 		case VictoryPointsForRareCommonGuildSet:
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.CommonRessources);
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.RareRessources);
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.Guilds);
+			nbpoints += player.getNumberOfCardFromCategoryForPlayer(CategoryName.CommonRessources);
+			nbpoints += player.getNumberOfCardFromCategoryForPlayer(CategoryName.RareRessources);
+			nbpoints += player.getNumberOfCardFromCategoryForPlayer(CategoryName.Guilds);
 			break;
 		case VictoryPointsForRareNeighbours:
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getLeftPlayer(idJoueur).id,CategoryName.RareRessources)*2;
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getRightPlayer(idJoueur).id,CategoryName.RareRessources)*2;
+			nbpoints += player.getRightNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.RareRessources)*2;
+			nbpoints += player.getLeftNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.RareRessources)*2;
 			break;
 		case VictoryPointsForLeaderNeighbours:
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getLeftPlayer(idJoueur).id,CategoryName.Leader)*2;
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getRightPlayer(idJoueur).id,CategoryName.Leader)*2;
+			nbpoints += player.getRightNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.Leader)*2;
+			nbpoints += player.getLeftNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.Leader)*2;
 			break;
 		case VictoryPointsForGuildNeighbours:
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getLeftPlayer(idJoueur).id,CategoryName.Guilds)*3;
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getRightPlayer(idJoueur).id,CategoryName.Guilds)*3;
+			nbpoints += player.getRightNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.Guilds)*3;
+			nbpoints += player.getLeftNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.Guilds)*3;
 			break;
 		case VictoryPointsForScientificNeighbours:
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getLeftPlayer(idJoueur).id,CategoryName.Scientific);
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(Game.gameSystem.getRightPlayer(idJoueur).id,CategoryName.Scientific);
+			nbpoints += player.getRightNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.Scientific);
+			nbpoints += player.getLeftNeighbour().getNumberOfCardFromCategoryForPlayer(CategoryName.Scientific);
 			break;
 		case VictoryPointsForWonderFloors:
-			nbpoints += Game.gameSystem.board.players.get(Game.gameSystem.getLeftPlayer(idJoueur).id).wonderFloorBuilt.size();
-			nbpoints += Game.gameSystem.board.players.get(Game.gameSystem.getRightPlayer(idJoueur).id).wonderFloorBuilt.size();
-			nbpoints += Game.gameSystem.board.players.get(idJoueur).wonderFloorBuilt.size();
+			nbpoints += player.getRightNeighbour().wonderFloorBuilt.size();
+			nbpoints += player.getLeftNeighbour().wonderFloorBuilt.size();
+			nbpoints += player.wonderFloorBuilt.size();
 			break;
 		case VictoryPointsForCivilian:
 		case VictoryPointsForCommercial:
 		case VictoryPointsForCommonRessources:
 		case VictoryPointsForScientific:
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.valueOf(type.name().substring(16)));
+			nbpoints += player.getNumberOfCardFromCategoryForPlayer(CategoryName.valueOf(type.name().substring(16)));
 			break;
 		case VictoryPointsForRareRessources:
 		case VictoryPointsForMilitary:
 		case VictoryPointsForGuilds:
-			nbpoints += EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.valueOf(type.name().substring(16)))*2;
+			nbpoints += player.getNumberOfCardFromCategoryForPlayer(CategoryName.valueOf(type.name().substring(16)))*2;
 			break;
 		case PointsPlaton:
-			temp = EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.CommonRessources);
-			temp = Math.min(EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.RareRessources), temp);
-			temp = Math.min(EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.Guilds), temp);
-			temp = Math.min(EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.Civilian), temp);
-			temp = Math.min(EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.Commercial), temp);
-			temp = Math.min(EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.Military), temp);
-			temp = Math.min(EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.Scientific), temp);
+			temp = player.getNumberOfCardFromCategoryForPlayer(CategoryName.CommonRessources);
+			temp = Math.min(player.getNumberOfCardFromCategoryForPlayer(CategoryName.RareRessources), temp);
+			temp = Math.min(player.getNumberOfCardFromCategoryForPlayer(CategoryName.Guilds), temp);
+			temp = Math.min(player.getNumberOfCardFromCategoryForPlayer(CategoryName.Civilian), temp);
+			temp = Math.min(player.getNumberOfCardFromCategoryForPlayer(CategoryName.Commercial), temp);
+			temp = Math.min(player.getNumberOfCardFromCategoryForPlayer(CategoryName.Military), temp);
+			temp = Math.min(player.getNumberOfCardFromCategoryForPlayer(CategoryName.Scientific), temp);
 			nbpoints += temp*7;
 			break;
 		case PointsJustinien:
-			temp = EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.Civilian);
-			temp = Math.min(EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.Military), temp);
-			temp = Math.min(EffectAction.getNumberOfCardFromCategoryForPlayer(idJoueur, CategoryName.Scientific), temp);
+			temp = player.getNumberOfCardFromCategoryForPlayer(CategoryName.Civilian);
+			temp = Math.min(player.getNumberOfCardFromCategoryForPlayer(CategoryName.Military), temp);
+			temp = Math.min(player.getNumberOfCardFromCategoryForPlayer(CategoryName.Scientific), temp);
 			nbpoints += temp*3;
 			break;
 		case PointsForMilitaryVictory:
-			nbpoints += Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.VictoryToken1);
-			nbpoints += Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.VictoryToken3);
-			nbpoints += Game.gameSystem.board.players.get(idJoueur).tokens.get(TokenName.VictoryToken5);
+			nbpoints += player.tokens.get(TokenName.VictoryToken1);
+			nbpoints += player.tokens.get(TokenName.VictoryToken3);
+			nbpoints += player.tokens.get(TokenName.VictoryToken5);
 			break;
 		case PointsMidas:
-			nbpoints += Game.gameSystem.board.players.get(idJoueur).coins/3;
+			nbpoints += player.coins/3;
 			break;
 		case PointsAmytis:
-			nbpoints += Game.gameSystem.board.players.get(idJoueur).wonderFloorBuilt.size()*2;
+			nbpoints += player.wonderFloorBuilt.size()*2;
 			break;
 		case SpecialCopyGuild:
 			Vector<Building> guilds = new Vector<Building>();
 			nbpoints = 0;
-			for(Building b : Game.gameSystem.getRightPlayer(idJoueur).buildings){
+			for(Building b : player.getRightNeighbour().buildings){
 				if(b.categoryName==CategoryName.Guilds){
 					temp = 0;
 					for(EffectType et : b.effects){
-						temp += points(et, idJoueur);
+						temp += points(et, player);
 					}
 					if(temp>nbpoints){
 						nbpoints = temp;
 					}
 				} 
 			}
-			for(Building b : Game.gameSystem.getLeftPlayer(idJoueur).buildings){
+			for(Building b :player.getLeftNeighbour().buildings){
 				if(b.categoryName==CategoryName.Guilds){
 					temp = 0;
 					for(EffectType et : b.effects){
-						temp += points(et, idJoueur);
+						temp += points(et, player);
 					}
 					if(temp>nbpoints){
 						nbpoints = temp;

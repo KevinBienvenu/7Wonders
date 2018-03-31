@@ -6,6 +6,8 @@ import java.util.HashMap;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
+import main.Main;
+
 
 public class Musics {
 	
@@ -15,8 +17,10 @@ public class Musics {
 	public static void init(){
 		// loading musics
 		musics = new HashMap<String, Music>();
-		loadRepertoire("ressources/musics/");
-		isInit = true;
+		if(!Main.quickGame){
+			loadRepertoire("ressources/musics/");
+			isInit = true;
+		}
 	}
 	
 	public static boolean isInit(){

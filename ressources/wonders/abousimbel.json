@@ -1,5 +1,5 @@
 {
-	"Name": "Le grand temple d'Abou Simbel",
+	"Name": "The Great Temple of Abu Simbel",
 	
 	"AEffectType": "ProductionPapyrus",
 	"AFloor1PierreCost": "1",
@@ -12,15 +12,15 @@
 	"AFloor3TissuCost": "1",
 	"AFloor3PierreCost": "2",
 	"AFloor3EffectType0": "SpecialBuryLeader",
-	"AText" : "Cette merveille produit de base du papyrus. L'étage 3 vous permet d'enterrer un leader déjà posé : vous le retirez du jeu et marquez le double de son coût en pièce en point de victoire",
+	"AText" : "This wonder comes with one stack of papyrus. The third floor allows you to bury one leader you previsoulsy played : you remove it from the game and gain in victory points twice its cost in gold",
 	
 	"BEffectType": "ProductionPapyrus",
-	"BFloor1ArgileCost" : "0",
-	"BFloor1TissuCost" : "0",
+	"BFloor1ArgileCost" : "2",
+	"BFloor1TissuCost" : "1",
 	"BFloor1EffectType0": "SpecialBuryLeader",
 	"BFloor2BoisCost" : "2",
 	"BFloor2VerreCost" : "1",
 	"BFloor2EffectType0": "SpecialBuryLeader",
-	"BText" : "Cette merveille produit de base du papyrus. Les deux étages vous permettent d'enterrer chacun un leader"
+	"BText" : "This wonder comes with one stack of papyrus. Both floors allow you to bury a leader"
 	
 }
